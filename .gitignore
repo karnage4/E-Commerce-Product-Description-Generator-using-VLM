@@ -1,0 +1,64 @@
+# ── Large data files (too big for GitHub) ─────────────────────────────────────
+data/raw/
+data/processed/images/
+data/processed/metadata/
+data/processed/splits/
+
+# ── Model checkpoints (too large, keep locally / on Drive) ────────────────────
+models/checkpoints/
+models/blip/blip_best_model/
+models/blip/clip_gpt2_best_model/
+models/clip_gpt2/blip_best_model/
+models/clip_gpt2/clip_gpt2_best_model/
+models/results/
+
+# ── Zip archives ──────────────────────────────────────────────────────────────
+*.zip
+*.tar.gz
+*.tar
+
+# ── Python environments ───────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# ── Python cache ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# ── Debug/temp screenshots ────────────────────────────────────────────────────
+debug*.png
+debug_screenshot.png
+
+# ── Jupyter / Colab notebooks output ─────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── API keys / secrets ────────────────────────────────────────────────────────
+.env
+.env.*
+secrets.py
+*_key.txt
+api_key*
+
+# ── OS junk ───────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDEs ──────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/
