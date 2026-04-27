@@ -10,7 +10,10 @@ models/blip/blip_best_model/
 models/blip/clip_gpt2_best_model/
 models/clip_gpt2/blip_best_model/
 models/clip_gpt2/clip_gpt2_best_model/
-models/results/
+
+# ── Results: keep JSON metrics but exclude large JSONL output files ────────────
+models/results/*.jsonl
+# models/results/*.json  ← NOT ignored — small metric files should be tracked
 
 # ── Zip archives ──────────────────────────────────────────────────────────────
 *.zip

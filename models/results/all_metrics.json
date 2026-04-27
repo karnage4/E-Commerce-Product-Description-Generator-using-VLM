@@ -1,0 +1,20 @@
+{
+  "Metadata-Only (Baseline)": {
+    "BLEU-1": 1.04,
+    "BLEU-4": 0.3,
+    "ROUGE-L": 13.71,
+    "METEOR": 8.8
+  },
+  "CLIP-GPT2 Fine-tuned": {
+    "BLEU-1": 8.77,
+    "BLEU-4": 1.54,
+    "ROUGE-L": 11.03,
+    "METEOR": 10.28
+  },
+  "BLIP Fine-tuned": {
+    "BLEU-1": 6.33,
+    "BLEU-4": 0.65,
+    "ROUGE-L": 14.17,
+    "METEOR": 12.13
+  }
+}
