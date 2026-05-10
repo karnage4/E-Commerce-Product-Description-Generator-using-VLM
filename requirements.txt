@@ -10,7 +10,9 @@ playwright>=1.44.0
 playwright-stealth>=2.0.0
 
 # ── Phase 4: API Baseline (local, no GPU) ─────────────────────────────────────
-google-generativeai>=0.5.0    # Gemini API (free tier)
+google-generativeai>=0.5.0    # Gemini API (legacy baseline, optional)
+openai>=1.30.0                # used to call NVIDIA NIM (OpenAI-compatible API)
+python-dotenv>=1.0.0          # loads NVIDIA_API_KEY from .env
 
 # ── Phase 4: Model Training (install on Google Colab, not locally) ────────────
 # torch>=2.1.0

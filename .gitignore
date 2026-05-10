@@ -16,7 +16,7 @@ models/results/*.jsonl
 # models/results/*.json  ← NOT ignored — small metric files should be tracked
 
 # ── Zip archives ──────────────────────────────────────────────────────────────
-*.zip
+#*.zip
 *.tar.gz
 *.tar
 
