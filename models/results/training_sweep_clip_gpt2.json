@@ -1,0 +1,14 @@
+[
+  {
+    "learning_rate": 1e-05,
+    "val_loss": 3.906085
+  },
+  {
+    "learning_rate": 2e-05,
+    "val_loss": 3.739312
+  },
+  {
+    "learning_rate": 5e-05,
+    "val_loss": 3.590559
+  }
+]

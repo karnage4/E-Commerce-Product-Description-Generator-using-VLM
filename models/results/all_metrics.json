@@ -1,20 +1,22 @@
 {
-  "Metadata-Only (Baseline)": {
+  "Metadata-Only (Baseline 1)": {
     "BLEU-1": 1.04,
     "BLEU-4": 0.3,
     "ROUGE-L": 13.71,
     "METEOR": 8.8
   },
   "CLIP-GPT2 Fine-tuned": {
-    "BLEU-1": 8.77,
-    "BLEU-4": 1.54,
-    "ROUGE-L": 11.03,
-    "METEOR": 10.28
+    "BLEU-1": 11.76,
+    "BLEU-4": 4.05,
+    "ROUGE-L": 12.2,
+    "METEOR": 11.69,
+    "CIDEr": 0.0
   },
   "BLIP Fine-tuned": {
-    "BLEU-1": 6.33,
-    "BLEU-4": 0.65,
-    "ROUGE-L": 14.17,
-    "METEOR": 12.13
+    "BLEU-1": 6.65,
+    "BLEU-4": 1.49,
+    "ROUGE-L": 14.24,
+    "METEOR": 12.73,
+    "CIDEr": 0.0
   }
 }

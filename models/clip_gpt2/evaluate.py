@@ -1,10 +1,7 @@
 """
-CLIP-GPT2 Local Inference — runs on your 8GB RAM laptop (CPU only).
+CLIP-GPT2 Local Inference — GPU-accelerated when available.
 
-Checkpoint format:
-  - CLIP-GPT2 saves a raw PyTorch state dict (model.pt) + GPT-2 tokenizer files
-  - This is different from BLIP which saves in HuggingFace format
-  - We reconstruct the ClipGPT2Model class here and load the weights manually
+Checkpoint format: raw PyTorch state dict (model.pt) + GPT-2 tokenizer files.
 
 Run:
     python -m models.clip_gpt2.evaluate
@@ -42,6 +39,8 @@ _CANDIDATE_PATHS = [
 ]
 CHECKPOINT_DIR = next((p for p in _CANDIDATE_PATHS if p.exists()), _CANDIDATE_PATHS[0])
 RESULTS_FILE   = RESULTS_DIR / "clip_gpt2_results.jsonl"
+
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # ── Must match the values used during training ─────────────────────────────────
 CLIP_MODEL    = "openai/clip-vit-base-patch32"
@@ -114,12 +113,11 @@ class ClipGPT2Model(nn.Module):
 # ── Loaders ───────────────────────────────────────────────────────────────────
 
 def load_model(checkpoint_path: Path):
-    """Load CLIP-GPT2 from raw model.pt state dict."""
     print(f"\n  Loading CLIP-GPT2 from {checkpoint_path}...")
     if not checkpoint_path.exists():
         raise FileNotFoundError(
             f"\n[!] Checkpoint not found at {checkpoint_path}\n"
-            "    Download clip_gpt2_best_model/ from Colab and place it inside models/clip_gpt2/"
+            "    Download clip_gpt2_best_model/ and place it inside models/clip_gpt2/"
         )
 
     weights_file = checkpoint_path / "model.pt"
@@ -129,8 +127,8 @@ def load_model(checkpoint_path: Path):
     model = ClipGPT2Model(prefix_length=PREFIX_LENGTH)
     state_dict = torch.load(weights_file, map_location="cpu")
     model.load_state_dict(state_dict)
-    model.eval()
-    print("  Model loaded (CPU mode)")
+    model.to(DEVICE).eval()
+    print(f"  Model loaded ({DEVICE})")
 
     tokenizer = GPT2Tokenizer.from_pretrained(str(checkpoint_path))
     tokenizer.pad_token = tokenizer.eos_token
@@ -194,11 +192,11 @@ def run_evaluation(max_samples: int = 150) -> None:
 
     t0 = time.time()
     with open(RESULTS_FILE, "a", encoding="utf-8") as out_f:
-        for rec in tqdm(records, desc="CLIP-GPT2 inference [CPU]", unit="item"):
+        for rec in tqdm(records, desc=f"CLIP-GPT2 inference [{DEVICE}]", unit="item"):
             if rec["item_id"] in done_ids:
                 continue
 
-            pixel_values = load_image_tensor(rec)
+            pixel_values = load_image_tensor(rec).to(DEVICE)
 
             metadata = build_metadata_prompt(rec)
             prompt_enc = tokenizer(
@@ -212,8 +210,8 @@ def run_evaluation(max_samples: int = 150) -> None:
             with torch.no_grad():
                 output_ids = model.generate(
                     pixel_values=pixel_values,
-                    input_ids=prompt_enc["input_ids"],
-                    attention_mask=prompt_enc["attention_mask"],
+                    input_ids=prompt_enc["input_ids"].to(DEVICE),
+                    attention_mask=prompt_enc["attention_mask"].to(DEVICE),
                     max_new_tokens=150,
                     num_beams=4,
                     no_repeat_ngram_size=3,

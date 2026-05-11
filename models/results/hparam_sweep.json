@@ -1,0 +1,68 @@
+{
+  "model": "clip_gpt2",
+  "results": [
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 4.67,
+      "time_s": 67.4
+    },
+    {
+      "config": {
+        "num_beams": 2,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 5.09,
+      "time_s": 63.0
+    },
+    {
+      "config": {
+        "num_beams": 6,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 7.06,
+      "time_s": 71.7
+    },
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 2,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 6.15,
+      "time_s": 84.7
+    },
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 4,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 3.45,
+      "time_s": 86.7
+    },
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 100
+      },
+      "rouge_l": 4.09,
+      "time_s": 56.6
+    },
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 200
+      },
+      "rouge_l": 4.57,
+      "time_s": 99.3
+    }
+  ]
+}

@@ -14,12 +14,18 @@ google-generativeai>=0.5.0    # Gemini API (legacy baseline, optional)
 openai>=1.30.0                # used to call NVIDIA NIM (OpenAI-compatible API)
 python-dotenv>=1.0.0          # loads NVIDIA_API_KEY from .env
 
-# ── Phase 4: Model Training (install on Google Colab, not locally) ────────────
-# torch>=2.1.0
-# torchvision>=0.16.0
-# transformers>=4.38.0
-# accelerate>=0.28.0
-# peft>=0.10.0                # LoRA support
+# ── Phase 4: Model Training + Local Inference ─────────────────────────────────
+# torch and torchvision are installed via pyproject.toml [tool.uv.sources]
+# which points them at https://download.pytorch.org/whl/cu128 (RTX 50 series)
+# Install with: uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+torch>=2.1.0
+torchvision>=0.16.0
+transformers>=4.38.0
+accelerate>=0.28.0
+
+# ── Visualisation (attention maps, qualitative report) ────────────────────────
+matplotlib>=3.8.0
+numpy>=1.26.0
 
 # ── Phase 5: Evaluation (local, CPU-only) ─────────────────────────────────────
 nltk>=3.8.1

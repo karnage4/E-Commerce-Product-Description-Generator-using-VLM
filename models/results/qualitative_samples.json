@@ -1,0 +1,172 @@
+{
+  "true_positives": [
+    {
+      "item_id": "657247851",
+      "category": "smartphones",
+      "generated": "product : redmi note 14 pro - 6. 67 inches display - 8gb ram - 256gb rom - 32mp front camera - 200mp + 8mp + 2mp rear camera - dual sim - 5500mah battery. brand : no brand. category : smartphones. subcategory : xiaomi. price : pkr 80999. rating : 5. 0 / 5 - year official brand warranty : general featuresrelease date 2025sim supportdual sim + nano - simphone dimensions 163. 6 x 77. 7 x 8 mmphone weight 199 goperating systemandroid 15",
+      "reference": "Redmi Note 14 Pro PTA APPROVED 6.67 Inches Display 8GB RAM 256GB ROM 32MP Front Camera 200MP+8MP+2MP Rear Camera Dual SIM 5500mAh Battery",
+      "rouge_p": 0.3692,
+      "rouge_r": 0.9231,
+      "rouge_f": 0.5275
+    },
+    {
+      "item_id": "881908450",
+      "category": "tablets",
+      "generated": "product : nokia 3310 box pack pta life time warranty a + condition high quality, nokia 3310, availability nokia 105, nokia 106, nokia 150, nokia 5310, nokia 3210 - tablet. brand : no brand. category : tablets. subcategory : android tablet. price : pkr 4999. display : 6. 1 - inch ips lcd, dual sim, dual standby. 1. 3. 3 ghz kryo - 5mp front camera, 2mp back camera, bluetooth 4. 5. 0. 5mp rear camera. 2mp battery. 5 - no",
+      "reference": "Nokia 3310 Box Pack PTA Life Time Warranty A+ Condition High Quality, nokia 3310, availability nokia 105, nokia 106, nokia 150, nokia 5310, nokia 3210",
+      "rouge_p": 0.3571,
+      "rouge_r": 1.0,
+      "rouge_f": 0.5263
+    },
+    {
+      "item_id": "488966511",
+      "category": "consumer-electronics",
+      "generated": "product : 2pcs car door logo projection light kia. brand : no brand. category : consumer - electronics. subcategory : other. price : pkr 1214. kia logo projection car door light kia this no drill type ghost shadow light is wireless its designed for auto modification fancier and it will not destroy the oiginal car appearance. it will display the signal light when you open the door and the door when you close the door can be installed both left or right door, courtesy door light makes your car artistic material : abs powered by the led light will turn off inverter ' s powered by a",
+      "reference": "1.This No Drill Type Ghost Shadow Light is wireless, it's especially designed for auto modification fancier and it will not destroy the original car appearance, bringing more driving fun to drivers. 2.The dazzle logo light and the signal light will display on the ground when you open the car door and it will turn off when you close the door. 3.Can be installed in both left or right door, courtesy door light makes your car artistic. Specifications: Color:Black Material: ABS Powered by:3 PCS AAA batteries ( Not Included). Installations: Easy installation, do not need to drill the hole, just stick the light on the door panel and stick the magnet on the bottom of the car frame. No harm to your car Package: 2pcs door projector logo lights (2PCS FOR 2 DOORS)",
+      "rouge_p": 0.5758,
+      "rouge_r": 0.4161,
+      "rouge_f": 0.4831
+    },
+    {
+      "item_id": "946199129",
+      "category": "smartphones",
+      "generated": "product : infinix smart 10 pus - ips lcd - 6. 67 inches display - 4gb ram 128gb rom - 8mp front camera - 8mp rear camera - unisoc t7250 chipset - dual sim - 6000mah battery. brand : no brand. category : smartphones. subcategory : infinix. price : pkr 329999. 6. 7 inches display with a 120hz refresh rate, making it ideal for mobiles and tablets. it ' s a budget - friendly smartphone. it is designed to withstand everyday usage of high - cost,",
+      "reference": "PTA APPROVED IPS LCD 6.67 Inches Display 4GB RAM 128GB ROM 8MP Front Camera 8MP Rear Camera Dual SIM Unisoc T7250 Chipset 6000mAh Battery",
+      "rouge_p": 0.3,
+      "rouge_r": 0.84,
+      "rouge_f": 0.4421
+    },
+    {
+      "item_id": "438722232",
+      "category": "consumer-electronics",
+      "generated": "product : t10 led parking bulb 15 led - super bright led parking bulb canbus. brand : no brand. category : consumer - electronics. subcategory : other. price : pkr 699. pre { white - space : pre - wrap. } • 10 led canbus parking bulb with super bright yellow led • perfect for automotive car electronics accessories.",
+      "reference": "pre { white-space: pre-wrap; }• T10 LED parking bulb with 15 super bright LEDs.• Canbus compatible for error-free performance.• Perfect for upgrading your car's parking lights.• Easy to install and long-lasting.• Ideal for automotive enthusiasts.• Category: Car Electronics Accessories.",
+      "rouge_p": 0.4,
+      "rouge_r": 0.4286,
+      "rouge_f": 0.4138
+    }
+  ],
+  "false_positives": [
+    {
+      "item_id": "267470798",
+      "category": "consumer-electronics",
+      "generated": "product : pack of 2 universal car vehicle & ups battery terminal clamp. brand : no brand. category : consumer - electronics. subcategory : power & battery. price : pkr 600. rating : 5. 0 / 5. 5. 6. 5 : 6. 0. 6 : 5 : 1. 1. 5 ). 1 : 1 : 3. 3. 4. 1 ). 2. 3 : 1 ( 1. 2 : 3 : 2. 0 : 0. 1 ( 2. 2 ( 1 : 2 : 1 ) 1. 3 ( 2 : 0 : 1 \" 1. 0",
+      "reference": ". POSITIVE Terminal Connector2. NEGATIVE Terminal Connector3. Durable made for safety use4. The product is made from brass casting, longer life than ordinary copper5. It features superior performance6. Designed for high-current applications7. double wrench needed to tightened nut and bolt",
+      "rouge_p": 0.0154,
+      "rouge_r": 0.025,
+      "rouge_f": 0.019
+    },
+    {
+      "item_id": "916102582",
+      "category": "smartphones",
+      "generated": "product : infinix hot 60i 6gb + 128gb pta approved. brand : infinix. category : smartphones. subcategory : infinix. price : pkr 37190. rating : 4. 7 / 5 - inch amoled display : 120hz refresh rate : 50mp rear camera. 50mp + 50mp ai rear camera : 8mp ai dual camera. 2mp front camera : ai dual rear camera ( fingerprint sensor : fingerprint fingerprint protection. fingerprint, fingerprint - friendly. fully functional with a",
+      "reference": "6GB/128GB5160 mAh BatteryAndroid 15, XOS 15.1Octa-core50 MP, (wide), AFAuxiliary lensSleek Black = BlackTitanium Silver = SilverShadow Blue = BlueNeon Red = RedMeadow Green = GreenSoul Eye Purple = Purple",
+      "rouge_p": 0.0172,
+      "rouge_r": 0.0385,
+      "rouge_f": 0.0238
+    },
+    {
+      "item_id": "527671396",
+      "category": "tablets",
+      "generated": "product : fujitsu q555 windows tablet | display 10inch ram 4gb storage 64gb 128gb | only tablet | window 10 tablet, ms office tablet, tab for office, window tab, window tablet, kids learning tablet, window tablet pc, tablet pc, tab for kids, fujitsu lot q55,. brand : no brand. category : tablets. subcategory : android tablet. price : pkr 15000. rating : 3. 5 / 5 - inch touch touchscreen resolution : 1280 x 1200 pixels. 3. 4gb ram. 6gb internal storage : 16gb internal memory :",
+      "reference": "Weighing only 640g in a thin design with 10 hours battery life 10.1” Anti-glare WUXGA Display Supports Hand and Pen Input, enabling paperless workflows Optional enterprise-grade security such as Smart Card Reader, NFC Reader and Fingerprint Sensor Wide Range of Accessories to meet usability requirement",
+      "rouge_p": 0.0274,
+      "rouge_r": 0.0417,
+      "rouge_f": 0.0331
+    },
+    {
+      "item_id": "882156371",
+      "category": "smartphones",
+      "generated": "product : oppo a5i 4gb ram 64gb rom 8 mp + ai dual camera 5100 mah ( non removable ) battery + one year brand warranty. brand : no brand. category : smartphones. subcategory : oppo. price : pkr 30499. rating : 5. 0 / 5 - inch ips lcd display. 5mp back camera with 1080p hd video recording memory card slot for smooth multitasking and long battery life. built - in memory : up to 16gb internal storage : 128gb ram. expandable via microsdxc t & type",
+      "reference": "General FeaturesRelease Date24 Jun 2025SIM SupportNano-SIM Card/Nano-USIM CardPhone Dimensions165.77 x 76.08 x 7.68mmPhone Weight186gOperating SystemAndroid 15 OSDisplayScreen Size6.67\"Screen ResolutionHD + (1604 × 720)Screen TypeIPS LCD Capacitive TouchscreenScreen ProtectionN/AMemoryInternal Memory64gbRAM4gbCard SlotN/APerformanceProcessorQualcomm® Snapdragon® 6s 4G Gen1GPUAdreno 610@1050MHzBatteryType5100mAhCameraFront Camera5MP; f/2.2, FOV 78°; 3P lens; FFFront Flash LightN/AFront Video Recording1080/720P@30fps 720P@30fpsBack Flash LightYesBack Camera8MP; f/2; FOV 78°; 4P lens; AF; open-loop focus motorBack Video Recording1080P@30fps, 720P@30fpsConnectivityBluetooth5.03GYes4G/LTEYes5GN/ARadioN/AWiFiYesNFCN/A",
+      "rouge_p": 0.0278,
+      "rouge_r": 0.023,
+      "rouge_f": 0.0252
+    },
+    {
+      "item_id": "920208155",
+      "category": "smartphones",
+      "generated": "product : tecno spark 40 6gb ram 128 gb rom 5200 mah battery 50 mp + ai back camera 1 year tecno pk warranty. brand : no brand. category : smartphones. subcategory : tecno. price : pkr 41499. rating : 5. 0 / 5 - year official pta approved display : 6. 67 - inch amoled display : 120hz refresh rate : resolution : 1080 x 2400 pixels. 1. 67 ghz cortex - a53 chipset : octa - core processor : qualcomm snapdragon",
+      "reference": "General FeaturesRelease Date11 Sept 2025SIM SupportDual Sim, Dual Standby (Nano-SIM)Phone Dimensions165.6 x 77 x 7.7 mmPhone Weight192 gOperating SystemAndroid 15DisplayScreen Size6.6 inchesScreen Resolution720 x 1612 PixelsScreen TypeIPS LCD ScreenScreen ProtectionN/AMemoryInternal Memory128 GBRAM6 GBCard SlotmicroSDXCPerformanceProcessorMediatek Helio G81GPUN/ABatteryType5200 mAhCameraFront Camera8 MPFront Flash LightYesFront Video RecordingYesBack Flash LightYesBack Camera50 MP + AIBack Video RecordingYesConnectivityBluetoothYes3GYes4G/LTEYes5GNoRadioNoWiFiYesNFCN/A",
+      "rouge_p": 0.0308,
+      "rouge_r": 0.0339,
+      "rouge_f": 0.0323
+    }
+  ],
+  "false_negatives": [
+    {
+      "item_id": "913618282",
+      "category": "consumer-electronics",
+      "generated": "product : 1 عدد usb led سمفونی محیط لايٹ ایکریلک پوشیدہ پٹی مکمل رنگ rgb اندرونی ایپ اور ریموٹ کنٹرول. brand : no brand. category : consumer - electronics. subcategory : other. price : pkr 2399.یییالایاییتیايییهییرییویاای",
+      "reference": "Light Color: 64 Lighting colorControl Mode: APP Control,Remote ControlShape: Led Long Strip LightKeywords: LED Ambient LightSwitch Mode: Remote Control+ AppPower supply: USB DC 5VLight Source: LEDFeature: Newly-designedFunction: Lighting DecorativeProduct Dimension: 110cm/ 110cm +35 cmWorking Temperature(℃): -20 - 50Input Voltage(V): DC 5VLighting solutions service: Lighting and circuitry designProduct Weight（kg）: 0.25Place of Origin: Guangdong, ChinaLamp Body Material: CrystalMaterial: Acylic+ LedLamp Luminous Efficiency(lm/w): 85Design Style: MinimalistCertification: rohs,ce,FCCColor Temperature(CCT): 2700K (Soft Warm White)Application: CAR,Car/ Living RoomSelling Units: Single item",
+      "rouge_p": 0.0625,
+      "rouge_r": 0.0116,
+      "rouge_f": 0.0196
+    },
+    {
+      "item_id": "930069124",
+      "category": "consumer-electronics",
+      "generated": "product : 74hc595 shift register 7 - segment 8 - bit serial - in parallel - out. 5 peices / lot. brand : no brand. category : consumer - electronics. subcategory : other. price : pkr 419. 7 - bit - inverter - output - 5 - input - to - 10 - 16v - 16 - 32 - bit output - 74 % off - voltage - voltage protection - protection - isolation - protection. 5 % rhz -",
+      "reference": "The 74HC595 is a high-speed, 8-bit serial-in, parallel-out shift register with three-state outputs. The SN74HC595N is a 16-pin integrated circuit (IC). It is a popular chip for extending the number of I/O pins on a microcontroller. The 74HC595 has three control pins:Serial data (SER): This pin receives the serial data that is to be shifted into the register.Clock (CLK): This pin is used to clock the serial data into the register.Latch (RCLK): This pin latches the data in the register, making it available on the output pins.The 74HC595 also has eight output pins, which can use to control external devices. The output pins are arranged in a daisy chain, so that the output of one register can be connected to the input of another register. This allows you to connect multiple 74HC595s together to create a large number of I/O pins.The 74HC595 shift register can operate with an input voltage of 2V to 6V. The most common voltage used is 5V. The input voltage must be within the specified range in order for the chip to function properly. The 74HC595 is a CMOS chip, which means that it has a low power consumption.74HC595 shift register works on the principle of serial in, parallel out. This means that the data is shifted in serially, one bit at a time, on the SER (serial data) pin. The data is then latched into the register on the RCLK (latch clock) pin. The output of the register is available on the Q7-Q0 pins.Features : –The 74HC595 is an 8-bit serial-in, parallel-out shift register. It is a popular chip for extending the number of I/O pins on a microcontroller. The SN74HC595N is a popular chip that has a number of benefits. These include:Low cost: The SN74HC595N is a relatively inexpensive chip, making it a cost-effective solution for many applications.Low power consumption: The SN74HC595N is a CMOS chip, which means that it has a low power consumption. This makes it a good choice for applications where battery power is limited.Wide operating voltage range: The SN74HC595N can operate with an input voltage of 2V to 6V. This makes it a versatile chip that can use in a variety of applications.Easy to use: The SN74HC595N is a relatively easy chip to use. There are many tutorials and examples available online that can help you get started.Versatility: The SN74HC595N can be used in a variety of applications. It commonly use for controlling LED displays, driving stepper motors, and interfacing with other electronic devices.Here are some additional benefits of the SN74HC595N:Daisy chainable: The SN74HC595N can be daisy chained together to create a larger number of I/O pins. This makes it a good choice for applications where you need a lot of I/O pins.3-state outputs: The SN74HC595N has 3-state outputs, which means that the outputs can be turned off or high-impedance. This makes it a good choice for applications where you need to control the power to external devices.High speed: The SN74HC595N can operate at a clock speed of up to 10 MHz. This makes it a good choice for applications where you need to update the output pins quickly.74HC595 Shift Register Specifications : –The 74HC595 8-bit shift register is a versatile chip that can be used in a variety of applications. It is commonly used for controlling LED displays, driving stepper motors, and interfacing with other electronic devices. here are some of the specifications of the 74HC595 8-bit shift register:Operating voltage: 2V to 6VPower consumption: 80μA (maximum)Clock frequency: 10 MHz (maximum)Input voltage range: 0V to VCCOutput voltage range: 0V to VCCNumber of output pins: 8Daisy chainable: Yes3-state outputs: Yes74HC595 Shift Register Pin Descriptions : –The 74HC595 can use to control 8 external devices. The data for the external devices is shifted in serially, one bit at a time. The latch clock (RCLK) is used to latch the data into the register, making it available on the output pins. The shift register clock (SRCLK) is used to clock the data into the register.PinNameFunction1VCCPower supply, +5V2GNDGround3SERSerial data4RCLKLatch clock5SRCLKShift register clock6OEOutput enable7D0Data bit 08D1Data bit 19D2Data bit 210D3Data bit 311D4Data bit 412D5Data bit 513D6Data bit 614D7Data bit 715Q7Output bit 716Q6Output bit 674HC595 Shift Register Applications : –The 74HC595 8-bit shift register is a versatile chip that can use in a variety of applications. It is a good choice for applications where you need a low-cost, low-power, and easy-to-use shift register.Controlling LED displaysDriving stepper motorsInterfacing with other electronic devicesGenerating timing signalsEncoding dataEncrypting dataPackage : –5x 74HC595 Shift Register",
+      "rouge_p": 0.3265,
+      "rouge_r": 0.0203,
+      "rouge_f": 0.0382
+    },
+    {
+      "item_id": "587938971",
+      "category": "smartphones",
+      "generated": "product : redmi 13 - 8gb ram 128gb rom real camera 108mp + 2mp pta approved 1year official brand warranty. brand : xiaomi. category : smartphones. subcategory : xiaomi. price : pkr 41980. general featuresrelease date06sim supportdual simphone dimensions168. 4 x 77. 6 x 8. 3 mmphone weightn / aoperating systemandroid 14displayscreen size6. 67 inchesscreen resolution720 x 1600 pixelsscreen typen / ascreen protectionn / amemoryinternal memory12",
+      "reference": "Display: 6.79\" FHD+ Display Resolution: 2460x1080, 396 ppiCertified eye-care Display Processor: MediaTek Helio G91-Ultra Refresh Rate: Up to 90Hz Brightness: 450 nits (typ) 550 nits HBM CPU: Cortex-A55+Cortex-A75 GPU: Mali-G52 MC2 Rear Camera: 108MP Super Clear Main camera Film Camera | Custom Frame | 108MP Mode | HDR Mode | Night Mode | Portrait Mode | Time Lapse Front Camera: 13MP Front camera Film Camera | HDR Mode | Soft Light Ring | Portrait Mode | Time Lapse Battery & Charging: 5030mAh (typ) - Supports 33W fast charging | USB Type-C36 Months Like New Software Experience | IP53 Dust and splash resistance Security: Side fingerprint scanner - AI face unlock Connectivity: SIM1 + Hybrid* (SIM or MicroSD) Wi-Fi: 2.4GHz | 5GHz Bluetooth: 5.4 Supports FM Radio with Headphone Jack Operating System: Xiaomi Hyper OS Sensors: Virtual Proximity Sensor | Ambient Light Sensor | Accelerometer | Electronic Compass Audio: 3.5mm headphone jack Navigation & Positioning: GPS | Glonass | Galileo | Beidou",
+      "rouge_p": 0.0714,
+      "rouge_r": 0.0268,
+      "rouge_f": 0.039
+    },
+    {
+      "item_id": "267082988",
+      "category": "consumer-electronics",
+      "generated": "product : led portable ash tray holder cup black. brand : no brand. category : consumer - electronics. subcategory : other. price : pkr 340. rating : 5. 0 / 5. 5. 1. 1 : 1. 2. 3. 2 : 1 : 2. 1 ( 1. 3 : 1 ( 2. 0. 1 ). 2 ( 1 : 3. 3 ( 2 : - inch, black, blue, red, yellow, blue. 1, black color, white, black - ash tray, black colour, white - product type : ash tray tray holder, plastic material :",
+      "reference": "The lid is solid and durable Material: High Flame Retardant PBT Weight:110 g Size: 9.2x6.5cm (H x Dia.) Made of high flame retardant PBT material, safe and reliable Quantity: 1 It helps keep the smell of smoke out of the air in car The compact ashtray can easily fit cup holder in any car 100% brand new and high quality. Color: Black LED light makes it easier to find the ashtray at night and it is not so bright as to be distracting when driving Compatible Vehicle: Universal 1x Car Ashtray LEThe lid is solid and durableMaterial: High Flame Retardant PBTWeight:110 gSize: 9.2x6.5cm (H x Dia.)Made of high flame retardant PBT material, safe and reliableQuantity: 1It helps keep the smell of smoke out of the air in carThe compact ashtray can easily fit cup holder in any car100% brand new and high quality.Color: BlackLED light makes it easier to find the ashtray at night and it is not so bright as to be distracting when drivingCompatible Vehicle: Universal1x Car AshtrayLE",
+      "rouge_p": 0.0735,
+      "rouge_r": 0.0281,
+      "rouge_f": 0.0407
+    },
+    {
+      "item_id": "897334119",
+      "category": "womens-fashion",
+      "generated": "product : winter fleece printed sweatshirts for girls - winter printed sweatshirts for women. brand : no brand. category : womens - fashion. subcategory : tops & shirts. price : pkr 1500. rating : 5. 0 / 5. 3. 5. 5 : 6. 6. 7. 6 : 8. 9. 8. 8 : 9. 9 : 10. 10. 11. 11 : 11. 14. 14 : 16. 16. 19. 21. 21 : - inch full sleeves, round neck, pullovers, sweatshirt for women, girls, women, ladies, ladies and ladies fleece fabric sweatshirts, sweatshirts. regular fit with high - quality fabric and comfortable fabric and iron iron finish with high quality fabric",
+      "reference": "Trendy Themes:*1. Tropical Getaways: Palm trees, flamingos, and colorful hibiscus flowers.2. Summer Lovin': Ice cream cones, sunglasses, and beach balls.3. Coastal Vibes: Anchors, lighthouses, and nautical stripes.4. Outdoor Adventures: Camping, hiking, and mountain landscapes.5. Retro Summer: Vintage-inspired graphics, neon colors, and classic summer icons.*Fun Graphics:*1. Colorful illustrations of summer fruits (watermelon, pineapples, etc.)2. Playful doodles of beach activities (surfing, paddleboarding, etc.)3. Whimsical depictions of summer animals (seagulls, dolphins, etc.)4. Geometric patterns inspired by beach towels and summery textiles.5. Quirky, hand-drawn typography highlighting summer phrases.*Summer Quotes & Phrases:*1. \"Seas the Day\"2. \"Summer Vibes Only\"3. \"Sun, Sand, Repeat\"4. \"Life's a Beach\"5. \"Soak Up the Sun\"*Color Schemes:*1. Pastel Palettes: Soft pinks, blues, and yellows.2. Bright & Bold: Vibrant oranges, greens, and purples.3. Coastal Colors: Navy blues, whites, and sandy neutrals.4. Neon Hues: Electric blues, pinks, and greens.5. Monochromatic: Single-color designs with varying shades.*Typography Styles:*1. Handwritten scripts2. Bold, sans-serif fonts3. Distressed, vintage-inspired text4. Cursive, elegant lettering5. Graffiti-style, urban typography*Additional Ideas:*1. Incorporate fun textures (glitter, foil, or metallic effects).2. Use abstract shapes and patterns inspired by summer.3. Create matching designs for phone cases, tote bags, or other accessories.4. Design limited-edition \"Summer Collection\" logos or graphics.5. Collaborate with influencers or artists for exclusive designs.These highlights will give you a solid starting point for designing eye-catching summer T-shirts. Have fun and get creative!",
+      "rouge_p": 0.0899,
+      "rouge_r": 0.0312,
+      "rouge_f": 0.0464
+    }
+  ],
+  "hard_cases": [
+    {
+      "item_id": "920899768",
+      "category": "smartphones",
+      "generated": "product : vgo tel new 16 pro 4gb ram 64gb rom 13mp ai back camera 6000 mah battery 1 year vgo - tel pk warranty. brand : no brand. category : smartphones. subcategory : other brand. price : pkr 21999. rating : 5. 0 / 5 - inch amoled display with a 120hz refresh rate. 1 - year official brand warranty : it ' s official warranty center location : karachi daraz like new products are in good condition. they feel like new. fully functional with all features working, with minimal scratches,",
+      "reference": "General FeaturesRelease Date22 Aug 2025SIM SupportDual Nano SIM + TFPhone Dimensions168.7 × 78.1 × 8.79 mmPhone WeightN/AOperating SystemAndroid 15DisplayScreen Size6.745Screen Resolution720 × 1600 pixelsScreen TypeN/AScreen ProtectionN/AMemoryInternal Memory64 GBRAM4 GBCard SlotN/APerformanceProcessorMediatek Helio G50 4 × 2.2GHz Cortex-A53 4 × 1.6GHz Cortex-A53GPUIMG PowerVR GE8320 @ 680MHzBatteryType6000mAh Li-ion PolymerCameraFront Camera5MPFront Flash LightN/AFront Video RecordingYesBack Flash LightN/ABack Camera13MP AI Rear Camera + Auxiliary LensBack Video RecordingYesConnectivityBluetoothYes3GYes4G/LTEYes5GN/ARadioN/AWiFiYesNFCN/A",
+      "rouge_p": 0.038,
+      "rouge_r": 0.0411,
+      "rouge_f": 0.0395
+    },
+    {
+      "item_id": "436386109",
+      "category": "womens-fashion",
+      "generated": "product : pink butterfly printed winter zipper hoodie for girls and women. brand : no brand. category : womens - fashion. subcategory : outerwear. price : pkr 999. rating : 4. 3 / 5. 4. 5. 5 : 5. 6. 6 : 5 : 6. 8. 7. 9. 8 : 9. 9 : 9 : 11. 14. 11. 11 : 14. 13. 14 : 18. 19. 18. 21. 19 : 19. 21 % of stock available colors : black, white, grey, pink, red, blue, and blue, green, and grey, grey this product is made from our finest fabric and has the highest quality and has high - quality fabric and it ' s an o neck fleece hoodie which has high quality fabric, and print. u will fall in love with its fabric quality is guaranteed it ' removable",
+      "reference": "Thickness: Fleece Elasticity: Slight Strech Sleeve Style: Regular Hooded: Yes Fabric Type: Fleece Pattern Type: Print Style: Casual Fit Type: LOOSE Sleeve Length(cm): Full Season: Autumn/Winter Release Date: Autumn 2022 Clothing Patterns: SLIM Gender: WOMEN Clothing Length: Regular Item Type: Hoodies Model Number: Hoodie Type: Pullovers Collar: Hooded Model Number: Hoodie Sweatshirt",
+      "rouge_p": 0.0342,
+      "rouge_r": 0.0741,
+      "rouge_f": 0.0468
+    },
+    {
+      "item_id": "565722770",
+      "category": "tablets",
+      "generated": "product : s390 sail air | 256 gb storage | 8 gb ram | 7 ″ ips display | with hd video recording | 5000 mah battery. brand : no brand. category : tablets. subcategory : other. price : pkr 19000. rating : 5. 0 / 5 - inch ips lcd display with built - in memory card slot for easy to use and easy to carry. perfect for kids and toddlers. perfect gift for boys and girls.",
+      "reference": "Tablet for kids8gb256gn memory 7 inch displayScreen type: unbreakableModel: SAILAIR S390Time of invention: 2024Operating system: AndroidProcessor frequency: 1.5GHzStorage memory: 8GBHard drive capacity: 256GBScreen size: 7.inchesCamera: 8,000,000 pixelsBluetooth: SupportCommunication function: support phoneNetwork type: 5G Network Dula SimBuilt-in Sensor: intelligent gravity sensorProcessor core: 8 coreBattery life: 5-7 hours",
+      "rouge_p": 0.0476,
+      "rouge_r": 0.0577,
+      "rouge_f": 0.0522
+    }
+  ]
+}

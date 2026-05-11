@@ -11,7 +11,7 @@ from pathlib import Path
 
 # ── Paths (relative to project root) ──────────────────────────────────────────
 PROJECT_ROOT   = Path(__file__).resolve().parents[2]   # .../Project/
-DATA_DIR       = PROJECT_ROOT / "data" / "processed"
+DATA_DIR       = PROJECT_ROOT / "data" / "data" / "processed"
 METADATA_FILE  = DATA_DIR / "metadata" / "listings_final.jsonl"
 IMAGES_DIR     = DATA_DIR / "images"
 SPLITS_DIR     = DATA_DIR / "splits"
@@ -27,30 +27,57 @@ TEST_SPLIT  = SPLITS_DIR / "test.txt"
 
 # ── Training hyperparameters (used in Colab notebooks) ────────────────────────
 BLIP_CONFIG = {
-    "model_name":       "Salesforce/blip-image-captioning-base",
-    "learning_rate":    1e-5,
-    "batch_size":       8,
-    "num_epochs":       5,
-    "weight_decay":     0.01,
-    "max_input_length": 128,   # metadata prompt tokens
-    "max_target_length": 200,  # description tokens
-    "warmup_steps":     100,
-    "fp16":             True,
-    "save_every_epoch": True,
-    "checkpoint_dir":   "checkpoints/blip",
+    "model_name":        "Salesforce/blip-image-captioning-base",
+    "learning_rate":     1e-5,
+    "batch_size":        8,
+    "num_epochs":        5,
+    "weight_decay":      0.01,
+    "max_input_length":  128,
+    "max_target_length": 200,
+    "warmup_steps":      100,
+    "fp16":              True,
+    "save_every_epoch":  True,
+    "checkpoint_dir":    "checkpoints/blip",
+    # Set to an int to train on a subset — useful for quick hyperparameter runs.
+    # e.g. subset_samples=200 → ~15 min/run on Colab T4 instead of ~90 min.
+    "subset_samples":    None,
 }
 
 CLIP_GPT2_CONFIG = {
-    "clip_model":       "openai/clip-vit-base-patch32",
-    "gpt2_model":       "gpt2",
-    "prefix_length":    10,    # number of visual prefix tokens
-    "learning_rate":    2e-5,
-    "batch_size":       8,
-    "num_epochs":       5,
-    "weight_decay":     0.01,
+    "clip_model":        "openai/clip-vit-base-patch32",
+    "gpt2_model":        "gpt2",
+    "prefix_length":     10,
+    "learning_rate":     2e-5,
+    "batch_size":        8,
+    "num_epochs":        5,
+    "weight_decay":      0.01,
     "max_target_length": 200,
-    "fp16":             True,
-    "checkpoint_dir":   "checkpoints/clip_gpt2",
+    "fp16":              True,
+    "checkpoint_dir":    "checkpoints/clip_gpt2",
+    "subset_samples":    None,
+}
+
+# ── Hyperparameter search spaces (used by models/hparam_sweep.py) ─────────────
+INFERENCE_SWEEP = {
+    "num_beams":            [2, 4, 6],
+    "no_repeat_ngram_size": [2, 3, 4],
+    "max_new_tokens":       [100, 150, 200],
+}
+
+TRAINING_SWEEP = {
+    # Run each combo on subset_samples=200 to find best LR before full training
+    "blip": {
+        "learning_rate": [5e-6, 1e-5, 3e-5],
+        "warmup_steps":  [50, 100, 200],
+        "subset_samples": 200,
+        "num_epochs":    3,
+    },
+    "clip_gpt2": {
+        "learning_rate": [1e-5, 2e-5, 5e-5],
+        "prefix_length": [5, 10, 20],
+        "subset_samples": 200,
+        "num_epochs":    3,
+    },
 }
 
 # ── Gemini API config (free tier — runs locally) ───────────────────────────────
@@ -62,10 +89,23 @@ GEMINI_CONFIG = {
     "results_file":     "results/gemini_baseline.jsonl",
 }
 
-# ── Metadata prompt template ───────────────────────────────────────────────────
+# ── Metadata prompt templates ──────────────────────────────────────────────────
+def build_stage1_prompt(record: dict) -> str:
+    """
+    Minimal prompt for Stage 1 VLM — just category so the model is forced
+    to extract color, material, design, etc. from the image itself.
+    """
+    category = record.get("category", "")
+    subcategory = record.get("subcategory", "")
+    parts = []
+    if category:    parts.append(f"Category: {category}")
+    if subcategory: parts.append(f"Subcategory: {subcategory}")
+    return ". ".join(parts)
+
+
 def build_metadata_prompt(record: dict) -> str:
     """
-    Converts a product record dict into a structured text prompt.
+    Full metadata prompt for Stage 2 — all available structured fields.
     Used as model input alongside the product image.
     """
     parts = []

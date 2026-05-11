@@ -1,19 +1,14 @@
 """
-BLIP Local Inference — runs on your 8GB RAM laptop (CPU only).
+BLIP Local Inference — GPU-accelerated when available.
 
-After fine-tuning on Colab:
-  1. Download the 'best_model' checkpoint folder from Colab/Drive
-  2. Place it at: models/checkpoints/blip/best_model/
-  3. Run: python -m models.blip.evaluate
+After fine-tuning:
+  1. Place the best_model/ checkpoint at models/checkpoints/blip/best_model/
+  2. Run: python -m models.blip.evaluate
 
-This script:
-  - Loads the fine-tuned BLIP model on CPU
-  - Generates descriptions for the test split
-  - Computes BLEU, ROUGE-L, METEOR, CIDEr metrics
-  - Saves results to models/results/blip_results.jsonl
+Generates descriptions for the test split, computes BLEU/ROUGE-L/METEOR/CIDEr,
+saves results to models/results/blip_results.jsonl.
 
-Note: CPU inference is slow (~5–15 sec/image). For 150 test samples
-      expect ~15–30 minutes total. That's fine for evaluation.
+GPU (RTX 5060 Ti): ~0.2s/image.  CPU fallback: ~5–15s/image.
 """
 
 import json
@@ -48,22 +43,23 @@ _CANDIDATE_PATHS = [
 CHECKPOINT_DIR = next((p for p in _CANDIDATE_PATHS if p.exists()), _CANDIDATE_PATHS[0])
 RESULTS_FILE   = RESULTS_DIR / "blip_results.jsonl"
 
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DTYPE  = torch.float16 if DEVICE.type == "cuda" else torch.float32
+
 
 def load_model(checkpoint_path: Path):
-    """Load fine-tuned BLIP model on CPU."""
     print(f"\n  Loading BLIP from {checkpoint_path}...")
     if not checkpoint_path.exists():
         raise FileNotFoundError(
             f"\n[!] Checkpoint not found at {checkpoint_path}\n"
-            "    Fine-tune on Colab first and download the best_model/ folder."
+            "    Fine-tune first and download the best_model/ folder."
         )
     processor = BlipProcessor.from_pretrained(str(checkpoint_path))
     model     = BlipForConditionalGeneration.from_pretrained(
-        str(checkpoint_path),
-        torch_dtype=torch.float32,   # CPU: always float32
-    )
+        str(checkpoint_path), torch_dtype=DTYPE,
+    ).to(DEVICE)
     model.eval()
-    print(f"  Model loaded (CPU mode)")
+    print(f"  Model loaded ({DEVICE}, {DTYPE})")
     return processor, model
 
 
@@ -103,19 +99,17 @@ def generate_description(
     image  = load_image(rec)
     prompt = build_metadata_prompt(rec)
 
-    inputs = processor(
-        images=image,
-        text=prompt,
-        return_tensors="pt",
-    )
-    # CPU inference — no autocast needed
-    output_ids = model.generate(
-        **inputs,
-        max_new_tokens=max_new_tokens,
-        num_beams=4,
-        early_stopping=True,
-        no_repeat_ngram_size=3,
-    )
+    inputs = processor(images=image, text=prompt, return_tensors="pt")
+    inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
+
+    with torch.autocast(DEVICE.type, dtype=DTYPE, enabled=DEVICE.type == "cuda"):
+        output_ids = model.generate(
+            **inputs,
+            max_new_tokens=max_new_tokens,
+            num_beams=4,
+            early_stopping=True,
+            no_repeat_ngram_size=3,
+        )
     return processor.decode(output_ids[0], skip_special_tokens=True).strip()
 
 

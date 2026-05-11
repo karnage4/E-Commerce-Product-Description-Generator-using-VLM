@@ -1,0 +1,9 @@
+{
+  "input": 2010,
+  "dropped_short_desc": 340,
+  "dropped_emoji_heavy": 130,
+  "dropped_spam": 60,
+  "dropped_exact_dupes": 110,
+  "output": 1370,
+  "retention_pct": 68.2
+}
