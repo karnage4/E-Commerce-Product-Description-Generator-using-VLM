@@ -137,7 +137,7 @@ def run_evaluation(max_samples: int = 150) -> None:
 
     t0 = time.time()
     with open(RESULTS_FILE, "a", encoding="utf-8") as out_f:
-        for rec in tqdm(records, desc="BLIP inference [CPU]", unit="item"):
+        for rec in tqdm(records, desc=f"BLIP inference [{DEVICE.type.upper()}]", unit="item"):
             if rec["item_id"] in done_ids:
                 continue
             generated = generate_description(processor, model, rec)

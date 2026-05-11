@@ -28,6 +28,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+from scipy.ndimage import gaussian_filter
 import torch
 import torch.nn.functional as F
 import matplotlib
@@ -89,7 +90,8 @@ def load_blip(ckpt: Path):
 
 def load_test_records(n: int) -> list[dict]:
     test_ids = set(Path(TEST_SPLIT).read_text(encoding="utf-8").strip().splitlines())
-    records: list[dict] = []
+    # Read a large pool so diversity filtering has enough candidates
+    pool: list[dict] = []
     with open(METADATA_FILE, encoding="utf-8") as f:
         for line in f:
             try:
@@ -100,19 +102,25 @@ def load_test_records(n: int) -> list[dict]:
                 continue
             if not rec.get("images") or not rec.get("description", "").strip():
                 continue
-            records.append(rec)
-            if len(records) >= n:
-                break
-    # prefer category diversity
+            pool.append(rec)
+    # Pick n records with category diversity
     seen_cats: set[str] = set()
     diverse: list[dict] = []
-    for rec in records:
+    for rec in pool:
         cat = rec.get("category", "")
         if cat not in seen_cats:
             seen_cats.add(cat)
             diverse.append(rec)
         if len(diverse) >= n:
             break
+    # If not enough diverse categories, fill remaining slots from pool
+    if len(diverse) < n:
+        ids_used = {r["item_id"] for r in diverse}
+        for rec in pool:
+            if rec["item_id"] not in ids_used:
+                diverse.append(rec)
+                if len(diverse) >= n:
+                    break
     return diverse[:n]
 
 
@@ -127,78 +135,52 @@ def load_image(rec: dict) -> Image.Image:
     return Image.new("RGB", (224, 224), (200, 200, 200))
 
 
-# ── Cross-attention extraction via hooks ───────────────────────────────────────
+# ── Vision encoder attention rollout ──────────────────────────────────────────
 
-def extract_cross_attention(
+def extract_vision_attention(
     processor: BlipProcessor,
     model: BlipForConditionalGeneration,
     image: Image.Image,
-    prompt: str,
-    generated_text: str,
 ) -> np.ndarray | None:
     """
-    Returns a (H, W) numpy array normalised to [0,1] representing spatial
-    attention over the image, or None if extraction fails.
+    Attention rollout through BLIP's ViT vision encoder.
 
-    Cross-attention weights shape per layer:
-        (batch=1, num_heads, text_seq_len, num_image_tokens)
-    num_image_tokens = num_patches + 1 (CLS).
-    We average over layers, heads, and text positions, then drop the CLS token.
+    Uses the CLS token's accumulated attention to all patch tokens after
+    rolling attention through layers — independent of the text decoder,
+    so it works regardless of training objective.
+
+    Returns a (224, 224) float32 array in [0, 1].
     """
-    captured: list[torch.Tensor] = []
+    enc = processor(images=image, return_tensors="pt")
+    pixel_values = enc["pixel_values"].to(DEVICE)
 
-    def _hook(module, inp, out):
-        # BLIP cross-attention output is a tuple; weights are at index 1
-        # when output_attentions propagates correctly via hooks
-        if isinstance(out, tuple) and len(out) > 1 and out[1] is not None:
-            captured.append(out[1].detach().cpu())
+    with torch.no_grad():
+        vision_out = model.vision_model(
+            pixel_values=pixel_values,
+            output_attentions=True,
+        )
 
-    handles = []
-    try:
-        for layer in model.text_decoder.bert.encoder.layer:
-            handles.append(layer.crossattention.register_forward_hook(_hook))
-    except AttributeError:
+    # vision_out.attentions: tuple of (1, num_heads, seq_len, seq_len) per layer
+    # seq_len = 1 (CLS) + num_patches (196 for patch32 at 224px)
+    if not vision_out.attentions:
         return None
 
-    # Combine prompt + generated text into one sequence — matches training setup.
-    # BLIP requires input_ids and labels to have the same length.
-    combined = f"{prompt} {generated_text}".strip() if prompt else generated_text
-    enc = processor(
-        images=image,
-        text=combined,
-        return_tensors="pt",
-        max_length=128,
-        truncation=True,
-        padding="max_length",
-    )
-    inputs = {k: v.to(DEVICE) for k, v in enc.items()}
-    labels = inputs["input_ids"].clone()
-    labels[labels == processor.tokenizer.pad_token_id] = -100
+    # Attention rollout: accumulate attention through layers with residual
+    num_tokens = vision_out.attentions[0].shape[-1]
+    rollout = torch.eye(num_tokens)
 
-    try:
-        with torch.no_grad():
-            model(
-                pixel_values=inputs["pixel_values"],
-                input_ids=inputs["input_ids"],
-                attention_mask=inputs["attention_mask"],
-                labels=labels,
-                output_attentions=True,
-            )
-    finally:
-        for h in handles:
-            h.remove()
+    for attn in vision_out.attentions:
+        # (1, H, S, S) → average heads → (S, S)
+        a = attn.squeeze(0).mean(dim=0).cpu().float()
+        # Add identity (residual connection) and renormalise rows
+        a = a + torch.eye(num_tokens)
+        a = a / a.sum(dim=-1, keepdim=True)
+        rollout = a @ rollout
 
-    if not captured:
-        return None
+    # CLS row → attention from CLS to each patch token
+    cls_attn = rollout[0, 1:]          # (num_patches,)
+    spatial  = cls_attn.numpy()
 
-    # Stack: (num_layers, batch, num_heads, text_len, num_image_tokens)
-    stacked = torch.stack(captured, dim=0)          # (L, 1, H, T, V)
-    avg = stacked.squeeze(1).mean(dim=(0, 1, 2))    # (V,)  — mean over L, H, T
-
-    # Drop CLS token (index 0), leaving only spatial patch tokens
-    spatial = avg[1:].numpy()                       # (num_patches,)
-
-    # Infer patch grid side length
     n_patches = spatial.shape[0]
     side = int(round(n_patches ** 0.5))
     if side * side != n_patches:
@@ -207,15 +189,19 @@ def extract_cross_attention(
     attn_grid = spatial.reshape(side, side)
 
     # Bilinear upsample to image size
-    t = torch.tensor(attn_grid).unsqueeze(0).unsqueeze(0)   # (1,1,S,S)
+    t = torch.tensor(attn_grid).unsqueeze(0).unsqueeze(0)
     t_up = F.interpolate(t, size=(224, 224), mode="bilinear", align_corners=False)
     attn_up = t_up.squeeze().numpy()
 
-    # Normalise to [0, 1]
-    lo, hi = attn_up.min(), attn_up.max()
+    # Mild Gaussian smoothing
+    attn_up = gaussian_filter(attn_up, sigma=6)
+
+    # Percentile normalisation
+    lo = np.percentile(attn_up, 10)
+    hi = np.percentile(attn_up, 99)
     if hi - lo < 1e-8:
         return None
-    return (attn_up - lo) / (hi - lo)
+    return np.clip((attn_up - lo) / (hi - lo), 0, 1)
 
 
 # ── Visualisation ──────────────────────────────────────────────────────────────
@@ -334,10 +320,10 @@ def main() -> None:
                 )
         generated = processor.decode(ids[0], skip_special_tokens=True).strip()
 
-        # Extract cross-attention map
-        attn = extract_cross_attention(processor, model, image, prompt, generated)
+        # Extract vision encoder attention rollout
+        attn = extract_vision_attention(processor, model, image)
         if attn is None:
-            print(f"  [~] Skipping {rec['item_id']} — cross-attention unavailable")
+            print(f"  [~] Skipping {rec['item_id']} — vision attention unavailable")
             continue
 
         out_path = OUT_DIR / f"{rec['item_id']}_attention.png"
@@ -362,4 +348,10 @@ def main() -> None:
         html_path.write_text(
             build_summary_html(entries, OUT_DIR), encoding="utf-8"
         )
-        print(f"\n  Summary →
+        print(f"\n  Summary → {html_path}")
+    else:
+        print("\n  [!] No attention maps produced — check checkpoint and model architecture.")
+
+
+if __name__ == "__main__":
+    main()

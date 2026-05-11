@@ -1,7 +1,7 @@
 {
-  "BLEU-1": 6.51,
-  "BLEU-4": 1.38,
-  "ROUGE-L": 7.88,
-  "METEOR": 5.53,
+  "BLEU-1": 9.91,
+  "BLEU-4": 0.54,
+  "ROUGE-L": 8.42,
+  "METEOR": 8.37,
   "CIDEr": 0.0
 }

@@ -1,42 +1,16 @@
 """
-Caption augmentation via NVIDIA NIM (meta/llama-3.2-11b-vision-instruct).
+Caption augmentation via Gemma 4 31B (OpenRouter, multimodal).
 
-Why this exists
----------------
-The raw Daraz descriptions in listings_final.jsonl are mostly metadata
-echoes (often the description == the item_name). Training a VLM on these
-teaches it to ignore the image and copy the metadata back. This script
-uses a strong vision-language model to rewrite each training description
-so it actually mentions the visible features of the product, giving
-fine-tuning a real visual grounding signal.
+Rewrites raw Daraz descriptions to focus on visible product features,
+giving BLIP/CLIP-GPT2 a real visual grounding signal during fine-tuning.
 
-Inputs
-------
-  data/processed/metadata/listings_final.jsonl   (full corpus)
-  data/processed/splits/train.txt                (which item_ids to augment)
-  data/processed/images/<item_id>/0.jpg          (first image per product)
+Output: data/data/processed/metadata/listings_augmented.jsonl
+Each row = original record + description_augmented + description_original
 
-Output
-------
-  data/processed/metadata/listings_augmented.jsonl
+Resumable — re-running skips already-processed item_ids.
 
-Each output row is the original record PLUS:
-  - description_augmented  : the new rich, visually-grounded description
-  - description_original   : copy of the source description (for reference)
-
-Resumable: re-running skips item_ids already present in the output file.
-
-Setup
------
-  1. Add NVIDIA_API_KEY to .env (get one at https://build.nvidia.com/)
-  2. pip install openai python-dotenv pillow tqdm
-  3. python -m models.augment.augment_descriptions
-
-Tuning knobs (see CONFIG block):
-  - MODEL              : NIM model identifier
-  - RATE_LIMIT_DELAY   : seconds between requests (raise if you hit 429)
-  - MAX_IMAGE_DIM      : longest image side after resize (smaller = faster, smaller payload)
-  - JPEG_QUALITY       : initial JPEG quality (drops to 60 if payload > limit)
+Run:
+    python -m models.augment.augment_descriptions
 """
 
 import base64
@@ -44,7 +18,9 @@ import io
 import json
 import os
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from PIL import Image
@@ -52,112 +28,146 @@ from openai import OpenAI
 from tqdm import tqdm
 from dotenv import load_dotenv
 
-
 # ── Paths ─────────────────────────────────────────────────────────────────────
 PROJECT_ROOT  = Path(__file__).resolve().parents[2]
-DATA_ROOT     = PROJECT_ROOT / "data" / "processed"
+DATA_ROOT     = PROJECT_ROOT / "data" / "data" / "processed"
 METADATA_FILE = DATA_ROOT / "metadata" / "listings_final.jsonl"
 IMAGES_ROOT   = DATA_ROOT / "images"
 TRAIN_SPLIT   = DATA_ROOT / "splits" / "train.txt"
 OUTPUT_FILE   = DATA_ROOT / "metadata" / "listings_augmented.jsonl"
 
+# ── Config ────────────────────────────────────────────────────────────────────
+MODEL             = "google/gemma-4-31b-it"
+BASE_URL          = "https://openrouter.ai/api/v1"
+MAX_WORKERS       = 5      # parallel API calls — raise if OpenRouter allows more
+RATE_LIMIT_DELAY  = 0.3    # seconds between request submissions (throttle)
+MAX_IMAGE_DIM     = 768
+JPEG_QUALITY      = 82
+MAX_OUTPUT_TOKENS = 250
+TEMPERATURE       = 0.4
+MAX_RETRIES       = 3
 
-# ── CONFIG ────────────────────────────────────────────────────────────────────
-MODEL              = "meta/llama-3.2-11b-vision-instruct"
-BASE_URL           = "https://integrate.api.nvidia.com/v1"
-RATE_LIMIT_DELAY   = 0.5      # seconds between requests
-MAX_IMAGE_DIM      = 512      # longest side after resize
-JPEG_QUALITY       = 80
-MAX_PAYLOAD_KB     = 150      # NIM's inline image limit is ~180 KB
-MAX_OUTPUT_TOKENS  = 400
-TEMPERATURE        = 0.3
-MAX_RETRIES        = 3
+
+# ── Category-specific visual feature hints ────────────────────────────────────
+# Shown in the prompt to steer Gemma toward the features that matter per category.
+CATEGORY_HINTS = {
+    "smartphones": (
+        "Look for: screen-to-body ratio / bezel thickness, notch or punch-hole style, "
+        "number and arrangement of rear cameras, camera bump shape, fingerprint sensor "
+        "location (side / rear / under-display), color and finish (glossy / matte / "
+        "frosted glass), edge curvature (flat / curved), visible ports (USB-C / "
+        "headphone jack), branding on the rear panel."
+    ),
+    "tablets": (
+        "Look for: screen size impression, bezel thickness, front / rear camera "
+        "placement, slim profile, color and finish, any attached keyboard or stylus, "
+        "charging port type, speaker grilles, stand or case design."
+    ),
+    "consumer-electronics": (
+        "Look for: overall form factor and size, color and material finish, "
+        "button / knob layout, display or indicator lights, visible ports and "
+        "connectors, cable or accessory included in the shot, brand logo placement."
+    ),
+    "home-appliances": (
+        "Look for: color and surface finish (stainless / white plastic / matte black), "
+        "control panel style (dial / digital / touch), door or drum design, "
+        "handle shape, size impression, visible vents or coils, brand badge."
+    ),
+    "womens-fashion": (
+        "Look for: color and color pattern (solid / print / floral / geometric), "
+        "fabric texture (chiffon / cotton / silk / embroidered), neckline style "
+        "(V-neck / round / square / collar), sleeve length and style, any embroidery "
+        "or embellishment, hemline length, drape or silhouette."
+    ),
+    "mens-fashion": (
+        "Look for: color and pattern (solid / striped / checked / printed), "
+        "fabric texture, collar style (polo / spread / mandarin / none), "
+        "button or zip closure, pocket placement, fit impression (slim / relaxed), "
+        "cuffs or hem detail, visible brand label."
+    ),
+    "beauty-health": (
+        "Look for: packaging color and shape (bottle / tube / jar / pump), "
+        "lid or cap design, label color scheme, visible texture (cream / gel / "
+        "liquid), applicator type (brush / dropper / roller), product color if "
+        "visible, size impression."
+    ),
+    "travel-bags": (
+        "Look for: color and material (leather / faux-leather / nylon / canvas / "
+        "hard-shell), number and placement of pockets / compartments, wheel type "
+        "(2-wheel / 4-spinner), handle style (retractable / top / shoulder strap), "
+        "zipper color, size impression (carry-on / cabin / large), branding."
+    ),
+    "toys": (
+        "Look for: dominant colors, character or theme design, material impression "
+        "(plastic / plush / wood), size relative to hands or packaging, moving parts "
+        "or accessories visible, age-group cues, any box / packaging artwork."
+    ),
+}
+DEFAULT_HINTS = (
+    "Look for: dominant colors, materials and finish, shape and form factor, "
+    "visible branding, any accessories or components shown in the image."
+)
 
 
-# ── Augmentation prompt ───────────────────────────────────────────────────────
-# Notes on prompt design:
-#   - Asks the model to ground in visible features (color, material, design,
-#     ports, branding visible on the product, accessories shown in the photo).
-#   - Hard constraints to suppress hallucination ("do NOT invent specs").
-#   - Excludes price (we don't want models to learn to predict price; price
-#     should come from metadata at inference, not be hallucinated).
-#   - Asks for a flowing prose paragraph, not bullets — matches Daraz style
-#     and avoids the model getting stuck in list-format ruts.
-AUGMENTATION_PROMPT = """\
-You are writing a product description for Daraz Pakistan, an e-commerce site. \
-You will see ONE product image and structured metadata.
+# ── Prompt ────────────────────────────────────────────────────────────────────
+PROMPT_TEMPLATE = """\
+You are a product copywriter for Daraz Pakistan. Study the product image carefully.
 
-Write a 70-120 word product description that:
-- Describes specific visual features visible in the image: color, material or \
-finish, shape, design elements, visible branding, ports or buttons, attachments \
-or accessories shown.
-- Incorporates relevant facts from the metadata (product type, category, brand \
-if it is a real brand and not "No Brand").
-- Uses an engaging, factual tone suitable for Pakistani online shoppers.
-- Does NOT invent specifications that are not visible in the image or stated \
-in the metadata.
-- Does NOT mention price, ratings, or shipping.
-- Writes in flowing prose, no bullet points, no markdown headings.
-- Starts with the product itself (e.g. "This <product>..."), not "The image \
-shows" or "I can see".
+Category: {category}
+Visual features to focus on: {hints}
 
-METADATA:
+Metadata (use for context, do NOT just copy it):
 {metadata}
 
-DESCRIPTION:"""
+Write a 70-120 word product description that:
+- Leads with specific things you can SEE in the image (color, finish, shape, \
+design details, visible components, branding on the product itself).
+- Naturally weaves in 1-2 relevant facts from the metadata.
+- Sounds engaging and natural for Pakistani online shoppers.
+- Does NOT mention price, ratings, shipping, or specs you cannot see.
+- Writes as flowing prose — no bullet points, no markdown.
+- Starts with the product (e.g. "This sleek black smartphone..."), \
+not "The image shows" or "I can see".
+
+Description:"""
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def build_metadata_str(rec: dict) -> str:
-    """Compact metadata representation for the prompt."""
     parts = []
     if rec.get("item_name"):
         parts.append(f"Name: {rec['item_name']}")
-    brand = rec.get("brand")
+    brand = rec.get("brand", "")
     if brand and brand.strip().lower() not in {"no brand", "", "n/a"}:
         parts.append(f"Brand: {brand}")
-    if rec.get("category"):
-        parts.append(f"Category: {rec['category']}")
     if rec.get("subcategory"):
         parts.append(f"Subcategory: {rec['subcategory']}")
     attrs = rec.get("attributes") or {}
-    for k, v in list(attrs.items())[:6]:
+    for k, v in list(attrs.items())[:5]:
         if k and v:
             parts.append(f"{k}: {v}")
     return "\n".join(parts) if parts else "(no metadata)"
 
 
-def normalize_image_path(rel: str) -> Path:
-    """Handle Windows-style backslashes in image paths."""
-    rel = rel.replace("\\", "/")
-    return DATA_ROOT / rel
-
-
-def load_first_image_b64(rec: dict) -> str | None:
-    """
-    Load first available image, resize, JPEG-encode, base64-encode.
-    Returns None if no readable image is found.
-    """
+def load_image_b64(rec: dict) -> str | None:
     for rel in rec.get("images", []):
-        path = normalize_image_path(rel)
+        path = DATA_ROOT / rel.replace("\\", "/")
+        if not path.exists():
+            # also try relative to DATA_ROOT parent
+            path = DATA_ROOT.parent / rel.replace("\\", "/")
         if not path.exists():
             continue
         try:
             img = Image.open(path).convert("RGB")
             img.thumbnail((MAX_IMAGE_DIM, MAX_IMAGE_DIM), Image.Resampling.LANCZOS)
-
-            # Encode at default quality
             buf = io.BytesIO()
             img.save(buf, format="JPEG", quality=JPEG_QUALITY)
             data = buf.getvalue()
-
-            # Re-encode at lower quality if over the inline-image limit
-            if len(data) > MAX_PAYLOAD_KB * 1024:
+            if len(data) > 200 * 1024:
                 buf = io.BytesIO()
-                img.save(buf, format="JPEG", quality=60)
+                img.save(buf, format="JPEG", quality=65)
                 data = buf.getvalue()
-
             return base64.b64encode(data).decode()
         except Exception:
             continue
@@ -165,47 +175,48 @@ def load_first_image_b64(rec: dict) -> str | None:
 
 
 def augment_one(client: OpenAI, rec: dict) -> str | None:
-    """
-    Call NIM for one record. Returns the augmented description, or None if
-    the call failed after MAX_RETRIES or no image could be loaded.
-    """
-    image_b64 = load_first_image_b64(rec)
+    image_b64 = load_image_b64(rec)
     if image_b64 is None:
         return None
 
-    metadata_str = build_metadata_str(rec)
-    prompt_text  = AUGMENTATION_PROMPT.format(metadata=metadata_str)
-
-    # NIM's vision Llama models expect the image inline as an HTML <img> tag
-    # within the user message string, NOT as a separate image_url block.
-    user_content = (
-        f'{prompt_text} <img src="data:image/jpeg;base64,{image_b64}" />'
+    category = rec.get("category", "")
+    hints    = CATEGORY_HINTS.get(category, DEFAULT_HINTS)
+    prompt   = PROMPT_TEMPLATE.format(
+        category=category or "general",
+        hints=hints,
+        metadata=build_metadata_str(rec),
     )
+
+    messages = [{
+        "role": "user",
+        "content": [
+            {"type": "text", "text": prompt},
+            {"type": "image_url",
+             "image_url": {"url": f"data:image/jpeg;base64,{image_b64}"}},
+        ],
+    }]
 
     for attempt in range(MAX_RETRIES):
         try:
             resp = client.chat.completions.create(
                 model=MODEL,
-                messages=[{"role": "user", "content": user_content}],
+                messages=messages,
                 max_tokens=MAX_OUTPUT_TOKENS,
                 temperature=TEMPERATURE,
-                top_p=0.9,
-                stream=False,
             )
             text = resp.choices[0].message.content
             return text.strip() if text else None
         except Exception as e:
             if attempt < MAX_RETRIES - 1:
-                wait = (2 ** attempt) * 5  # 5s, 10s
-                tqdm.write(f"  retry {attempt+1}/{MAX_RETRIES} after error: {e}")
+                wait = 5 * (2 ** attempt)
+                tqdm.write(f"  retry {attempt+1}/{MAX_RETRIES} in {wait}s — {e}")
                 time.sleep(wait)
             else:
                 tqdm.write(f"  ! gave up on {rec.get('item_id')}: {e}")
-                return None
     return None
 
 
-def load_records_to_augment() -> list[dict]:
+def load_records() -> list[dict]:
     train_ids = set(TRAIN_SPLIT.read_text(encoding="utf-8").strip().splitlines())
     out = []
     with open(METADATA_FILE, encoding="utf-8") as f:
@@ -228,7 +239,7 @@ def load_records_to_augment() -> list[dict]:
 def load_done_ids() -> set[str]:
     if not OUTPUT_FILE.exists():
         return set()
-    done = set()
+    done: set[str] = set()
     with open(OUTPUT_FILE, encoding="utf-8") as f:
         for line in f:
             try:
@@ -242,46 +253,64 @@ def load_done_ids() -> set[str]:
 
 def main():
     load_dotenv(PROJECT_ROOT / ".env")
-    api_key = os.environ.get("NVIDIA_API_KEY")
+    api_key = os.environ.get("OPENROUTER_API_KEY")
     if not api_key:
         sys.exit(
-            "[!] NVIDIA_API_KEY not set.\n"
-            "    1. Get a key at https://build.nvidia.com/\n"
-            "    2. Add  NVIDIA_API_KEY=nvapi-...  to .env at project root"
+            "[!] OPENROUTER_API_KEY not set.\n"
+            "    Add  OPENROUTER_API_KEY=sk-or-...  to .env at project root."
         )
 
-    client = OpenAI(base_url=BASE_URL, api_key=api_key)
+    # Each thread gets its own client (OpenAI client is not thread-safe to share)
+    def make_client():
+        return OpenAI(base_url=BASE_URL, api_key=api_key)
 
-    records  = load_records_to_augment()
+    records  = load_records()
     done_ids = load_done_ids()
     todo     = [r for r in records if r["item_id"] not in done_ids]
 
-    print(f"  Train records with images : {len(records)}")
-    print(f"  Already augmented         : {len(done_ids)}")
-    print(f"  Remaining                 : {len(todo)}")
+    print(f"  Train records : {len(records)}")
+    print(f"  Already done  : {len(done_ids)}")
+    print(f"  Remaining     : {len(todo)}")
+    print(f"  Workers       : {MAX_WORKERS}")
     if not todo:
         print("  Nothing to do.")
         return
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    failed = 0
+
+    write_lock = threading.Lock()
+    failed_count = [0]  # mutable container for thread-safe increment
+    pbar = tqdm(total=len(todo), desc="Augmenting", unit="item")
+
+    def process(rec: dict):
+        client    = make_client()
+        augmented = augment_one(client, rec)
+        if augmented is None:
+            failed_count[0] += 1
+        return rec, augmented
 
     with open(OUTPUT_FILE, "a", encoding="utf-8") as out_f:
-        for rec in tqdm(todo, desc="Augmenting", unit="item"):
-            augmented = augment_one(client, rec)
-            if augmented is None:
-                failed += 1
-                continue
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+            futures = {}
+            for rec in todo:
+                fut = ex.submit(process, rec)
+                futures[fut] = rec["item_id"]
+                time.sleep(RATE_LIMIT_DELAY)  # stagger submissions to avoid burst
 
-            new_rec = dict(rec)
-            new_rec["description_original"]  = rec.get("description", "")
-            new_rec["description_augmented"] = augmented
-            out_f.write(json.dumps(new_rec, ensure_ascii=False) + "\n")
-            out_f.flush()
+            for fut in as_completed(futures):
+                rec, augmented = fut.result()
+                pbar.update(1)
+                if augmented is None:
+                    continue
+                new_rec = dict(rec)
+                new_rec["description_original"]  = rec.get("description", "")
+                new_rec["description_augmented"] = augmented
+                with write_lock:
+                    out_f.write(json.dumps(new_rec, ensure_ascii=False) + "\n")
+                    out_f.flush()
 
-            time.sleep(RATE_LIMIT_DELAY)
-
-    print(f"\n  Done. Failed: {failed}/{len(todo)}")
+    pbar.close()
+    print(f"\n  Done. Failed: {failed_count[0]}/{len(todo)}")
     print(f"  Output: {OUTPUT_FILE}")
 
 

@@ -7,33 +7,33 @@
   "categories": {
     "consumer-electronics": {
       "n": 27,
-      "BLIP": 13.98,
-      "CLIP-GPT2": 9.76,
-      "Two-Stage": 10.39
+      "BLIP": 12.64,
+      "CLIP-GPT2": 12.08,
+      "Two-Stage": 9.81
     },
     "home-appliances": {
       "n": 1,
-      "BLIP": 9.78,
-      "CLIP-GPT2": 8.04,
-      "Two-Stage": 8.25
+      "BLIP": 11.27,
+      "CLIP-GPT2": 9.09,
+      "Two-Stage": 11.83
     },
     "smartphones": {
       "n": 34,
-      "BLIP": 11.49,
-      "CLIP-GPT2": 9.55,
-      "Two-Stage": 9.07
+      "BLIP": 8.94,
+      "CLIP-GPT2": 7.2,
+      "Two-Stage": 4.53
     },
     "tablets": {
       "n": 38,
-      "BLIP": 14.77,
-      "CLIP-GPT2": 16.58,
-      "Two-Stage": 10.78
+      "BLIP": 13.09,
+      "CLIP-GPT2": 11.28,
+      "Two-Stage": 8.57
     },
     "womens-fashion": {
       "n": 35,
-      "BLIP": 16.65,
-      "CLIP-GPT2": 12.04,
-      "Two-Stage": 16.86
+      "BLIP": 14.9,
+      "CLIP-GPT2": 10.64,
+      "Two-Stage": 10.44
     }
   }
 }

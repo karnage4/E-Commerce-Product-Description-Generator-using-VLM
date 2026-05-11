@@ -247,12 +247,22 @@ def build_metadata_prompt(rec: dict) -> str:
 
 
 class DarazCLIPGPT2Dataset(Dataset):
-    def __init__(self, split: str, tokenizer: GPT2Tokenizer, max_samples=None):
+    def __init__(self, split: str, tokenizer: GPT2Tokenizer,
+                 max_samples=None, use_augmented=False):
         split_ids = set((SPLITS_DIR / f"{split}.txt").read_text().strip().splitlines())
-        self.tokenizer = tokenizer
+        self.tokenizer     = tokenizer
+        self.use_augmented = use_augmented
+        self.split         = split
         self.records: list[dict] = []
 
-        with open(METADATA_FILE, encoding="utf-8") as f:
+        # Augmented descriptions only exist for the train split
+        source_file = METADATA_FILE
+        aug_file    = METADATA_FILE.parent / "listings_augmented.jsonl"
+        if use_augmented and split == "train" and aug_file.exists():
+            source_file = aug_file
+            print(f"  CLIP-GPT2 [{split}] using augmented descriptions")
+
+        with open(source_file, encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if not line:
@@ -263,7 +273,8 @@ class DarazCLIPGPT2Dataset(Dataset):
                     continue
                 if rec.get("item_id") not in split_ids:
                     continue
-                if not rec.get("images") or not rec.get("description", "").strip():
+                desc_key = "description_augmented" if (use_augmented and split == "train") else "description"
+                if not rec.get("images") or not rec.get(desc_key, "").strip():
                     continue
                 self.records.append(rec)
                 if max_samples and len(self.records) >= max_samples:
@@ -301,8 +312,9 @@ class DarazCLIPGPT2Dataset(Dataset):
         )
 
         # Tokenize description (decoder target)
+        desc_key  = "description_augmented" if (self.use_augmented and self.split == "train") else "description"
         label_enc = self.tokenizer(
-            rec["description"].strip(),
+            rec.get(desc_key, rec.get("description", "")).strip(),
             max_length=MAX_LABEL_LEN,
             truncation=True,
             padding="max_length",
@@ -324,7 +336,8 @@ class DarazCLIPGPT2Dataset(Dataset):
 # ══════════════════════════════════════════════════════════════════════════════
 
 def train(subset_samples=None, learning_rate=LEARNING_RATE,
-          num_epochs=NUM_EPOCHS, batch_size=BATCH_SIZE, save_checkpoints=True):
+          num_epochs=NUM_EPOCHS, batch_size=BATCH_SIZE,
+          save_checkpoints=True, use_augmented=False):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"\n  Device: {device}")
     if device.type == "cuda":
@@ -345,8 +358,8 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
           f"{params['trainable']} trainable ({params['pct_trainable']})")
 
     # Datasets and loaders
-    train_ds = DarazCLIPGPT2Dataset("train", tokenizer, max_samples=subset_samples)
-    val_ds   = DarazCLIPGPT2Dataset("val",   tokenizer, max_samples=subset_samples // 5 if subset_samples else None)
+    train_ds = DarazCLIPGPT2Dataset("train", tokenizer, max_samples=subset_samples, use_augmented=use_augmented)
+    val_ds   = DarazCLIPGPT2Dataset("val",   tokenizer, max_samples=subset_samples // 5 if subset_samples else None, use_augmented=use_augmented)
 
     train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True,  num_workers=4, pin_memory=True)
     val_loader   = DataLoader(val_ds,   batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
@@ -371,7 +384,7 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
     )
     total_steps = (len(train_loader) // GRAD_ACCUM) * num_epochs
     scheduler   = get_cosine_schedule_with_warmup(optimizer, WARMUP_STEPS, total_steps)
-    scaler      = torch.cuda.amp.GradScaler(enabled=USE_FP16)
+    scaler      = torch.amp.GradScaler("cuda", enabled=USE_FP16)
 
     CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
     best_val_loss = float("inf")
@@ -397,7 +410,7 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
         for step, batch in pbar:
             batch = {k: v.to(device) for k, v in batch.items()}
 
-            with torch.cuda.amp.autocast(enabled=USE_FP16):
+            with torch.amp.autocast("cuda", enabled=USE_FP16):
                 loss = model(**batch) / GRAD_ACCUM
 
             scaler.scale(loss).backward()
@@ -425,7 +438,7 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
         with torch.no_grad():
             for batch in tqdm(val_loader, desc=f"Epoch {epoch}/{num_epochs} [val]", leave=False):
                 batch = {k: v.to(device) for k, v in batch.items()}
-                with torch.cuda.amp.autocast(enabled=USE_FP16):
+                with torch.amp.autocast("cuda", enabled=USE_FP16):
                     loss = model(**batch)
                 val_loss += loss.item()
                 del batch, loss
@@ -458,7 +471,7 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
 
 # ── Auto HP sweep + full training ─────────────────────────────────────────────
 
-def sweep_and_train(batch_size=BATCH_SIZE):
+def sweep_and_train(batch_size=BATCH_SIZE, use_augmented=False):
     """Sweep learning rates on a small subset, save results, then full training."""
     sw = TRAINING_SWEEP["clip_gpt2"]
     lr_values    = sw["learning_rate"]
@@ -479,6 +492,7 @@ def sweep_and_train(batch_size=BATCH_SIZE):
             num_epochs=sweep_epochs,
             batch_size=batch_size,
             save_checkpoints=False,
+            use_augmented=use_augmented,
         )
         sweep_results.append({"learning_rate": lr, "val_loss": round(val_loss, 6)})
         print(f"  [Sweep] lr={lr:.1e}  →  val_loss={val_loss:.4f}")
@@ -502,7 +516,7 @@ def sweep_and_train(batch_size=BATCH_SIZE):
     print(f"\n{'='*55}")
     print(f"  CLIP-GPT2 FULL TRAINING — lr={best_lr:.1e}, {NUM_EPOCHS} epochs")
     print(f"{'='*55}")
-    train(learning_rate=best_lr, batch_size=batch_size)
+    train(learning_rate=best_lr, batch_size=batch_size, use_augmented=use_augmented)
 
 
 # ── Entry point ───────────────────────────────────────────────────────────────
@@ -515,14 +529,17 @@ if __name__ == "__main__":
     parser.add_argument("--learning-rate",  type=float, default=LEARNING_RATE)
     parser.add_argument("--epochs",         type=int,   default=NUM_EPOCHS)
     parser.add_argument("--batch-size",     type=int,   default=BATCH_SIZE)
+    parser.add_argument("--augmented",      action="store_true",
+                        help="Train on Gemma-augmented descriptions instead of raw Daraz text")
     args = parser.parse_args()
 
     if args.auto_sweep:
-        sweep_and_train(batch_size=args.batch_size)
+        sweep_and_train(batch_size=args.batch_size, use_augmented=args.augmented)
     else:
         train(
             subset_samples=args.subset_samples,
             learning_rate=args.learning_rate,
             num_epochs=args.epochs,
             batch_size=args.batch_size,
+            use_augmented=args.augmented,
         )

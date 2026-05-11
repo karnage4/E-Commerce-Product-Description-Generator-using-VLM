@@ -1,14 +1,14 @@
 [
   {
     "learning_rate": 5e-06,
-    "val_loss": 6.307056
+    "val_loss": 7.068951
   },
   {
     "learning_rate": 1e-05,
-    "val_loss": 5.864633
+    "val_loss": 7.012368
   },
   {
     "learning_rate": 3e-05,
-    "val_loss": 5.306723
+    "val_loss": 7.111079
   }
 ]
