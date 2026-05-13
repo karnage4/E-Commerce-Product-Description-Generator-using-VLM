@@ -19,6 +19,7 @@ os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True"
 import torch
 from PIL import Image
 from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms
 from transformers import (
     BlipProcessor,
     BlipForConditionalGeneration,
@@ -28,6 +29,16 @@ from tqdm import tqdm
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from models.shared.config import RESULTS_DIR, TRAINING_SWEEP
+
+
+# ── Image augmentation (training split only) ──────────────────────────────────
+# Applied to PIL images before the BLIP processor converts them to tensors.
+# Val/test images skip this — they always use the processor's default transform.
+TRAIN_AUGMENT = transforms.Compose([
+    transforms.RandomHorizontalFlip(p=0.5),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05),
+    transforms.RandomRotation(degrees=10),
+])
 
 
 # ── Paths (derived from this file's location — works locally and on Colab) ───
@@ -87,9 +98,10 @@ class DarazBlipDataset(Dataset):
     def __init__(self, split: str, processor: BlipProcessor,
                  max_samples=None, use_augmented=False):
         split_ids = set((SPLITS_DIR / f"{split}.txt").read_text().strip().splitlines())
-        self.processor     = processor
-        self.use_augmented = use_augmented
-        self.split         = split
+        self.processor      = processor
+        self.use_augmented  = use_augmented
+        self.split          = split
+        self.apply_augment  = (split == "train")
         self.records: list[dict] = []
 
         # Use augmented file if requested and it exists, else fall back to original
@@ -138,6 +150,9 @@ class DarazBlipDataset(Dataset):
                     pass
         if image is None:
             image = Image.new("RGB", (224, 224), (255, 255, 255))
+
+        if self.apply_augment:
+            image = TRAIN_AUGMENT(image)
 
         metadata    = build_metadata_prompt(rec)
         desc_key    = "description_augmented" if (self.use_augmented and self.split == "train") else "description"
@@ -216,6 +231,7 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
 
     CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
     best_val_loss = float("inf")
+    epoch_history: list[dict] = []
 
     for epoch in range(1, num_epochs + 1):
 
@@ -278,6 +294,9 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
 
         avg_val_loss = val_loss / len(val_loader)
         print(f"  Epoch {epoch}/{num_epochs}: train={avg_train_loss:.4f}  val={avg_val_loss:.4f}")
+        epoch_history.append({"epoch": epoch,
+                               "train_loss": round(avg_train_loss, 6),
+                               "val_loss":   round(avg_val_loss,   6)})
 
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss
@@ -296,6 +315,11 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
     print(f"\n  Training complete. Best val loss: {best_val_loss:.4f}")
     if save_checkpoints:
         print(f"  Best checkpoint: {CHECKPOINT_DIR / 'best_model'}")
+        hist_file = RESULTS_DIR / "training_history_blip.json"
+        RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+        import json as _json
+        hist_file.write_text(_json.dumps(epoch_history, indent=2), encoding="utf-8")
+        print(f"  History saved  : {hist_file}")
     return best_val_loss
 
 

@@ -1,172 +1,172 @@
 {
   "true_positives": [
     {
-      "item_id": "881908450",
-      "category": "tablets",
-      "generated": "product : nokia 3310 box pack pta life time warranty a + condition high quality, nokia 3310, availability nokia 105, nokia 106, nokia 150, nokia 5310, nokia 3210 - tablet. brand : no brand. category : tablets. subcategory : android tablet. price : pkr 4999 this compact black box pack features a sophisticated matte finish with a smooth, rounded design that feels premium in your hand, while the front is dominated by a clear display with the iconic nokia branding clearly visible on the back, the front, you will find a",
-      "reference": "Nokia 3310 Box Pack PTA Life Time Warranty A+ Condition High Quality, nokia 3310, availability nokia 105, nokia 106, nokia 150, nokia 5310, nokia 3210",
-      "rouge_p": 0.2976,
-      "rouge_r": 1.0,
-      "rouge_f": 0.4587
-    },
-    {
       "item_id": "657247851",
       "category": "smartphones",
-      "generated": "product : redmi note 14 pro - 6. 67 inches display - 8gb ram - 256gb rom - 32mp front camera - 200mp + 8mp + 2mp rear camera - dual sim - 5500mah battery. brand : no brand. category : smartphones. subcategory : xiaomi. price : pkr 80999. rating : 5. 0 / 5 - this sleek black smartphone features a sophisticated matte finish and a modern flat - edge design that feels premium in the hand, while the rear is highlighted by a stunning triple - camera setup with the iconic redmi branding on the back, the expansive display is framed by slim bezels and a discreet punch - hole camera for an immersive viewing experience",
+      "generated": "product : redmi note 14 pro - 6. 67 inches display - 8gb ram - 256gb rom - 32mp front camera - 200mp + 8mp + 2mp rear camera - dual sim - 5500mah battery. brand : no brand. category : smartphones. subcategory : xiaomi. price : pkr 80999. rating : 5. 0 / 5, this sleek black smartphone features a modern design with a smooth matte finish that feels premium in the rear is dominated by a balanced bezels, while the bold redmi branding is highlighted by a bold 6 - inch display and a",
       "reference": "Redmi Note 14 Pro PTA APPROVED 6.67 Inches Display 8GB RAM 256GB ROM 32MP Front Camera 200MP+8MP+2MP Rear Camera Dual SIM 5500mAh Battery",
-      "rouge_p": 0.2449,
+      "rouge_p": 0.3038,
       "rouge_r": 0.9231,
-      "rouge_f": 0.3871
+      "rouge_f": 0.4571
+    },
+    {
+      "item_id": "881908450",
+      "category": "tablets",
+      "generated": "product : nokia 3310 box pack pta life time warranty a + condition high quality, nokia 3310, availability nokia 105, nokia 106, nokia 150, nokia 5310, nokia 3210 - tablet. brand : no brand. category : tablets. subcategory : android tablet. price : pkr 4999, features a sleek matte finish and a classic black finish with a modern design that feels premium in your handwritten font and a touch of class, this compact, the device is designed for those who want a premium look with a clean, it comes with a slim profile and a",
+      "reference": "Nokia 3310 Box Pack PTA Life Time Warranty A+ Condition High Quality, nokia 3310, availability nokia 105, nokia 106, nokia 150, nokia 5310, nokia 3210",
+      "rouge_p": 0.2841,
+      "rouge_r": 1.0,
+      "rouge_f": 0.4425
     },
     {
       "item_id": "946199129",
       "category": "smartphones",
-      "generated": "product : infinix smart 10 pus - ips lcd - 6. 67 inches display - 4gb ram 128gb rom - 8mp front camera - 8mp rear camera - unisoc t7250 chipset - dual sim - 6000mah battery. brand : no brand. category : smartphones. subcategory : infinix. price : pkr 32999 this sleek black smartphone features a sophisticated matte finish and a modern flat - edge design that feels premium in the hand, while the rear panel is dominated by a clean, minimalist design with the iconic in - touch display and a discreet punch - hole camera for an immersive viewing experience",
+      "generated": "product : infinix smart 10 pus - ips lcd - 6. 67 inches display - 4gb ram 128gb rom - 8mp front camera - 8mp rear camera - unisoc t7250 chipset - dual sim - 6000mah battery. brand : no brand. category : smartphones. subcategory : infinix. price : pkr 32999 this sleek black smartphone features a modern, flat - edge design that feels premium in the rear is dominated by a balanced bezels, while the front is highlighted by a bold 8 - inch display with a",
       "reference": "PTA APPROVED IPS LCD 6.67 Inches Display 4GB RAM 128GB ROM 8MP Front Camera 8MP Rear Camera Dual SIM Unisoc T7250 Chipset 6000mAh Battery",
-      "rouge_p": 0.2414,
+      "rouge_p": 0.2877,
       "rouge_r": 0.84,
-      "rouge_f": 0.375
+      "rouge_f": 0.4286
     },
     {
-      "item_id": "574581408",
+      "item_id": "472049757",
       "category": "womens-fashion",
-      "generated": "product : black plain fleece full sleeves zipper hoodie for women. brand : no brand. category : womens - fashion. subcategory : outerwear. price : pkr 899. rating : 4. 5 / 5 this sleek black full - length fleece hoodie features a smooth, matte finish that adds a touch of luxury to any wardrobe, making it a must - have - haver - to - have hoodie perfect for a casual outing or everyday look, it is designed with a full - zip - on the front and a spacious front pocket for",
-      "reference": "pre { white-space: pre-wrap; }Step 1:- Product title: Black Plain Fleece Full Sleeves Zipper Hoodie For Women- Category: Fashion>Women>Clothing>Hoodies & SweatshirtsStep 2:- Additional Keywords: NoneStep 3:• Black plain fleece hoodie for women with full sleeves.• Features a convenient zipper for easy wear.• Made of high-quality fleece material for warmth and comfort.• Versatile addition to any woman's casual wardrobe.• Perfect for layering in cooler weather.Step 4:- No false information found.Step 5:- Return the product highlights to the user.",
-      "rouge_p": 0.3038,
-      "rouge_r": 0.2857,
-      "rouge_f": 0.2945
+      "generated": "product : new summer girls and women plain t - shirt pack of 3 random color ( premium quality material ). brand : no brand. category : womens - fashion. subcategory : tops & shirts. price : pkr 1499. rating : 4. 5 / 5 colors available in a variety of each t - shirts are designed with a wide neckline, short sleeves, round neckline and short sleeves and a comfortable fit for a relaxed fit, comfortable fit and comfortable fit, this set is perfect for everyday wear",
+      "reference": "New Summer girls and Women Plain T- shirt Pack Of 3 Random Color ( Premium Quality Material )Material : Cotton Jersey Or Summer Stuff Easy To Hand wash & MachineSoft & Comfortable Material Sizes ( S , M , L , XL , 2XL 3 XL )Easy Wear in Summer Home ,, nightwear & casual used",
+      "rouge_p": 0.24,
+      "rouge_r": 0.4,
+      "rouge_f": 0.3
     },
     {
       "item_id": "454111481",
       "category": "consumer-electronics",
-      "generated": "product : toyota corolla 2012 - 14 back bumper neon heart beat break light - high low flashing. brand : no brand. category : consumer - electronics. subcategory : other. price : pkr 1399. rating : 5. 0 / 5 this vibrant red neon light features a striking, curved design with a high - contrast of heartbeats and heartbeats, making it an ideal addition to your car ' s interior, adding a touch to your vehicle ' s vehicle ' interior, it is designed with a vibrant red and a clean, matte finish that adds a touch of modern aesthetic to any car interior, whether you are looking for a professional driver or automotive, these rear bumpers, these lights are designed for those who want to",
+      "generated": "product : toyota corolla 2012 - 14 back bumper neon heart beat break light - high low flashing. brand : no brand. category : consumer - electronics. subcategory : other. price : pkr 1399. rating : 5. 0 / 5, this pair of high - quality red neon rear bumper lights are designed for your vehicle ' s car or truck or truck ' s interior, providing a modern look with a clear, this high - performance design is perfect for your car or motorcycle or any vehicle, you want to keep your vehicle or any car ' s",
       "reference": "pre { white-space: pre-wrap; }• Toyota Corolla 2012-14 back bumper Neon Heart Beat break light• High, low, and flashing modes available• Adds a unique touch to your car's appearance• Easy to install on your own• Enhances visibility and safety on the road",
-      "rouge_p": 0.1964,
-      "rouge_r": 0.5,
-      "rouge_f": 0.2821
+      "rouge_p": 0.2262,
+      "rouge_r": 0.4318,
+      "rouge_f": 0.2969
     }
   ],
   "false_positives": [
     {
-      "item_id": "944319220",
-      "category": "smartphones",
-      "generated": "product : honor x5c plus 4gb ram 128gb rom 50mp + 0. 08mp back camera one year brand warranty. brand : no brand. category : smartphones. subcategory : other brand. price : pkr 29999 this sleek black honor x4c plus features a sophisticated matte finish and a modern flat - edge design that feels premium in your hand, while the rear panel is dominated by a clean, minimalist design with the iconic honor branding centered on the front, the expansive display is framed by slim bezels and a discreet punch - hole camera for an immersive viewing experience",
-      "reference": "General FeaturesRelease Date04 Nov 2025SIM SupportDual SimPhone Dimensions167 x 77 x 7.9 mmPhone Weight186gOperating SystemAndroid 15DisplayScreen Size6.74 inchesScreen Resolution720 x 1600 pixelsScreen TypeTFT LCD 90HzScreen ProtectionNoMemoryInternal Memory128GBRAM4GBCard SlotYesPerformanceProcessorMediaTek Helio G81GPUMali-G52 MC2BatteryType5260mAhCameraFront Camera5 MPFront Flash LightNoFront Video Recording1080p@30fpsBack Flash LightYesBack Camera50MP + 0.08MPBack Video Recording1080p@30fpsConnectivityBluetoothYes3GYes4G/LTEYes5GNoRadioYesWiFiYesNFCNo",
-      "rouge_p": 0.0111,
-      "rouge_r": 0.02,
-      "rouge_f": 0.0143
-    },
-    {
       "item_id": "916094949",
       "category": "smartphones",
-      "generated": "product : infinix hot 60 pro plus 8gb + 256gb pta approved. brand : infinix. category : smartphones. subcategory : infinix. price : pkr 59998. rating : 4. 7 / 5 features a sophisticated dark grey finish that catches the light beautifully, complemented by a sleek, minimalist design that feels premium in your hand, the rear is dominated by a bold, rectangular camera module housing with a dual - lens setup and a slim bezel for an immersive viewing experience",
+      "generated": "product : infinix hot 60 pro plus 8gb + 256gb pta approved. brand : infinix. category : smartphones. subcategory : infinix. price : pkr 59998. rating : 4. 7 / 5g this sleek grey smartphone features a sophisticated, modern design with a smooth matte finish that feels premium in the rear is dominated by a slim bezels, while the rear panel is highlighted by a prominent dual - camera module housing and a bold 8 - inch display with a bold, the iconic samsung logo on the front, the back, the",
       "reference": "8GB/256GB5160 mAh BatteryAndroid 15, up to 3 major Android upgrades, XOS 15.1Octa-core50 MP, 26mm (wide), 1/1.95\"Auxiliary lensSleek Black=BlackTitanium Silver=SilverCoral Tides = Rose PinkMisty Violet = VioletSonic Yellow = YellowMoco Cyber Green = Green",
-      "rouge_p": 0.0141,
+      "rouge_p": 0.0123,
       "rouge_r": 0.027,
-      "rouge_f": 0.0185
+      "rouge_f": 0.0169
+    },
+    {
+      "item_id": "944319220",
+      "category": "smartphones",
+      "generated": "product : honor x5c plus 4gb ram 128gb rom 50mp + 0. 08mp back camera one year brand warranty. brand : no brand. category : smartphones. subcategory : other brand. price : pkr 29999 this sleek black honor x4c plus features a modern design with a sophisticated matte finish that feels premium in the rear is dominated by a slim bezels, while the iconic honor x6c plus branding is highlighted by a bold 8 - inch display and a bold 6 - inch hd camera setup with a",
+      "reference": "General FeaturesRelease Date04 Nov 2025SIM SupportDual SimPhone Dimensions167 x 77 x 7.9 mmPhone Weight186gOperating SystemAndroid 15DisplayScreen Size6.74 inchesScreen Resolution720 x 1600 pixelsScreen TypeTFT LCD 90HzScreen ProtectionNoMemoryInternal Memory128GBRAM4GBCard SlotYesPerformanceProcessorMediaTek Helio G81GPUMali-G52 MC2BatteryType5260mAhCameraFront Camera5 MPFront Flash LightNoFront Video Recording1080p@30fpsBack Flash LightYesBack Camera50MP + 0.08MPBack Video Recording1080p@30fpsConnectivityBluetoothYes3GYes4G/LTEYes5GNoRadioYesWiFiYesNFCNo",
+      "rouge_p": 0.0125,
+      "rouge_r": 0.02,
+      "rouge_f": 0.0154
     },
     {
       "item_id": "882156371",
       "category": "smartphones",
-      "generated": "product : oppo a5i 4gb ram 64gb rom 8 mp + ai dual camera 5100 mah ( non removable ) battery + one year brand warranty. brand : no brand. category : smartphones. subcategory : oppo. price : pkr 30499. rating : 5. 0 / 5 features a4i purple matte finish and a modern flat - edge design that feels premium in your hand, complemented by a clean, minimalist design, the rear panel is highlighted by a vibrant, circular camera lens and a subtle oppo branding centered on the back, while the expansive display is dominated by slim bezels and a discreet punch - hole for an immersive viewing experience",
+      "generated": "product : oppo a5i 4gb ram 64gb rom 8 mp + ai dual camera 5100 mah ( non removable ) battery + one year brand warranty. brand : no brand. category : smartphones. subcategory : oppo. price : pkr 30499. rating : 5. 0 / 5g this vibrant purple oppoa5i a4i features a5ii features a sophisticated matte finish that feels premium in the rear is complemented by a slim profile and a",
       "reference": "General FeaturesRelease Date24 Jun 2025SIM SupportNano-SIM Card/Nano-USIM CardPhone Dimensions165.77 x 76.08 x 7.68mmPhone Weight186gOperating SystemAndroid 15 OSDisplayScreen Size6.67\"Screen ResolutionHD + (1604 × 720)Screen TypeIPS LCD Capacitive TouchscreenScreen ProtectionN/AMemoryInternal Memory64gbRAM4gbCard SlotN/APerformanceProcessorQualcomm® Snapdragon® 6s 4G Gen1GPUAdreno 610@1050MHzBatteryType5100mAhCameraFront Camera5MP; f/2.2, FOV 78°; 3P lens; FFFront Flash LightN/AFront Video Recording1080/720P@30fps 720P@30fpsBack Flash LightYesBack Camera8MP; f/2; FOV 78°; 4P lens; AF; open-loop focus motorBack Video Recording1080P@30fps, 720P@30fpsConnectivityBluetooth5.03GYes4G/LTEYes5GN/ARadioN/AWiFiYesNFCN/A",
-      "rouge_p": 0.0206,
-      "rouge_r": 0.023,
-      "rouge_f": 0.0217
+      "rouge_p": 0.0164,
+      "rouge_r": 0.0115,
+      "rouge_f": 0.0135
     },
     {
-      "item_id": "920208155",
+      "item_id": "916102582",
       "category": "smartphones",
-      "generated": "product : tecno spark 40 6gb ram 128 gb rom 5200 mah battery 50 mp + ai back camera 1 year tecno pk warranty. brand : no brand. category : smartphones. subcategory : tecno. price : pkr 41499. rating : 5. 0 / 5 this sleek white smartphone features a modern, flat - edge design with a premium matte finish that feels premium in the hand, while the rear panel showcases a clean, minimalist design with the iconic huami branding at the bottom, the front is dominated by a large, slim bezel - camera lens setup and a subtle waterdrop notch for an immersive viewing experience",
-      "reference": "General FeaturesRelease Date11 Sept 2025SIM SupportDual Sim, Dual Standby (Nano-SIM)Phone Dimensions165.6 x 77 x 7.7 mmPhone Weight192 gOperating SystemAndroid 15DisplayScreen Size6.6 inchesScreen Resolution720 x 1612 PixelsScreen TypeIPS LCD ScreenScreen ProtectionN/AMemoryInternal Memory128 GBRAM6 GBCard SlotmicroSDXCPerformanceProcessorMediatek Helio G81GPUN/ABatteryType5200 mAhCameraFront Camera8 MPFront Flash LightYesFront Video RecordingYesBack Flash LightYesBack Camera50 MP + AIBack Video RecordingYesConnectivityBluetoothYes3GYes4G/LTEYes5GNoRadioNoWiFiYesNFCN/A",
-      "rouge_p": 0.0208,
-      "rouge_r": 0.0339,
-      "rouge_f": 0.0258
+      "generated": "product : infinix hot 60i 6gb + 128gb pta approved. brand : infinix. category : smartphones. subcategory : infinix. price : pkr 37190. rating : 4. 7 / 5g this sleek black smartphone features a sophisticated matte finish that feels premium in the rear is complemented by a bold flat - edge design with a slim bezels, while the rear panel is highlighted by a dual - camera module housing and a bold 8 - inch display with a single - hole punch - hole camera setup, providing a secure viewing experience",
+      "reference": "6GB/128GB5160 mAh BatteryAndroid 15, XOS 15.1Octa-core50 MP, (wide), AFAuxiliary lensSleek Black = BlackTitanium Silver = SilverShadow Blue = BlueNeon Red = RedMeadow Green = GreenSoul Eye Purple = Purple",
+      "rouge_p": 0.0253,
+      "rouge_r": 0.0769,
+      "rouge_f": 0.0381
     },
     {
       "item_id": "1949689239",
       "category": "smartphones",
-      "generated": "product : infinix note 60 pro 8gb ram 256gb rom front camera 13mp back camera 50mp 6500mah battery one year brand warrenty. brand : no brand. category : smartphones. subcategory : infinix. price : pkr 105999 this stunning gold smartphone features a sophisticated glossy finish and a modern flat - edge design that feels premium in the hand, while the rear is highlighted by a bold, rectangular camera module housing with the iconic infiniz branding at the bottom, the front is dominated by slim bezels and a",
+      "generated": "product : infinix note 60 pro 8gb ram 256gb rom front camera 13mp back camera 50mp 6500mah battery one year brand warrenty. brand : no brand. category : smartphones. subcategory : infinix. price : pkr 105999 this vibrant gold smartphone features a modern design with a bold, glossy finish that feels premium in the rear is highlighted by a vibrant, while the expansive display is dominated by a slim bezels and a powerful 8 - inch display with a",
       "reference": "General FeaturesRelease Date19 Mar 2026SIM SupportNano-SIM + Nano-SIM + eSIM (max 2 at a time)Phone Dimensions162.4 x 77.2 x 7.4 mmPhone Weight201.7 gOperating SystemSnapdragon 7s Gen 4 5GDisplayScreen Size6.78 inchesScreen Resolution1208 x 2644 pixelsScreen TypeAMOLEDScreen ProtectionCorning Gorilla Glass 7i Ultra HDR supportMemoryInternal Memory256GBRAM8GB RAM + (4GB Extended RAM)Card SlotN/APerformanceProcessorOcta-core (1x2.7 GHz Cortex-A720 & 3x2.4 GHz Cortex-A720 & 4x1.8 GHz Cortex-A520)GPUAdreno 810BatteryType6500 mAhCameraFront Camera13 MPFront Flash LightN/AFront Video RecordingYesBack Flash LightYesBack Camera50MPBack Video RecordingYesConnectivityBluetoothYes3GYes4G/LTEYes5GYesRadioYesWiFiYesNFCYes",
-      "rouge_p": 0.0247,
+      "rouge_p": 0.0274,
       "rouge_r": 0.0227,
-      "rouge_f": 0.0237
+      "rouge_f": 0.0248
     }
   ],
   "false_negatives": [
     {
       "item_id": "587967588",
       "category": "smartphones",
-      "generated": "product : redmi 13 - 8gb ram 256 \\ 128gb rom real camera 108mp + 2mp pta approved 1 year official brand warranty. brand : mi. category : smartphones. subcategory : xiaomi. price : pkr 41980. rating : 5. 0 / 5 features a stunning textured light blue smartphone with a sophisticated textured finish that catches the light beautifully, complemented by a modern flat - edge design that feels premium in the hand, the rear is dominated by a clean, minimalist design with a subtle waterdrop notch and a discreet punch - hole camera for an immersive viewing experience",
+      "generated": "product : redmi 13 - 8gb ram 256 \\ 128gb rom real camera 108mp + 2mp pta approved 1 year official brand warranty. brand : mi. category : smartphones. subcategory : xiaomi. price : pkr 41980. rating : 5. 0 / 5g this stunning white smartphone features a sophisticated textured finish that feels premium in the hand - crafted from scratch, while the rear is complemented by a bold redmi brand ' s iconic redmi branding and a clean, modern design with a slim bezel - facing camera setup, the front is dominated by a",
       "reference": "Display: 6.79\" FHD+ Display Resolution: 2460x1080, 396 ppiCertified eye-care Display Processor: MediaTek Helio G91-Ultra Refresh Rate: Up to 90Hz Brightness: 450 nits (typ) 550 nits HBM CPU: Cortex-A55+Cortex-A75 GPU: Mali-G52 MC2 Rear Camera: 108MP Super Clear Main camera Film Camera | Custom Frame | 108MP Mode | HDR Mode | Night Mode | Portrait Mode | Time Lapse Front Camera: 13MP Front camera Film Camera | HDR Mode | Soft Light Ring | Portrait Mode | Time Lapse Battery & Charging: 5030mAh (typ) - Supports 33W fast charging | USB Type-C36 Months Like New Software Experience | IP53 Dust and splash resistance Security: Side fingerprint scanner - AI face unlock Connectivity: SIM1 + Hybrid* (SIM or MicroSD) Wi-Fi: 2.4GHz | 5GHz Bluetooth: 5.4 Supports FM Radio with Headphone Jack Operating System: Xiaomi Hyper OS Sensors: Virtual Proximity Sensor | Ambient Light Sensor | Accelerometer | Electronic Compass Audio: 3.5mm headphone jack Navigation & Positioning: GPS | Glonass | Galileo | Beidou",
-      "rouge_p": 0.0575,
-      "rouge_r": 0.0336,
-      "rouge_f": 0.0424
-    },
-    {
-      "item_id": "587938971",
-      "category": "smartphones",
-      "generated": "product : redmi 13 - 8gb ram 128gb rom real camera 108mp + 2mp pta approved 1year official brand warranty. brand : xiaomi. category : smartphones. subcategory : xiaomi. price : pkr 419809 this stunning light blue smartphone features a sophisticated textured finish that catches the light beautifully, complemented by a modern flat - edge design with a clean, minimalist design that feels premium in your hand, the rear is dominated by a subtle waterdrop notch, while the expansive display is framed by slim bezels and a discreet punch - hole camera for an immersive viewing experience",
-      "reference": "Display: 6.79\" FHD+ Display Resolution: 2460x1080, 396 ppiCertified eye-care Display Processor: MediaTek Helio G91-Ultra Refresh Rate: Up to 90Hz Brightness: 450 nits (typ) 550 nits HBM CPU: Cortex-A55+Cortex-A75 GPU: Mali-G52 MC2 Rear Camera: 108MP Super Clear Main camera Film Camera | Custom Frame | 108MP Mode | HDR Mode | Night Mode | Portrait Mode | Time Lapse Front Camera: 13MP Front camera Film Camera | HDR Mode | Soft Light Ring | Portrait Mode | Time Lapse Battery & Charging: 5030mAh (typ) - Supports 33W fast charging | USB Type-C36 Months Like New Software Experience | IP53 Dust and splash resistance Security: Side fingerprint scanner - AI face unlock Connectivity: SIM1 + Hybrid* (SIM or MicroSD) Wi-Fi: 2.4GHz | 5GHz Bluetooth: 5.4 Supports FM Radio with Headphone Jack Operating System: Xiaomi Hyper OS Sensors: Virtual Proximity Sensor | Ambient Light Sensor | Accelerometer | Electronic Compass Audio: 3.5mm headphone jack Navigation & Positioning: GPS | Glonass | Galileo | Beidou",
-      "rouge_p": 0.0568,
-      "rouge_r": 0.0336,
-      "rouge_f": 0.0422
-    },
-    {
-      "item_id": "846523421",
-      "category": "smartphones",
-      "generated": "product : samsung galaxy a16 8gb + 256gb 6. 7 \" super amoled display 90hz 5000 mah battery fast charging 25w fingerprint ( side - mounted ) pta approved. brand : no brand. category : smartphones. subcategory : samsung. price : pkr 68999. rating : 5. 0 / 5 features a sophisticated silver finish and a modern flat - edge design that feels premium in the hand, complemented by a clean, minimalist design with a modern punch - hole camera setup, the rear is highlighted by the iconic samsung branding and a subtle samsung branding centered on the front, while the expansive 6 - inch display is framed by slim bezels",
-      "reference": "Processor 2.2GHz, 2GHz Weight (g) 200 CPU Speed 2.2GHz, 2GHz CPU Type Octa-Core Size (Main_Display) 169.1mm (6.7\") Resolution (Main Display) 1080 x 2340 (FHD+) Technology (Main Display) Super AMOLED Color Depth (Main Display) 16M Rear Camera - Resolution (Multiple) 50.0 MP + 5.0 MP + 2.0 MP Rear Camera - F Number (Multiple) F1.8 , F2.2 , F2.4 Rear Camera - Auto Focus Yes Rear Camera - OIS No Rear Camera Zoom Digital Zoom up to 10x Front Camera - Resolution 13.0 MP Front Camera - F Number F2.0 Front Camera - Auto Focus No Front Camera - OIS No Rear Camera - Flash Yes Front Camera - Flash No Video Recording Resolution FHD (1920 x 1080) @30fps Slow Motion 120fps @HD Ram 8GB Storage 256GB External Storage Support MicroSD (Up to 1.5TB) Number of SIM Dual-SIM SIM size Nano-SIM (4FF) SIM Slot Type SIM 1 + Hybrid (SIM or MicroSD) Infra 2G GSM, 3G WCDMA, 4G LTE FDD, 4G LTE TDD 2G GSM GSM850, GSM900, DCS1800, PCS1900 3G UMTS B1(2100), B5(850), B8(900) 4G FDD LTE B1(2100), B3(1800), B5(850), B7(2600), B8(900), B20(800), B28(700) 4G TDD LTE B38(2600), B40(2300), B41(2500) USB Interface USB Type-C USB Version USB 2.0 Location Technology GPS, Glonass, Beidou, Galileo, QZSS Earjack USB Type-C MHL No Wi-Fi 802.11a/b/g/n/ac 2.4GHz+5GHz, VHT80 Wi-Fi Direct Yes Bluetooth Version Bluetooth v5.3 NFC Yes PC Sync. Smart Switch (PC version) OS Android Accelerometer, Fingerprint Sensor, Geomagnetic Sensor, Light Sensor, Virtual Proximity Sensing Battery Capacity (mAh, Typical) 5000",
-      "rouge_p": 0.1042,
-      "rouge_r": 0.0366,
-      "rouge_f": 0.0542
+      "rouge_p": 0.0488,
+      "rouge_r": 0.0268,
+      "rouge_f": 0.0346
     },
     {
       "item_id": "930069124",
       "category": "consumer-electronics",
-      "generated": "product : 74hc595 shift register 7 - segment 8 - bit serial - in parallel - out. 5 peices / lot. brand : no brand. category : consumer - electronics. subcategory : other. price : pkr 4195 - pin, this compact - chip features a sturdy black pcc - chip with a clear, rectangular design with a clean, clear, clear white led indicator and a clear - edge for easy - to - read reading, while the top - read display is clearly visible on the back, with a dedicated serial - off button for easy installation and a secure connection to your pcc",
+      "generated": "product : 74hc595 shift register 7 - segment 8 - bit serial - in parallel - out. 5 peices / lot. brand : no brand. category : consumer - electronics. subcategory : other. price : pkr 419 5pcs of this product features a clean, clear, black plastic cover with a clear, clear plastic housing and a clear plastic cover that fits perfectly in your hand - hole for easy installation, it is designed to ensure a clean and clear, it fits perfectly",
       "reference": "The 74HC595 is a high-speed, 8-bit serial-in, parallel-out shift register with three-state outputs. The SN74HC595N is a 16-pin integrated circuit (IC). It is a popular chip for extending the number of I/O pins on a microcontroller. The 74HC595 has three control pins:Serial data (SER): This pin receives the serial data that is to be shifted into the register.Clock (CLK): This pin is used to clock the serial data into the register.Latch (RCLK): This pin latches the data in the register, making it available on the output pins.The 74HC595 also has eight output pins, which can use to control external devices. The output pins are arranged in a daisy chain, so that the output of one register can be connected to the input of another register. This allows you to connect multiple 74HC595s together to create a large number of I/O pins.The 74HC595 shift register can operate with an input voltage of 2V to 6V. The most common voltage used is 5V. The input voltage must be within the specified range in order for the chip to function properly. The 74HC595 is a CMOS chip, which means that it has a low power consumption.74HC595 shift register works on the principle of serial in, parallel out. This means that the data is shifted in serially, one bit at a time, on the SER (serial data) pin. The data is then latched into the register on the RCLK (latch clock) pin. The output of the register is available on the Q7-Q0 pins.Features : –The 74HC595 is an 8-bit serial-in, parallel-out shift register. It is a popular chip for extending the number of I/O pins on a microcontroller. The SN74HC595N is a popular chip that has a number of benefits. These include:Low cost: The SN74HC595N is a relatively inexpensive chip, making it a cost-effective solution for many applications.Low power consumption: The SN74HC595N is a CMOS chip, which means that it has a low power consumption. This makes it a good choice for applications where battery power is limited.Wide operating voltage range: The SN74HC595N can operate with an input voltage of 2V to 6V. This makes it a versatile chip that can use in a variety of applications.Easy to use: The SN74HC595N is a relatively easy chip to use. There are many tutorials and examples available online that can help you get started.Versatility: The SN74HC595N can be used in a variety of applications. It commonly use for controlling LED displays, driving stepper motors, and interfacing with other electronic devices.Here are some additional benefits of the SN74HC595N:Daisy chainable: The SN74HC595N can be daisy chained together to create a larger number of I/O pins. This makes it a good choice for applications where you need a lot of I/O pins.3-state outputs: The SN74HC595N has 3-state outputs, which means that the outputs can be turned off or high-impedance. This makes it a good choice for applications where you need to control the power to external devices.High speed: The SN74HC595N can operate at a clock speed of up to 10 MHz. This makes it a good choice for applications where you need to update the output pins quickly.74HC595 Shift Register Specifications : –The 74HC595 8-bit shift register is a versatile chip that can be used in a variety of applications. It is commonly used for controlling LED displays, driving stepper motors, and interfacing with other electronic devices. here are some of the specifications of the 74HC595 8-bit shift register:Operating voltage: 2V to 6VPower consumption: 80μA (maximum)Clock frequency: 10 MHz (maximum)Input voltage range: 0V to VCCOutput voltage range: 0V to VCCNumber of output pins: 8Daisy chainable: Yes3-state outputs: Yes74HC595 Shift Register Pin Descriptions : –The 74HC595 can use to control 8 external devices. The data for the external devices is shifted in serially, one bit at a time. The latch clock (RCLK) is used to latch the data into the register, making it available on the output pins. The shift register clock (SRCLK) is used to clock the data into the register.PinNameFunction1VCCPower supply, +5V2GNDGround3SERSerial data4RCLKLatch clock5SRCLKShift register clock6OEOutput enable7D0Data bit 08D1Data bit 19D2Data bit 210D3Data bit 311D4Data bit 412D5Data bit 513D6Data bit 614D7Data bit 715Q7Output bit 716Q6Output bit 674HC595 Shift Register Applications : –The 74HC595 8-bit shift register is a versatile chip that can use in a variety of applications. It is a good choice for applications where you need a low-cost, low-power, and easy-to-use shift register.Controlling LED displaysDriving stepper motorsInterfacing with other electronic devicesGenerating timing signalsEncoding dataEncrypting dataPackage : –5x 74HC595 Shift Register",
-      "rouge_p": 0.3529,
-      "rouge_r": 0.038,
-      "rouge_f": 0.0686
+      "rouge_p": 0.3429,
+      "rouge_r": 0.0304,
+      "rouge_f": 0.0559
     },
     {
-      "item_id": "585315101",
+      "item_id": "846523421",
       "category": "smartphones",
-      "generated": "product : oppo a5i 4gb ram 64gb rom | | 6. 67 inches display 90hz, | | qualcomm snapdragon 6s 4g gen 1 | | 5100 mah - fast battery 45w wired. brand : no brand. category : smartphones. subcategory : oppo. price : pkr 38999 this elegant lavender - purple smartphone features a sophisticated metallic finish and a modern flat - edge design that feels premium in the hand, while the rear is highlighted by a clean, minimalist camera module housing with the iconic oppo branding at the bottom, the front is dominated by slim bezels and a discreet punch - hole camera for an immersive viewing experience",
-      "reference": "Build OS Android 15 OS UI ColorOS 15.0 Dimensions 165.77 x 76.08 x 7.68mm Weight 186 g SIM Nano-SIM + Nano-SIM Colors Nebula Red, Starry Purple Frequency 2G Band SIM1: GSM 850 / 900 / 1800 / 1900 SIM2: GSM 850 / 900 / 1800 / 1900 3G Band HSDPA 850 / 900 / 1900 / 2100 4G Band LTE band 1(2100), 3(1800), 4(1700/2100), 5(850), 8(900), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500) Processor CPU 2.1 Ghz Octa Core Chipset Qualcomm SM-6115 Snapdragon 6s 4G Gen1 (11 nm) GPU Adreno 610 Display Technology IPS LCD Capacitive Touchscreen Size 6.67 Inches Resolution 720 x 1604 Pixels (~264 PPI) Extra Features 90Hz Memory Built-in 64GB Built-in, 4GB RAM, UFS 2.1 Card microSD Card, (supports up to 256GB) Camera Main Dual Camera: 8 MP + AI, LED Flash Features panorama, HDR, Video (1080p@30fps) Front 5 MP f/2.2 Connectivity WLAN Wi-Fi 802.11 a/b/g/n/ac, dual-band Bluetooth v5.1 with A2DP, LE, apt-X GPS Yes + A-GPS support & Glonass, BDS, GALILEO, QZSS Radio FM Radio (Unspecified) USB USB Type-C 2.0, OTG NFC Yes Data 2G GSM, 3G HSPA, 4G LTE Features Sensors Accelerometer, Compass, FingerPrint, Gravity, Proximity Audio 3.5mm Audio Jack, Speaker Phone Browser HTML5 MessagingSMS(threaded view), MMS, Email, Push Mail, IM GamesBuilt-in + Downloadable Torch Yes Extra NFC, (market/region dependent), IP65 dust tight and water resistant Battery Capacity 5100 mAh - Fast charging 45W",
-      "rouge_p": 0.1064,
-      "rouge_r": 0.0394,
-      "rouge_f": 0.0575
+      "generated": "product : samsung galaxy a16 8gb + 256gb 6. 7 \" super amoled display 90hz 5000 mah battery fast charging 25w fingerprint ( side - mounted ) pta approved. brand : no brand. category : smartphones. subcategory : samsung. price : pkr 68999. rating : 5. 0 / 5g this sleek silver smartphone features a modern design with a clean, flat - edge design that feels premium in the rear is dominated by a balanced bezels, while the front is highlighted by a",
+      "reference": "Processor 2.2GHz, 2GHz Weight (g) 200 CPU Speed 2.2GHz, 2GHz CPU Type Octa-Core Size (Main_Display) 169.1mm (6.7\") Resolution (Main Display) 1080 x 2340 (FHD+) Technology (Main Display) Super AMOLED Color Depth (Main Display) 16M Rear Camera - Resolution (Multiple) 50.0 MP + 5.0 MP + 2.0 MP Rear Camera - F Number (Multiple) F1.8 , F2.2 , F2.4 Rear Camera - Auto Focus Yes Rear Camera - OIS No Rear Camera Zoom Digital Zoom up to 10x Front Camera - Resolution 13.0 MP Front Camera - F Number F2.0 Front Camera - Auto Focus No Front Camera - OIS No Rear Camera - Flash Yes Front Camera - Flash No Video Recording Resolution FHD (1920 x 1080) @30fps Slow Motion 120fps @HD Ram 8GB Storage 256GB External Storage Support MicroSD (Up to 1.5TB) Number of SIM Dual-SIM SIM size Nano-SIM (4FF) SIM Slot Type SIM 1 + Hybrid (SIM or MicroSD) Infra 2G GSM, 3G WCDMA, 4G LTE FDD, 4G LTE TDD 2G GSM GSM850, GSM900, DCS1800, PCS1900 3G UMTS B1(2100), B5(850), B8(900) 4G FDD LTE B1(2100), B3(1800), B5(850), B7(2600), B8(900), B20(800), B28(700) 4G TDD LTE B38(2600), B40(2300), B41(2500) USB Interface USB Type-C USB Version USB 2.0 Location Technology GPS, Glonass, Beidou, Galileo, QZSS Earjack USB Type-C MHL No Wi-Fi 802.11a/b/g/n/ac 2.4GHz+5GHz, VHT80 Wi-Fi Direct Yes Bluetooth Version Bluetooth v5.3 NFC Yes PC Sync. Smart Switch (PC version) OS Android Accelerometer, Fingerprint Sensor, Geomagnetic Sensor, Light Sensor, Virtual Proximity Sensing Battery Capacity (mAh, Typical) 5000",
+      "rouge_p": 0.1286,
+      "rouge_r": 0.033,
+      "rouge_f": 0.0525
+    },
+    {
+      "item_id": "587938971",
+      "category": "smartphones",
+      "generated": "product : redmi 13 - 8gb ram 128gb rom real camera 108mp + 2mp pta approved 1year official brand warranty. brand : xiaomi. category : smartphones. subcategory : xiaomi. price : pkr 419809 this stunning white smartphone features a modern, flat - edge design with a sophisticated textured finish that feels premium in the hand - crafted from scratch, while the rear is complemented by a bold redmi branding and a clean, dual - camera module housing with a slim bezel - hole punch - hole at the bottom, the front is dominated by a powerful 8 - inch display and a",
+      "reference": "Display: 6.79\" FHD+ Display Resolution: 2460x1080, 396 ppiCertified eye-care Display Processor: MediaTek Helio G91-Ultra Refresh Rate: Up to 90Hz Brightness: 450 nits (typ) 550 nits HBM CPU: Cortex-A55+Cortex-A75 GPU: Mali-G52 MC2 Rear Camera: 108MP Super Clear Main camera Film Camera | Custom Frame | 108MP Mode | HDR Mode | Night Mode | Portrait Mode | Time Lapse Front Camera: 13MP Front camera Film Camera | HDR Mode | Soft Light Ring | Portrait Mode | Time Lapse Battery & Charging: 5030mAh (typ) - Supports 33W fast charging | USB Type-C36 Months Like New Software Experience | IP53 Dust and splash resistance Security: Side fingerprint scanner - AI face unlock Connectivity: SIM1 + Hybrid* (SIM or MicroSD) Wi-Fi: 2.4GHz | 5GHz Bluetooth: 5.4 Supports FM Radio with Headphone Jack Operating System: Xiaomi Hyper OS Sensors: Virtual Proximity Sensor | Ambient Light Sensor | Accelerometer | Electronic Compass Audio: 3.5mm headphone jack Navigation & Positioning: GPS | Glonass | Galileo | Beidou",
+      "rouge_p": 0.0562,
+      "rouge_r": 0.0336,
+      "rouge_f": 0.042
+    },
+    {
+      "item_id": "920208155",
+      "category": "smartphones",
+      "generated": "product : tecno spark 40 6gb ram 128 gb rom 5200 mah battery 50 mp + ai back camera 1 year tecno pk warranty. brand : no brand. category : smartphones. subcategory : tecno. price : pkr 41499. rating : 5. 0 / 5g this sleek white smartphone features a modern design that feels premium in the hand - crafted from scratch, while the rear is dominated by a balanced bezels and a balanced rear camera setup with a",
+      "reference": "General FeaturesRelease Date11 Sept 2025SIM SupportDual Sim, Dual Standby (Nano-SIM)Phone Dimensions165.6 x 77 x 7.7 mmPhone Weight192 gOperating SystemAndroid 15DisplayScreen Size6.6 inchesScreen Resolution720 x 1612 PixelsScreen TypeIPS LCD ScreenScreen ProtectionN/AMemoryInternal Memory128 GBRAM6 GBCard SlotmicroSDXCPerformanceProcessorMediatek Helio G81GPUN/ABatteryType5200 mAhCameraFront Camera8 MPFront Flash LightYesFront Video RecordingYesBack Flash LightYesBack Camera50 MP + AIBack Video RecordingYesConnectivityBluetoothYes3GYes4G/LTEYes5GNoRadioNoWiFiYesNFCN/A",
+      "rouge_p": 0.0286,
+      "rouge_r": 0.0339,
+      "rouge_f": 0.031
     }
   ],
   "hard_cases": [
     {
-      "item_id": "751347263",
-      "category": "smartphones",
-      "generated": "product : realme c75x | 6gb ram + 128gb rom. brand : realme. category : smartphones. subcategory : realme. price : pkr 41999. rating : 5. 0 / 5 features a stunning light - pink smartphone with a modern flat - edge design that feels premium in your hand, the rear is highlighted by a bold, curved - edge display with the iconic realme branding at the bottom, complemented by slim bezels and a discreet punch - hole camera for an immersive viewing experience",
-      "reference": "120Hz HD+ Display 5MP Front Camera 50MP Rear Camera IP69 water & dust Resistance Powerful Helio G81 Ultra Chipset Processor 5600mAh Massive Battery | 45W Fast charging Color: Coral Pink & Oceanic Blue",
-      "rouge_p": 0.0282,
-      "rouge_r": 0.0667,
-      "rouge_f": 0.0396
-    },
-    {
       "item_id": "565722770",
       "category": "tablets",
-      "generated": "product : s390 sail air | 256 gb storage | 8 gb ram | 7 ″ ips display | with hd video recording | 5000 mah battery. brand : no brand. category : tablets. subcategory : other. price : pkr 19000. rating : 5. 0 / 5 features a vibrant purple silicone finish and a slim profile that fits perfectly in your hand, making it an ideal companion for your child ' s / child - friendly play experience, this portable tablet is designed with a vibrant screen and a sturdy, durable handle to hold on the go, it comes equipped with a built - in",
+      "generated": "product : s390 sail air | 256 gb storage | 8 gb ram | 7 ″ ips display | with hd video recording | 5000 mah battery. brand : no brand. category : tablets. subcategory : other. price : pkr 19000. rating : 5. 0 / 5 - inch display with built - in - inch screen, this compact portable tablet features a vibrant purple finish and a slim profile that fits perfectly in your hand - sized display, it is perfect for kids and small hands, it comes with a sturdy protective housing for easy installation and easy accessing, providing a secure grip and easy grip, it fits perfectly",
       "reference": "Tablet for kids8gb256gn memory 7 inch displayScreen type: unbreakableModel: SAILAIR S390Time of invention: 2024Operating system: AndroidProcessor frequency: 1.5GHzStorage memory: 8GBHard drive capacity: 256GBScreen size: 7.inchesCamera: 8,000,000 pixelsBluetooth: SupportCommunication function: support phoneNetwork type: 5G Network Dula SimBuilt-in Sensor: intelligent gravity sensorProcessor core: 8 coreBattery life: 5-7 hours",
-      "rouge_p": 0.0337,
+      "rouge_p": 0.0323,
       "rouge_r": 0.0577,
-      "rouge_f": 0.0426
+      "rouge_f": 0.0414
+    },
+    {
+      "item_id": "920899768",
+      "category": "smartphones",
+      "generated": "product : vgo tel new 16 pro 4gb ram 64gb rom 13mp ai back camera 6000 mah battery 1 year vgo - tel pk warranty. brand : no brand. category : smartphones. subcategory : other brand. price : pkr 21999. rating : 5. 0 / 5, this sleek, dark blue smartphone features a modern design with a sophisticated matte finish that feels premium in the hand - crafted from scratch, while the rear is dominated by a slim bezels",
+      "reference": "General FeaturesRelease Date22 Aug 2025SIM SupportDual Nano SIM + TFPhone Dimensions168.7 × 78.1 × 8.79 mmPhone WeightN/AOperating SystemAndroid 15DisplayScreen Size6.745Screen Resolution720 × 1600 pixelsScreen TypeN/AScreen ProtectionN/AMemoryInternal Memory64 GBRAM4 GBCard SlotN/APerformanceProcessorMediatek Helio G50 4 × 2.2GHz Cortex-A53 4 × 1.6GHz Cortex-A53GPUIMG PowerVR GE8320 @ 680MHzBatteryType6000mAh Li-ion PolymerCameraFront Camera5MPFront Flash LightN/AFront Video RecordingYesBack Flash LightN/ABack Camera13MP AI Rear Camera + Auxiliary LensBack Video RecordingYesConnectivityBluetoothYes3GYes4G/LTEYes5GN/ARadioN/AWiFiYesNFCN/A",
+      "rouge_p": 0.0429,
+      "rouge_r": 0.0411,
+      "rouge_f": 0.042
     },
     {
       "item_id": "699005063",
       "category": "womens-fashion",
-      "generated": "product : her ' tesoro summer chic letters bear t - shirt women short sleeve cotton basic t - shirt top. brand : no brand. category : womens - fashion. subcategory : tops & shirts. price : pkr 608. rating : 4. 6 / 5 colors, this chic green shirt features a classic round neckline with a relaxed silhouette and a playful bear graphic printed on the chest, adding a playful touch of a touch of whimsical flair to your wardrobe, while the relaxed silhouette is highlighted by a bold, oversized round - neckline and comfortable half - sleeves, it offers a comfortable fit with a comfortable silhouette that fits comfortably comfortably into your wardrobe",
+      "generated": "product : her ' tesoro summer chic letters bear t - shirt women short sleeve cotton basic t - shirt top. brand : no brand. category : womens - fashion. subcategory : tops & shirts. price : pkr 608. rating : 4. 6 / 5 colors, this chic green t shirt features a classic round neckline with a relaxed silhouette and a playful bear graphic that adds a touch to your wardrobe, adding a playful touch of a touch of style to any wardrobe, it is perfect for a casual look that feels comfortable and comfortable, this piece is crafted from a comfortable cotton fabric with a comfortable, it comes with a lightweight, it paired with a",
       "reference": "Type: Women Fit: Relax Fit Composition & Care: 160 gsm Cotton blend polyester. Premium Stitching Iron inside out. Do not bleach. Do not dry clean.",
-      "rouge_p": 0.0297,
+      "rouge_p": 0.0286,
       "rouge_r": 0.125,
-      "rouge_f": 0.048
+      "rouge_f": 0.0465
     }
   ]
 }

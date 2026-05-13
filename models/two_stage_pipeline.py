@@ -54,6 +54,8 @@ from models.shared.metrics import compute_all_metrics, print_metrics_table, save
 from models.stage2.openrouter_refiner import make_client, score as judge_score
 from models.stage2.gpt2_refiner import load_gpt2, refine as gpt2_refine
 
+# Kept for backward compatibility with other scripts that reference these paths.
+# Inside run(), model-specific paths are used instead.
 RESULTS_FILE = RESULTS_DIR / "two_stage_results.jsonl"
 METRICS_FILE = RESULTS_DIR / "two_stage_metrics.json"
 
@@ -186,8 +188,9 @@ def load_clip_gpt2(checkpoint_path: Path):
             prefix = self.get_visual_prefix(pixel_values)
             prompt_embeds = self.gpt2.transformer.wte(input_ids)
             combined = torch.cat([prefix, prompt_embeds], dim=1)
-            prefix_mask = torch.ones(input_ids.size(0), self.prefix_length)
-            full_attn = torch.cat([prefix_mask, attention_mask], dim=1)
+            prefix_mask = torch.ones(input_ids.size(0), self.prefix_length,
+                                     device=prefix.device)
+            full_attn = torch.cat([prefix_mask, attention_mask.to(prefix.device)], dim=1)
             return self.gpt2.generate(
                 inputs_embeds=combined,
                 attention_mask=full_attn,
@@ -248,6 +251,10 @@ def _find_checkpoint(candidates: list[Path]) -> Path:
 def run(model_name: str, max_samples: int) -> None:
     load_dotenv(PROJECT_ROOT / ".env")
 
+    # Model-specific files so blip and clip_gpt2 runs don't overwrite each other
+    results_file = RESULTS_DIR / f"two_stage_results_{model_name}.jsonl"
+    metrics_file = RESULTS_DIR / f"two_stage_metrics_{model_name}.json"
+
     _CKPTS    = PROJECT_ROOT / "models" / "checkpoints"
     _BLIP_DIR = PROJECT_ROOT / "models" / "blip"
     _CG2_DIR  = PROJECT_ROOT / "models" / "clip_gpt2"
@@ -280,7 +287,7 @@ def run(model_name: str, max_samples: int) -> None:
 
     # ── Data ──────────────────────────────────────────────────────────────────
     records = load_test_records(max_samples)
-    done    = load_done(RESULTS_FILE)
+    done    = load_done(results_file)
     todo    = [r for r in records if r["item_id"] not in done]
 
     print(f"  Already done : {len(done)}")
@@ -293,7 +300,7 @@ def run(model_name: str, max_samples: int) -> None:
     refs:        list[str] = [d["reference"]           for d in done.values()]
 
     t0 = time.time()
-    with open(RESULTS_FILE, "a", encoding="utf-8") as out_f:
+    with open(results_file, "a", encoding="utf-8") as out_f:
         for rec in tqdm(todo, desc="Two-stage inference", unit="item"):
             # ── Stage 1: VLM (image + category only) ──────────────────────────
             desc1 = stage1_fn(rec)
@@ -337,12 +344,12 @@ def run(model_name: str, max_samples: int) -> None:
         results[label2] = compute_all_metrics(stage2_hyps, refs)
 
     print_metrics_table(results)
-    save_metrics({k: v for d in results.values() for k, v in d.items()}, str(METRICS_FILE))
+    save_metrics({k: v for d in results.values() for k, v in d.items()}, str(metrics_file))
 
     # ── LLM judge summary ─────────────────────────────────────────────────────
     all_scores = []
-    if RESULTS_FILE.exists():
-        with open(RESULTS_FILE, encoding="utf-8") as f:
+    if results_file.exists():
+        with open(results_file, encoding="utf-8") as f:
             for line in f:
                 try:
                     e = json.loads(line)
@@ -359,8 +366,8 @@ def run(model_name: str, max_samples: int) -> None:
         print(f"    relevance        : {avg('relevance')}")
         print(f"    overall          : {avg('overall')}")
 
-    print(f"\n  Results : {RESULTS_FILE}")
-    print(f"  Metrics : {METRICS_FILE}")
+    print(f"\n  Results : {results_file}")
+    print(f"  Metrics : {metrics_file}")
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────

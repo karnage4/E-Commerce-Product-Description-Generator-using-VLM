@@ -15,9 +15,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from models.shared.config import METADATA_FILE, IMAGES_DIR, RESULTS_DIR
 
 RESULTS_FILES = {
-    "blip":       RESULTS_DIR / "blip_results.jsonl",
-    "clip_gpt2":  RESULTS_DIR / "clip_gpt2_results.jsonl",
-    "two_stage":  RESULTS_DIR / "two_stage_results.jsonl",
+    "blip":             RESULTS_DIR / "blip_results.jsonl",
+    "clip_gpt2":        RESULTS_DIR / "clip_gpt2_results.jsonl",
+    "two_stage":        RESULTS_DIR / "two_stage_results_blip.jsonl",
+    "two_stage_clip":   RESULTS_DIR / "two_stage_results_clip_gpt2.jsonl",
 }
 
 OUTPUT_JSON = RESULTS_DIR / "qualitative_samples.json"
@@ -200,7 +201,7 @@ def _safe(s: str) -> str:
     return html.escape(s or "").replace("\n", "<br>")
 
 
-def _build_card(rec: dict, meta_rec: dict, idx: int) -> str:
+def _build_card(rec: dict, meta_rec: dict, idx: int, badge: str = "") -> str:
     img_src   = encode_image(meta_rec) if meta_rec else encode_image({})
     category  = html.escape(rec.get("category", "unknown"))
     generated = _safe(_trunc(rec.get("generated", ""), MAX_GEN_CHARS))
@@ -210,9 +211,18 @@ def _build_card(rec: dict, meta_rec: dict, idx: int) -> str:
     f1   = rec.get("rouge_f", 0.0)
     score_line = f"ROUGE-L  precision={prec:.3f}  recall={rec_:.3f}  F1={f1:.3f}"
 
+    badge_html = ""
+    if badge:
+        badge_html = (
+            f'<span style="background:#7b1fa2; color:#fff; font-size:10px; '
+            f'font-weight:bold; padding:2px 8px; border-radius:4px; '
+            f'margin-left:10px; vertical-align:middle;">'
+            f'{html.escape(badge)}</span>'
+        )
+
     return f"""
 <div style="{CARD_STYLE}">
-  <h3 style="color:#00d4ff; margin:0 0 12px 0;">{idx}. {category}</h3>
+  <h3 style="color:#00d4ff; margin:0 0 12px 0;">{idx}. {category}{badge_html}</h3>
   <div style="display:flex; gap:20px; align-items:flex-start;">
     <div style="flex-shrink:0;">
       <img src="{img_src}" style="width:240px; border-radius:8px; border:1px solid #555;" />
@@ -232,35 +242,37 @@ def _build_card(rec: dict, meta_rec: dict, idx: int) -> str:
 </div>"""
 
 
-def _build_section(title: str, color: str, records: list[dict], metadata_index: dict) -> str:
+def _build_section(title: str, color: str, records: list[dict], metadata_index: dict,
+                   badge: str = "") -> str:
     parts = [f'<h3 class="sec" style="color:{color};">{html.escape(title)}</h3>']
     for i, rec in enumerate(records, 1):
         meta_rec = metadata_index.get(rec.get("item_id", ""), {})
-        parts.append(_build_card(rec, meta_rec, i))
+        parts.append(_build_card(rec, meta_rec, i, badge=badge))
     return "\n".join(parts)
 
 
 def build_html(buckets: dict[str, list[dict]], meta_index: dict, model_name: str) -> str:
     sections = [
         ("True Positives — highest ROUGE-L F1 (model got it right)",
-         "#00e676", buckets["true_positives"]),
+         "#00e676", buckets["true_positives"],  ""),
         ("False Positives — lowest ROUGE-L precision (hallucinations / off-topic)",
-         "#ff7043", buckets["false_positives"]),
+         "#ff7043", buckets["false_positives"], ""),
         ("False Negatives — lowest ROUGE-L recall (missed reference content)",
-         "#ffb300", buckets["false_negatives"]),
-        ("Hard Cases — lowest F1, diverse categories",
-         "#ce93d8", buckets["hard_cases"]),
+         "#ffb300", buckets["false_negatives"], ""),
+        ("Hard Cases — lowest F1, diverse categories (model struggles most here)",
+         "#ce93d8", buckets["hard_cases"],      "HARD CASE"),
     ]
     body_parts = []
-    for title, color, records in sections:
-        body_parts.append(_build_section(title, color, records, meta_index))
+    for title, color, records, badge in sections:
+        body_parts.append(_build_section(title, color, records, meta_index, badge=badge))
 
     return HEAD.format(model_name=html.escape(model_name)) + "\n".join(body_parts) + FOOT
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", choices=list(RESULTS_FILES), default="blip")
+    ap.add_argument("--model", choices=list(RESULTS_FILES), default="blip",
+                    help="blip | clip_gpt2 | two_stage (BLIP) | two_stage_clip (CLIP-GPT2)")
     args = ap.parse_args()
 
     results_path = RESULTS_FILES[args.model]

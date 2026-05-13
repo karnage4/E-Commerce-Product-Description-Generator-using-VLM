@@ -80,9 +80,23 @@ WARMUP_STEPS   = 100
 USE_FP16       = True
 
 
-# ── CLIP image transform (224x224, CLIP normalisation) ────────────────────────
+# ── CLIP image transforms ─────────────────────────────────────────────────────
+# Val/test: deterministic — resize, tensor, normalise only.
 CLIP_TRANSFORM = transforms.Compose([
     transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.48145466, 0.4578275,  0.40821073],
+        std= [0.26862954, 0.26130258, 0.27577711],
+    ),
+])
+
+# Train: same as above but with augmentation inserted before ToTensor.
+TRAIN_CLIP_TRANSFORM = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.RandomHorizontalFlip(p=0.5),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05),
+    transforms.RandomRotation(degrees=10),
     transforms.ToTensor(),
     transforms.Normalize(
         mean=[0.48145466, 0.4578275,  0.40821073],
@@ -253,6 +267,7 @@ class DarazCLIPGPT2Dataset(Dataset):
         self.tokenizer     = tokenizer
         self.use_augmented = use_augmented
         self.split         = split
+        self.transform     = TRAIN_CLIP_TRANSFORM if split == "train" else CLIP_TRANSFORM
         self.records: list[dict] = []
 
         # Augmented descriptions only exist for the train split
@@ -300,7 +315,7 @@ class DarazCLIPGPT2Dataset(Dataset):
                     pass
         if image is None:
             image = Image.new("RGB", (224, 224), (255, 255, 255))
-        pixel_values = CLIP_TRANSFORM(image)   # (3, 224, 224)
+        pixel_values = self.transform(image)   # (3, 224, 224) — augmented for train, clean for val/test
 
         # Tokenize metadata prompt (encoder-side, used as visual context prefix)
         prompt_enc = self.tokenizer(
@@ -388,6 +403,7 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
 
     CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
     best_val_loss = float("inf")
+    epoch_history: list[dict] = []
 
     for epoch in range(1, num_epochs + 1):
 
@@ -446,6 +462,9 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
 
         avg_val = val_loss / len(val_loader)
         print(f"  Epoch {epoch}/{num_epochs}: train={avg_train:.4f}  val={avg_val:.4f}")
+        epoch_history.append({"epoch": epoch,
+                               "train_loss": round(avg_train, 6),
+                               "val_loss":   round(avg_val,   6)})
 
         if avg_val < best_val_loss:
             best_val_loss = avg_val
@@ -466,6 +485,11 @@ def train(subset_samples=None, learning_rate=LEARNING_RATE,
     print(f"\n  Training complete. Best val loss: {best_val_loss:.4f}")
     if save_checkpoints:
         print(f"  Checkpoint: {CHECKPOINT_DIR / 'best_model'}")
+        hist_file = RESULTS_DIR / "training_history_clip_gpt2.json"
+        RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+        import json as _json
+        hist_file.write_text(_json.dumps(epoch_history, indent=2), encoding="utf-8")
+        print(f"  History saved : {hist_file}")
     return best_val_loss
 
 

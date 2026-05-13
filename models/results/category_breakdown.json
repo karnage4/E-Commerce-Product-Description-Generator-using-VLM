@@ -1,39 +1,33 @@
 {
   "models": [
     "BLIP",
-    "CLIP-GPT2",
-    "Two-Stage"
+    "CLIP-GPT2"
   ],
   "categories": {
     "consumer-electronics": {
       "n": 27,
-      "BLIP": 12.64,
-      "CLIP-GPT2": 12.08,
-      "Two-Stage": 9.81
+      "BLIP": 13.0,
+      "CLIP-GPT2": 11.97
     },
     "home-appliances": {
       "n": 1,
-      "BLIP": 11.27,
-      "CLIP-GPT2": 9.09,
-      "Two-Stage": 11.83
+      "BLIP": 10.2,
+      "CLIP-GPT2": 8.47
     },
     "smartphones": {
       "n": 34,
-      "BLIP": 8.94,
-      "CLIP-GPT2": 7.2,
-      "Two-Stage": 4.53
+      "BLIP": 9.67,
+      "CLIP-GPT2": 6.89
     },
     "tablets": {
       "n": 38,
-      "BLIP": 13.09,
-      "CLIP-GPT2": 11.28,
-      "Two-Stage": 8.57
+      "BLIP": 12.89,
+      "CLIP-GPT2": 10.81
     },
     "womens-fashion": {
       "n": 35,
-      "BLIP": 14.9,
-      "CLIP-GPT2": 10.64,
-      "Two-Stage": 10.44
+      "BLIP": 15.29,
+      "CLIP-GPT2": 11.76
     }
   }
 }
