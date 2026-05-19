@@ -1,0 +1,578 @@
+% =============================================================================
+%  Milestone 2 -- 5-minute Video Presentation Slides
+%  Vision-Language Models for E-Commerce Product Description Generation
+%  Karam Hussain  *  Hassan Jabbar  *  Shaheer Shahid
+%
+%  18 slides, ~16-17 seconds each.  Each slide includes a "Speaker cue" at the
+%  bottom -- the exact line the assigned speaker should say.
+%
+%  Engine: works with pdflatex, xelatex, or lualatex (ASCII-only diagrams).
+% =============================================================================
+
+\documentclass[10pt, aspectratio=169]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+
+% ---- Theme -----------------------------------------------------------------
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+
+% ---- Code listing style ----------------------------------------------------
+\definecolor{kw}{HTML}{0033B3}
+\definecolor{str}{HTML}{067D17}
+\definecolor{cm}{HTML}{8C8C8C}
+\definecolor{nm}{HTML}{871094}
+\definecolor{bg}{HTML}{F7F7F7}
+
+\lstdefinestyle{pystyle}{
+  language=Python,
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{kw}\bfseries,
+  stringstyle=\color{str},
+  commentstyle=\color{cm}\itshape,
+  identifierstyle=\color{black},
+  numbers=none,
+  showstringspaces=false,
+  breaklines=true,
+  backgroundcolor=\color{bg},
+  frame=single,
+  rulecolor=\color{lightgray},
+  framesep=4pt,
+  xleftmargin=4pt,
+  xrightmargin=4pt,
+  emph={self,torch,nn,transforms,Linear,Embedding,LSTM,CLIPVisionModel,GPT2LMHeadModel,build_metadata_prompt,build_stage1_prompt,ShowAndTellModel,ClipGPT2Model},
+  emphstyle=\color{nm}\bfseries,
+}
+
+\lstset{style=pystyle}
+
+% ---- Macros ----------------------------------------------------------------
+\newcommand{\speakercue}[1]{%
+  \vfill
+  {\footnotesize\itshape\color{gray}Speaker cue --- #1}%
+}
+
+% ---- Title page ------------------------------------------------------------
+\title[Daraz VLM Milestone 2]{Vision-Language Models for E-Commerce\\Product Description Generation}
+\subtitle{Computer Vision --- Milestone 2 (5-minute Presentation)}
+\author[K. Hussain, H. Jabbar, S. Shahid]{Karam Hussain \and Hassan Jabbar \and Shaheer Shahid}
+\institute[]{}
+\date{2026}
+
+\begin{document}
+
+% ============================================================================
+%  KARAM ----- Slides 1 - 7  (0:00 - 1:40)
+% ============================================================================
+\section*{Karam --- Intro \& Baseline Architecture}
+
+% ----- Slide 1 --------------------------------------------------------------
+\begin{frame}
+  \titlepage
+  \begin{center}\small Speaker: \textbf{Karam}\end{center}
+  \speakercue{``Hi, we're Karam, Hassan, and Shaheer. Our project is automated
+  product-description generation for Daraz.pk.''}
+\end{frame}
+
+% ----- Slide 2 --------------------------------------------------------------
+\begin{frame}{Problem \& Dataset (DPD)}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \textbf{Inputs}
+      \begin{itemize}\itemsep2pt
+        \item Product image
+        \item Structured metadata\\(brand, category, price, specs)
+      \end{itemize}
+      \medskip
+      \textbf{Output} --- fluent 3--5 sentence description
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \textbf{DPD Dataset}
+      \begin{itemize}\itemsep2pt
+        \item 1{,}370 unique listings
+        \item 5 categories (smartphones, tablets, consumer-electronics, home-appliances, womens-fashion)
+        \item 80 / 10 / 10 train / val / test splits
+        \item Custom-scraped + cleaned + dedup
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \speakercue{``Sellers add thousands of listings daily and writing each description
+  by hand doesn't scale.''}
+\end{frame}
+
+% ----- Slide 3 --------------------------------------------------------------
+\begin{frame}{6-Phase Data Pipeline}
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \textbf{1. Scrape}    & \textbf{2. Clean}      & \textbf{3. Dedup}    & \textbf{4. Build}    & \textbf{5. Train}      & \textbf{6. Eval}    \\
+    \hline
+    Playwright            & HTML unescape          & Fuzzy title          & 80/10/10             & Colab T4               & Local CPU           \\
+    Slider CAPTCHA        & Quality filters        & + Perceptual         & splits               & 5 epochs               & BLEU                \\
+    AJAX intercept        & ($\geq$20 words,       & image hash           & Images +             & batch 8                & ROUGE-L             \\
+                          & $\leq$5 emojis)        & (Hamming $\leq$8)    & metadata             & FP16                   & METEOR              \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \vspace{0.4cm}
+  \begin{itemize}\itemsep2pt
+    \item \textbf{Output}: 1{,}370 deduplicated records ready for training.
+    \item Orchestrated by \texttt{run.py} --- each phase resumable.
+  \end{itemize}
+  \speakercue{``Six phases coordinated by run.py --- from raw scraping to a
+  reproducible 80/10/10 split.''}
+\end{frame}
+
+% ----- Slide 4 (NEW: model lineup overview) ---------------------------------
+\begin{frame}{Models We Used --- The Lineup}
+  \small
+  \begin{tabular}{p{3.5cm}p{3.0cm}p{6.5cm}}
+    \toprule
+    \textbf{Model} & \textbf{Family} & \textbf{Role in this project} \\
+    \midrule
+    Metadata-only & Heuristic & Sanity floor --- concatenates metadata fields, no learning. \\
+    \addlinespace
+    \textbf{CNN+LSTM} (Show-and-Tell, Vinyals 2015) & From-scratch generative & Generative \emph{floor}. MobileNetV2 image features + LSTM decoder, no pretrained language model. \\
+    \addlinespace
+    \textbf{BLIP} (Salesforce, ICML 2022) & Pretrained VLM & End-to-end transformer (ViT-B/16 + cross-attention decoder), fine-tuned on our data. \\
+    \addlinespace
+    \textbf{CLIP + GPT-2} (OpenAI, 2021) & Hybrid VLM & Frozen CLIP vision encoder fused with a GPT-2 language decoder via a learned 10-token visual prefix. \\
+    \addlinespace
+    Two-Stage Pipeline & Refinement on top & VLM produces image-grounded draft $\rightarrow$ Gemma-4-31B judge $\rightarrow$ GPT-2 refiner. \\
+    \bottomrule
+  \end{tabular}
+  \medskip\\
+  \footnotesize \emph{Karam} explains the baseline. \emph{Hassan} explains BLIP. \emph{Shaheer} explains CLIP+GPT-2 and the two-stage pipeline.
+  \speakercue{``Before we dive in --- here's the model lineup. One generative
+  baseline from scratch, two pretrained vision-language models we fine-tuned,
+  and a two-stage refinement on top.''}
+\end{frame}
+
+% ----- Slide 5 --------------------------------------------------------------
+\begin{frame}[fragile]{Single Source of Truth: \texttt{build\_metadata\_prompt}}
+  \begin{lstlisting}
+# models/shared/config.py
+def build_metadata_prompt(record: dict) -> str:
+    parts = []
+    if record.get("item_name"):   parts.append(f"Product: {record['item_name']}")
+    if record.get("brand"):       parts.append(f"Brand: {record['brand']}")
+    if record.get("category"):    parts.append(f"Category: {record['category']}")
+    if record.get("subcategory"): parts.append(f"Subcategory: {record['subcategory']}")
+    if record.get("price_pkr"):   parts.append(f"Price: PKR {record['price_pkr']:.0f}")
+    if record.get("rating"):      parts.append(f"Rating: {record['rating']:.1f}/5")
+    return ". ".join(parts)
+  \end{lstlisting}
+  \speakercue{``Every model in our project reads metadata through this one
+  function --- that's how the input format stays consistent across BLIP,
+  CLIP+GPT-2, and our baseline.''}
+\end{frame}
+
+% ----- Slide 6 --------------------------------------------------------------
+\begin{frame}{Show-and-Tell --- Our Generative Baseline}
+  \begin{center}
+  \begin{tikzpicture}[
+    every node/.style={font=\footnotesize, draw, rounded corners,
+                       minimum width=8cm, minimum height=0.85cm, align=center},
+    arr/.style={->, thick, >=stealth, shorten >=2pt, shorten <=2pt},
+    node distance=1.1cm,
+  ]
+    \node[fill=blue!10]              (mn)   {Frozen MobileNetV2 (ImageNet)  ---  1280-d image feature};
+    \node[fill=orange!15, below=of mn]  (proj) {Linear $\times$ 2  +  tanh   $\rightarrow$   $h_0,\, c_0$ initial state};
+    \node[fill=green!15, below=of proj] (lstm) {LSTM   (embed 256, hidden 512, 1 layer)};
+    \node[fill=red!10,  below=of lstm]  (seq)  {\texttt{<BOS>  meta  <SEP>  description  <EOS>}};
+    \draw[arr] (mn)   -- (proj);
+    \draw[arr] (proj) -- (lstm);
+    \draw[arr] (lstm) -- (seq);
+  \end{tikzpicture}
+  \end{center}
+  \begin{itemize}\itemsep2pt
+    \item 7.8 M trainable params --- runs locally on CPU, 20 epochs $\approx$ 25 min.
+    \item Trained \emph{from scratch} (no pretrained language model).
+    \item Isolates how much pretrained vision-language knowledge contributes to performance.
+  \end{itemize}
+  \speakercue{``This baseline measures exactly what an image feature alone can teach
+  an LSTM, with no help from pretraining.''}
+\end{frame}
+
+% ----- Slide 7 --------------------------------------------------------------
+\begin{frame}[fragile]{Show-and-Tell --- Core Code}
+  \begin{lstlisting}
+# models/baseline_cnn_lstm/model.py
+class ShowAndTellModel(nn.Module):
+    def __init__(self, vocab_size, pad_id,
+                 feature_dim=1280, embed_dim=256, hidden_dim=512):
+        ...
+        self.img_proj_h = nn.Linear(feature_dim, hidden_dim)   # -> h0
+        self.img_proj_c = nn.Linear(feature_dim, hidden_dim)   # -> c0
+        self.embed = nn.Embedding(vocab_size, embed_dim, padding_idx=pad_id)
+        self.lstm  = nn.LSTM(embed_dim, hidden_dim, batch_first=True)
+        self.out   = nn.Linear(hidden_dim, vocab_size)
+
+    def forward(self, feat, tokens):
+        h0 = torch.tanh(self.img_proj_h(feat)).unsqueeze(0)   # vision -> state
+        c0 = torch.tanh(self.img_proj_c(feat)).unsqueeze(0)
+        emb = self.embed(tokens)
+        out, _ = self.lstm(emb, (h0, c0))                     # condition every step
+        return self.out(out)
+  \end{lstlisting}
+  \speakercue{``Two linear layers convert the image feature into the LSTM's initial
+  state. Hassan will explain how we trained this and how BLIP fixes its obvious weakness.''}
+\end{frame}
+
+% ============================================================================
+%  HASSAN ----- Slides 8 - 13  (1:40 - 3:20)
+% ============================================================================
+\section*{Hassan --- Baseline Training \& BLIP Improvements}
+
+% ----- Slide 8 --------------------------------------------------------------
+\begin{frame}[fragile]{Loss Masking + \texttt{<unk>} Skip --- The Training Trick}
+  \begin{lstlisting}
+# models/baseline_cnn_lstm/data_utils.py
+def encode_sample(record, vocab, ...):
+    meta_ids = vocab.encode(tokenize(build_metadata_prompt(record)))
+    desc_ids = vocab.encode(tokenize(record["description"]))
+
+    seq        = [vocab.bos_id] + meta_ids + [vocab.sep_id] + desc_ids + [vocab.eos_id]
+    input_ids  = seq[:-1]
+    target_ids = [-100] * len(input_ids)         # mask the prefix entirely
+
+    sep_pos = 1 + len(meta_ids)
+    for i in range(sep_pos, len(target_ids)):
+        tok = seq[i + 1]
+        # Don't train the model to emit <unk> -- that's giving up.
+        target_ids[i] = -100 if tok == vocab.unk_id else tok
+  \end{lstlisting}
+  \speakercue{``Two label masks: minus-one-hundred on metadata so the model
+  isn't graded on copying it, and minus-one-hundred on unknown tokens so it
+  never learns 'unknown' as a safe answer.''}
+\end{frame}
+
+% ----- Slide 9 --------------------------------------------------------------
+\begin{frame}[fragile]{Show-and-Tell --- Results + Failure Modes}
+  \textbf{Training:} 20 epochs CPU --- val loss $6.68 \rightarrow 4.86$ (ppl $797 \rightarrow 129$).\\
+  \textbf{Test (n=135):} BLEU-1 = 4.65 \quad ROUGE-L = 7.97 \quad METEOR = 5.22
+
+  \medskip
+  \textbf{Sample output} (fashion, fan, battery, most phones produce this verbatim):
+  \begin{lstlisting}[basicstyle=\ttfamily\tiny,language=]
+"brand : pre - wrap ; } * perfect for women and comfortable .
+ * perfect and comfortable for women . * ideal for women
+ * new original packaging warranty is a ..."
+  \end{lstlisting}
+
+  \textbf{Three failure modes}
+  \begin{enumerate}\itemsep2pt
+    \item Mode-collapse to a generic ``perfect for women'' template
+    \item Fake spec-sheet template for phones / tablets (hallucinated GHz, RAM)
+    \item HTML tags leaked from raw seller copy (\texttt{pre-wrap;\}}\,)
+  \end{enumerate}
+  \textbf{Conclusion:} no real image grounding $\rightarrow$ justifies VLM pretraining.
+  \speakercue{``The image isn't really conditioning the output. That's our floor.''}
+\end{frame}
+
+% ----- Slide 10 -------------------------------------------------------------
+\begin{frame}{BLIP --- Improved Model \#1}
+  \footnotesize\textbf{BLIP} (Bootstrapping Language--Image Pre-training, Salesforce, ICML 2022) is a unified
+  vision--language transformer pretrained on 129 M image--text pairs. We use the
+  captioning checkpoint \texttt{Salesforce/blip-image-captioning-base} and fine-tune
+  it end-to-end on our 1{,}100-sample Daraz training set.
+
+  \medskip
+  \begin{center}
+  \begin{tikzpicture}[
+    every node/.style={font=\footnotesize, draw, rounded corners, align=center,
+                       minimum width=3.6cm, minimum height=1.3cm},
+    arr/.style={->, thick, >=stealth, shorten >=3pt, shorten <=3pt},
+    node distance=1.0cm,
+  ]
+    \node[fill=blue!10]            (vit) {ViT-B/16\\image encoder};
+    \node[fill=orange!15, right=of vit] (dec) {Cross-attention decoder\\(BLIP MED, 12 layers)};
+    \node[fill=green!15, right=of dec]  (gen) {Generated\\description};
+    \draw[arr] (vit) -- (dec);
+    \draw[arr] (dec) -- (gen);
+  \end{tikzpicture}
+  \end{center}
+
+  \textbf{Two important code-level fixes:}
+  \begin{itemize}\itemsep2pt
+    \item \textbf{Loss masking} --- only description tokens contribute to loss.
+    \item \textbf{Image augmentation} --- flip + colour jitter + rotation, train split only.
+  \end{itemize}
+  \speakercue{``BLIP is one of the two models that breaks through our floor.''}
+\end{frame}
+
+% ----- Slide 11 -------------------------------------------------------------
+\begin{frame}[fragile]{BLIP --- Loss-Masking Code}
+  \begin{lstlisting}
+# models/blip/train_colab.py
+combined_text = f"{metadata}. {description}"
+
+encoding = self.processor(images=image, text=combined_text,
+                          padding="max_length", truncation=True,
+                          max_length=MAX_SEQ_LENGTH, return_tensors="pt")
+
+input_ids = encoding["input_ids"].squeeze(0)
+
+# Find where metadata ends so we mask the prefix
+prefix_ids = self.processor.tokenizer(f"{metadata}. ", add_special_tokens=False)["input_ids"]
+prefix_len = min(1 + len(prefix_ids), MAX_SEQ_LENGTH)    # +1 for [CLS]
+
+labels = input_ids.clone()
+labels[:prefix_len]                                     = -100   # mask metadata
+labels[labels == self.processor.tokenizer.pad_token_id] = -100   # mask padding
+  \end{lstlisting}
+  \speakercue{``Before this fix BLIP was learning to echo metadata. Setting
+  those labels to minus-100 forces it to grade itself only on the description.''}
+\end{frame}
+
+% ----- Slide 12 -------------------------------------------------------------
+\begin{frame}[fragile]{BLIP --- Image Augmentation (Train Split Only)}
+  \begin{lstlisting}
+# models/blip/train_colab.py
+TRAIN_AUGMENT = transforms.Compose([
+    transforms.RandomHorizontalFlip(p=0.5),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2,
+                           saturation=0.2, hue=0.05),
+    transforms.RandomRotation(degrees=10),
+])
+
+# Applied at the PIL level -- BEFORE the BlipProcessor, so the model still
+# sees the processor's own resize + normalize on top.
+if split == "train":
+    image = TRAIN_AUGMENT(image)
+  \end{lstlisting}
+  \begin{itemize}\itemsep2pt
+    \item \textbf{Flip} --- captures left-vs-right product photos
+    \item \textbf{Jitter} --- simulates seller-lighting variation
+    \item \textbf{Rotation} --- handles tilted product placements
+  \end{itemize}
+  \speakercue{``Applied only on the training split --- never on val / test ---
+  so our metric estimates stay unbiased.''}
+\end{frame}
+
+% ----- Slide 13 -------------------------------------------------------------
+\begin{frame}{From BLIP to CLIP+GPT-2}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{BLIP}
+      \begin{itemize}\itemsep2pt
+        \item Single end-to-end VLM
+        \item Cross-attention decoder
+        \item Strong \textbf{recall} (ROUGE-L 12.70)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{CLIP + GPT-2 (hybrid)}
+      \begin{itemize}\itemsep2pt
+        \item Frozen CLIP vision encoder
+        \item GPT-2 language decoder
+        \item Strong \textbf{precision} (BLEU-1 12.09)
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \medskip
+  Both built from \texttt{models/shared/dataset.py} + \texttt{build\_metadata\_prompt}
+  so the input pipeline is identical.
+  \speakercue{``That's our first improved model. Shaheer will walk through the
+  second, the CLIP+GPT-2 hybrid, and the two-stage pipeline.''}
+\end{frame}
+
+% ============================================================================
+%  SHAHEER ----- Slides 14 - 18  (3:20 - 5:00)
+% ============================================================================
+\section*{Shaheer --- CLIP+GPT-2, Two-Stage, Results}
+
+% ----- Slide 14 -------------------------------------------------------------
+\begin{frame}{CLIP + GPT-2 --- Architecture}
+  \footnotesize\textbf{CLIP} (Contrastive Language--Image Pre-training, OpenAI 2021) is a 400 M-pair
+  contrastively-trained image encoder; \textbf{GPT-2} (OpenAI 2019) is a 117 M-parameter
+  autoregressive language model. We fuse them through a learned visual-prefix
+  projection --- a parameter-efficient way to condition a frozen language model on
+  an image.
+
+  \medskip
+  \begin{center}
+  \begin{tikzpicture}[
+    every node/.style={font=\footnotesize, draw, rounded corners, align=center,
+                       minimum width=9cm, minimum height=0.85cm},
+    arr/.style={->, thick, >=stealth, shorten >=2pt, shorten <=2pt},
+    node distance=0.95cm,
+  ]
+    \node[fill=blue!10]              (clip) {CLIP ViT-B/32  (frozen until epoch 3)  $\rightarrow$  CLS embedding (768-d)};
+    \node[fill=orange!15, below=of clip] (proj) {Linear$(768 \to 10 \times 768)$  +  Tanh  $\rightarrow$  visual prefix};
+    \node[fill=red!10,   below=of proj]  (seq)  {[10 visual tokens]  +  [metadata tokens]};
+    \node[fill=green!15, below=of seq]   (gpt2) {GPT-2 (117 M, fully trainable)};
+    \draw[arr] (clip) -- (proj);
+    \draw[arr] (proj) -- (seq);
+    \draw[arr] (seq)  -- (gpt2);
+  \end{tikzpicture}
+  \end{center}
+  \speakercue{``A frozen CLIP encoder produces one CLS embedding --- we project
+  that into ten GPT-2-shaped tokens.''}
+\end{frame}
+
+% ----- Slide 15 -------------------------------------------------------------
+\begin{frame}[fragile]{CLIP + GPT-2 --- Visual Prefix Code}
+  \begin{lstlisting}
+# models/clip_gpt2/model.py
+class ClipGPT2Model(nn.Module):
+    def __init__(self, ..., prefix_length=10):
+        self.clip = CLIPVisionModel.from_pretrained("openai/clip-vit-base-patch32")
+        self.gpt2 = GPT2LMHeadModel.from_pretrained("gpt2")
+        self.visual_projection = nn.Sequential(
+            nn.Linear(self.clip_embed_dim, self.gpt2_embed_dim * prefix_length),
+            nn.Tanh(),
+        )
+
+    def get_visual_prefix(self, pixel_values):
+        cls_embedding = self.clip(pixel_values=pixel_values).pooler_output
+        prefix_flat   = self.visual_projection(cls_embedding)
+        return prefix_flat.view(-1, self.prefix_length, self.gpt2_embed_dim)
+
+    def forward(self, pixel_values, input_ids, attention_mask, labels):
+        visual_prefix = self.get_visual_prefix(pixel_values)
+        prompt_embeds = self.gpt2.transformer.wte(input_ids)
+        combined      = torch.cat([visual_prefix, prompt_embeds, ...], dim=1)
+        # ... GPT-2 forward with masked labels
+  \end{lstlisting}
+  \speakercue{``One linear layer maps the CLIP CLS embedding into ten visual
+  tokens that we prepend to the prompt --- the language model sees them as
+  if they were words.''}
+\end{frame}
+
+% ----- Slide 16 -------------------------------------------------------------
+\begin{frame}{Two-Stage Pipeline}
+  \begin{center}
+  \begin{tikzpicture}[
+    every node/.style={font=\footnotesize, draw, rounded corners, align=center,
+                       minimum width=11cm, minimum height=0.9cm},
+    arr/.style={->, thick, >=stealth, shorten >=2pt, shorten <=2pt},
+    node distance=1.0cm,
+  ]
+    \node[fill=blue!10]                 (s1)    {\textbf{Stage 1.}  VLM sees IMAGE + category only  $\rightarrow$  visually-grounded draft};
+    \node[fill=yellow!20, below=of s1]  (judge) {\textbf{Judge.}  Gemma-4-31B scores draft on visual\_grounding, fluency, relevance};
+    \node[fill=green!15, below=of judge] (s2)   {\textbf{Stage 2.}  Fine-tuned GPT-2 reads draft + FULL metadata  $\rightarrow$  final description};
+    \draw[arr] (s1)    -- (judge);
+    \draw[arr] (judge) -- (s2);
+  \end{tikzpicture}
+  \end{center}
+  \begin{itemize}\itemsep2pt
+    \item Per item we save: Stage 1 text, judge scores, Stage 2 text.
+    \item Output: \texttt{two\_stage\_results\_blip.jsonl} / \texttt{two\_stage\_results\_clip\_gpt2.jsonl}.
+  \end{itemize}
+  \speakercue{``Stripping metadata in Stage 1 forces the VLM to actually use
+  the image. The judge gives a quality signal that doesn't depend on n-gram overlap.''}
+\end{frame}
+
+% ----- Slide 17 -------------------------------------------------------------
+\begin{frame}[fragile]{Stage 1 Prompt Builder + Judge Call}
+  \begin{lstlisting}
+# models/shared/config.py
+def build_stage1_prompt(record):
+    """Minimal prompt -- forces the model to ground description in pixels."""
+    parts = []
+    if record.get("category"):    parts.append(f"Category: {record['category']}")
+    if record.get("subcategory"): parts.append(f"Subcategory: {record['subcategory']}")
+    return ". ".join(parts)
+  \end{lstlisting}
+
+  \begin{lstlisting}
+# models/stage2/openrouter_refiner.py
+def score(client, image_path, generated_text):
+    """Gemma-4-31B judges Stage 1 output on three axes (1-5)."""
+    return client.score_multimodal(
+        image=image_path, text=generated_text,
+        rubric=["visual_grounding", "fluency", "relevance"],
+        model="google/gemma-4-31b-it",
+    )
+  \end{lstlisting}
+  \speakercue{``The minimal Stage-1 prompt is what makes the two-stage
+  pipeline genuinely image-grounded.''}
+\end{frame}
+
+% ----- Slide 18 -------------------------------------------------------------
+\begin{frame}{Final Results --- Takeaway}
+  \centering
+  \small
+  \begin{tabular}{lrrrrr}
+    \toprule
+    \textbf{Model} & \textbf{BLEU-1} & \textbf{BLEU-4} & \textbf{ROUGE-L} & \textbf{METEOR} & \textbf{CIDEr} \\
+    \midrule
+    Metadata-only heuristic                      &  1.04 & 0.30 & 13.71 &  8.80 & --   \\
+    CNN+LSTM Show-and-Tell (scratch)             &  4.65 & 0.34 &  7.97 &  5.22 & 0.46 \\
+    CLIP+GPT-2 (fine-tuned)                      & \textbf{12.09} & \textbf{0.92} & 10.28 & 10.53 & 0.97 \\
+    BLIP (fine-tuned)                            &  7.94 & 0.54 & \textbf{12.70} & \textbf{12.02} & \textbf{1.40} \\
+    \midrule
+    Two-Stage: BLIP $\rightarrow$ GPT-2 refiner   & 10.84 & 0.37 &  8.87 &  9.53 & 0.63 \\
+    Two-Stage: CLIP+GPT-2 $\rightarrow$ GPT-2     &  8.57 & 0.20 &  7.15 &  6.65 & 0.19 \\
+    \bottomrule
+  \end{tabular}
+
+  \medskip
+  \begin{block}{Key takeaway}
+  Both pretrained VLMs beat the from-scratch CNN+LSTM on every single metric.\\
+  $\Rightarrow$ Vision-language \textbf{pretraining} is the dominant lever, not architecture.
+  \end{block}
+
+  \textbf{Main limitation:} both VLMs overfit after epoch 1 (only 1{,}100 train samples).\\
+  \textbf{Next step:} scale dataset to 10K+ products.
+
+  \speakercue{``Thanks for watching.''}
+\end{frame}
+
+% ============================================================================
+%  APPENDIX --- Dataset EDA + Attention Maps
+% ============================================================================
+
+% ----- Appendix A: Dataset Overview -----------------------------------------
+\begin{frame}{Appendix: Dataset Overview (EDA)}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \includegraphics[width=\linewidth]{models/results/eda/category_distribution.png}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \includegraphics[width=\linewidth]{models/results/eda/split_sizes.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ----- Appendix B: Description Length Distribution --------------------------
+\begin{frame}{Appendix: Description Length by Category}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \includegraphics[width=\linewidth]{models/results/eda/desc_word_count.png}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \includegraphics[width=\linewidth]{models/results/eda/desc_length_by_category.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ----- Appendix C: Attention Maps -------------------------------------------
+\begin{frame}{Appendix: BLIP Vision Encoder Attention Rollout}
+  \begin{columns}[T]
+    \begin{column}{0.33\textwidth}
+      \includegraphics[width=\linewidth]{models/results/attention_maps/470823582_attention.png}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \includegraphics[width=\linewidth]{models/results/attention_maps/459890016_attention.png}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \includegraphics[width=\linewidth]{models/results/attention_maps/946682182_attention.png}
+    \end{column}
+  \end{columns}
+  \vspace{4pt}
+  {\footnotesize Attention rollout through all ViT-B/16 layers — warm areas = regions BLIP weights most when generating the description.}
+\end{frame}
+
+\end{document}
