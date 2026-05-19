@@ -1,0 +1,68 @@
+{
+  "model": "blip",
+  "results": [
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 6.75,
+      "time_s": 44.8
+    },
+    {
+      "config": {
+        "num_beams": 2,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 5.85,
+      "time_s": 34.0
+    },
+    {
+      "config": {
+        "num_beams": 6,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 6.36,
+      "time_s": 42.2
+    },
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 2,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 6.63,
+      "time_s": 37.0
+    },
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 4,
+        "max_new_tokens": 150
+      },
+      "rouge_l": 6.0,
+      "time_s": 46.9
+    },
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 100
+      },
+      "rouge_l": 6.75,
+      "time_s": 56.7
+    },
+    {
+      "config": {
+        "num_beams": 4,
+        "no_repeat_ngram_size": 3,
+        "max_new_tokens": 200
+      },
+      "rouge_l": 6.75,
+      "time_s": 56.2
+    }
+  ]
+}

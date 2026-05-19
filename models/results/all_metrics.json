@@ -1,0 +1,16 @@
+{
+  "CLIP-GPT2 Fine-tuned": {
+    "BLEU-1": 12.09,
+    "BLEU-4": 0.92,
+    "ROUGE-L": 10.28,
+    "METEOR": 10.53,
+    "CIDEr": 0.0
+  },
+  "BLIP Fine-tuned": {
+    "BLEU-1": 7.94,
+    "BLEU-4": 0.54,
+    "ROUGE-L": 12.7,
+    "METEOR": 12.02,
+    "CIDEr": 0.0
+  }
+}

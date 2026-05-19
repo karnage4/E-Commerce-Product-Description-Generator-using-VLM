@@ -1,0 +1,33 @@
+{
+  "models": [
+    "BLIP",
+    "CLIP-GPT2"
+  ],
+  "categories": {
+    "consumer-electronics": {
+      "n": 27,
+      "BLIP": 13.0,
+      "CLIP-GPT2": 11.97
+    },
+    "home-appliances": {
+      "n": 1,
+      "BLIP": 10.2,
+      "CLIP-GPT2": 8.47
+    },
+    "smartphones": {
+      "n": 34,
+      "BLIP": 9.67,
+      "CLIP-GPT2": 6.89
+    },
+    "tablets": {
+      "n": 38,
+      "BLIP": 12.89,
+      "CLIP-GPT2": 10.81
+    },
+    "womens-fashion": {
+      "n": 35,
+      "BLIP": 15.29,
+      "CLIP-GPT2": 11.76
+    }
+  }
+}
