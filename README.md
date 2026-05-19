@@ -12,6 +12,7 @@ End-to-end pipeline to automatically generate product descriptions from product 
 ### Models Implemented
 | Model | Type | Stage |
 |---|---|---|
+| **CNN + LSTM** (MobileNetV2 + Show-and-Tell) | CNN encoder → LSTM decoder | Baseline |
 | **BLIP** (`blip-image-captioning-base`) | Encoder-Decoder VLM | Stage 1 — visual description |
 | **CLIP + GPT-2** | Vision prefix + Causal LM | Stage 1 — visual description |
 | **Fine-tuned GPT-2** (extracted from CLIP-GPT2) | Causal LM | Stage 2 — metadata refiner |
@@ -24,13 +25,12 @@ End-to-end pipeline to automatically generate product descriptions from product 
 
 ### NLP Metrics (test set, 135 samples)
 
-| Model | BLEU-1 | BLEU-4 | ROUGE-L | METEOR |
-|---|---|---|---|---|
-| BLIP Fine-tuned | 9.23 | 0.56 | **12.41** | 12.33 |
-| CLIP-GPT2 Fine-tuned | **11.63** | **1.08** | 10.23 | 10.53 |
-| Two-Stage (BLIP + GPT-2) | 9.91 | 0.54 | 8.42 | 8.37 |
-
-> CIDEr requires `pycocoevalcap` — skipped in current runs.
+| Model | BLEU-1 | BLEU-4 | ROUGE-L | METEOR | CIDEr |
+|---|---|---|---|---|---|
+| CNN+LSTM (baseline) | 4.65 | 0.34 | 7.97 | 5.22 | 0.46 |
+| BLIP Fine-tuned | 7.94 | 0.54 | **12.70** | **12.02** | **1.40** |
+| CLIP-GPT2 Fine-tuned | **12.09** | **0.92** | 10.28 | 10.53 | 0.97 |
+| Two-Stage (BLIP + GPT-2) | 10.84 | 0.37 | 8.87 | 9.53 | 0.63 |
 
 ### Per-Category ROUGE-L Breakdown
 
@@ -77,6 +77,9 @@ Best config: `num_beams=6, no_repeat_ngram_size=3, max_new_tokens=150` (ROUGE-L:
 ---
 
 ## Improvements Made
+
+### 0. CNN+LSTM Show-and-Tell Baseline (`models/baseline_cnn_lstm/`)
+Implemented a classic **Show-and-Tell** architecture as a lower-bound baseline: MobileNetV2 CNN encodes the image into a feature vector → dual linear projections initialise the LSTM hidden and cell state → LSTM decodes the description token-by-token. Trained for 20 epochs on CPU. Loss masking applied to metadata prefix tokens (set to `-100`) so only description tokens contribute to loss. Results establish a clear floor: BLEU-1 4.65 / ROUGE-L 7.97 / CIDEr 0.46, demonstrating the gap that large-scale vision-language pretraining (BLIP, CLIP-GPT2) closes.
 
 ### 1. Gemma 4 Description Augmentation (`models/augment/augment_descriptions.py`)
 Raw Daraz descriptions echo metadata rather than describe visual features. We rewrote all ~1,100 training descriptions using **Gemma 4 31B** (multimodal, via OpenRouter), with category-specific visual feature prompts:
@@ -126,8 +129,9 @@ Phase 1: Web Scraping        scraper/daraz_scraper.py
 Phase 2: Data Cleaning       pipeline/cleaner.py
 Phase 3: Deduplication       dedup/deduplicator.py
 Phase 4: Dataset Building    organizer/dataset_builder.py
-Phase 5: Description Augment models/augment/augment_descriptions.py  ← NEW
-Phase 6: Model Fine-tuning   models/blip/, models/clip_gpt2/
+Phase 5: Description Augment models/augment/augment_descriptions.py
+Phase 6a: CNN+LSTM Baseline  models/baseline_cnn_lstm/train.py + evaluate.py
+Phase 6b: VLM Fine-tuning    models/blip/, models/clip_gpt2/
 Phase 7: Two-Stage Inference models/two_stage_pipeline.py
 Phase 8: Evaluation          models/eval/
 ```
@@ -183,7 +187,13 @@ python -m models.augment.augment_descriptions
 ```
 Resumable. Output: `data/data/processed/metadata/listings_augmented.jsonl`
 
-### Step 2 — Train (auto LR sweep → full training)
+### Step 1b — Train CNN+LSTM baseline (CPU, ~10 min)
+```powershell
+python -m models.baseline_cnn_lstm.train
+python -m models.baseline_cnn_lstm.evaluate
+```
+
+### Step 2 — Train VLMs (auto LR sweep → full training)
 ```powershell
 python -m models.blip.train_colab --auto-sweep --augmented      # ~90 min
 python -m models.clip_gpt2.train_colab --auto-sweep --augmented # ~60 min

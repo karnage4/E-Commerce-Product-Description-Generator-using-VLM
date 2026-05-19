@@ -19,10 +19,13 @@ from models.shared.config import RESULTS_DIR
 
 # Map result file names → display names (order matters for table rows)
 RESULT_FILES = {
+    "CNN+LSTM (Show-and-Tell baseline)": "baseline_cnn_lstm_metrics.json",
     "Metadata-Only (Baseline 1)":        "metadata_baseline_metrics.json",
     "Gemini-1.5-Flash (zero-shot API)":  "gemini_metrics.json",
     "CLIP-GPT2 Fine-tuned":              "clip_gpt2_metrics.json",
     "BLIP Fine-tuned":                   "blip_metrics.json",
+    "Two-Stage BLIP+GPT-2":              "two_stage_metrics_blip.json",
+    "Two-Stage CLIP+GPT-2":              "two_stage_metrics_clip_gpt2.json",
 }
 
 
