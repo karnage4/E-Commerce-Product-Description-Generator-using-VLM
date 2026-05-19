@@ -3,5 +3,5 @@
   "BLEU-4": 0.37,
   "ROUGE-L": 8.87,
   "METEOR": 9.53,
-  "CIDEr": 0.0
+  "CIDEr": 0.63
 }
