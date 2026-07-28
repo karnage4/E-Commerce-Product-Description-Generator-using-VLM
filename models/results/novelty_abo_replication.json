@@ -1,0 +1,20 @@
+{
+  "ABO (Amazon)": {
+    "n": 40000,
+    "pct_of_reference_recoverable_from_metadata": 23.6,
+    "median_pct": 22.73,
+    "blind_metadata_template_ROUGE_L": 15.4,
+    "reference_visual_density": 15.24,
+    "reference_commercial_density": 3.44,
+    "mean_reference_content_tokens": 47.41
+  },
+  "DPD (Daraz)": {
+    "n": 135,
+    "pct_of_reference_recoverable_from_metadata": 20.32,
+    "median_pct": 16.09,
+    "blind_metadata_template_ROUGE_L": 13.15,
+    "reference_visual_density": 8.75,
+    "reference_commercial_density": 3.79,
+    "mean_reference_content_tokens": 88.84
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "total": 1370,
+  "changed": 318,
+  "mean_words_before": 113.8,
+  "mean_words_after": 113.2,
+  "output": "C:\\Users\\Shaheer\\Documents\\University\\CV\\E-Commerce-Product-Description-Generator-using-VLM\\data\\data\\processed\\metadata\\listings_final_textclean.jsonl"
+}

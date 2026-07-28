@@ -1,0 +1,33 @@
+{
+  "BLIND GPT-2 (no image)": {
+    "BLEU-1": 5.09,
+    "BLEU-4": 0.43,
+    "ROUGE-L": 7.77,
+    "METEOR": 4.74,
+    "CIDEr": 1.0,
+    "Visual Attribute Density": 4.87
+  },
+  "VISION BLIP (image + metadata)": {
+    "BLEU-1": 0.41,
+    "BLEU-4": 0.02,
+    "ROUGE-L": 6.98,
+    "METEOR": 4.13,
+    "CIDEr": 0.71,
+    "Visual Attribute Density": 10.71
+  },
+  "VISION BLIP (BLANK image counterfactual)": {
+    "BLEU-1": 3.59,
+    "BLEU-4": 0.7,
+    "ROUGE-L": 10.42,
+    "METEOR": 7.38,
+    "CIDEr": 0.58,
+    "Visual Attribute Density": 8.83,
+    "VSS": 87.48,
+    "n": 135
+  },
+  "_config": {
+    "n_eval": 135,
+    "counterfactual_n": 135,
+    "train_n": 1100
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "BLEU-1": 5.74,
+  "BLEU-4": 0.59,
+  "ROUGE-L": 7.86,
+  "METEOR": 5.05,
+  "CIDEr": 1.06,
+  "Visual Attribute Density": 4.41,
+  "sec_per_description": 1.642,
+  "n": 135
+}

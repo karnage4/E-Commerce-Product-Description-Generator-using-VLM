@@ -1,0 +1,58 @@
+{
+  "BLIP|full": {
+    "seconds": 578.2,
+    "sec_per_item_3conds": 4.28,
+    "ROUGE-L_real": 12.7,
+    "ROUGE-L_blank": 12.41,
+    "ROUGE-L_mismatch": 11.57,
+    "SelfSim_real_vs_blank": 58.67,
+    "IdenticalRate_blank": 0.0,
+    "SelfSim_real_vs_mismatch": 54.88,
+    "IdenticalRate_mismatch": 0.0,
+    "VSS_blank": 41.33,
+    "VSS_mismatch": 45.12,
+    "DeltaROUGE_real_minus_blank": 0.29
+  },
+  "BLIP|stage1": {
+    "seconds": 539.2,
+    "sec_per_item_3conds": 3.99,
+    "ROUGE-L_real": 7.44,
+    "ROUGE-L_blank": 5.56,
+    "ROUGE-L_mismatch": 5.5,
+    "SelfSim_real_vs_blank": 26.05,
+    "IdenticalRate_blank": 0.0,
+    "SelfSim_real_vs_mismatch": 25.22,
+    "IdenticalRate_mismatch": 0.0,
+    "VSS_blank": 73.95,
+    "VSS_mismatch": 74.78,
+    "DeltaROUGE_real_minus_blank": 1.88
+  },
+  "CLIP-GPT2|full": {
+    "seconds": 526.1,
+    "sec_per_item_3conds": 3.9,
+    "ROUGE-L_real": 10.44,
+    "ROUGE-L_blank": 10.39,
+    "ROUGE-L_mismatch": 10.4,
+    "SelfSim_real_vs_blank": 47.08,
+    "IdenticalRate_blank": 0.0,
+    "SelfSim_real_vs_mismatch": 48.02,
+    "IdenticalRate_mismatch": 0.0,
+    "VSS_blank": 52.92,
+    "VSS_mismatch": 51.98,
+    "DeltaROUGE_real_minus_blank": 0.05
+  },
+  "CLIP-GPT2|stage1": {
+    "seconds": 551.1,
+    "sec_per_item_3conds": 4.08,
+    "ROUGE-L_real": 7.94,
+    "ROUGE-L_blank": 8.11,
+    "ROUGE-L_mismatch": 7.77,
+    "SelfSim_real_vs_blank": 44.67,
+    "IdenticalRate_blank": 0.0,
+    "SelfSim_real_vs_mismatch": 42.16,
+    "IdenticalRate_mismatch": 0.0,
+    "VSS_blank": 55.33,
+    "VSS_mismatch": 57.84,
+    "DeltaROUGE_real_minus_blank": -0.17
+  }
+}

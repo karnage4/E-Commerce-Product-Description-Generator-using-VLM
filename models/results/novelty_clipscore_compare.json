@@ -1,0 +1,43 @@
+{
+  "CLIPScore": {
+    "visual_grounding": {
+      "spearman_rho": 0.517,
+      "p_value": 0.0
+    },
+    "fluency": {
+      "spearman_rho": -0.254,
+      "p_value": 2.5e-05
+    },
+    "relevance": {
+      "spearman_rho": 0.325,
+      "p_value": 0.0
+    },
+    "overall": {
+      "spearman_rho": 0.374,
+      "p_value": 0.0
+    }
+  },
+  "Visual Attribute Density": {
+    "visual_grounding": {
+      "spearman_rho": 0.417,
+      "p_value": 0.0
+    },
+    "fluency": {
+      "spearman_rho": 0.159,
+      "p_value": 0.008766
+    },
+    "relevance": {
+      "spearman_rho": -0.076,
+      "p_value": 0.21531
+    },
+    "overall": {
+      "spearman_rho": 0.19,
+      "p_value": 0.001757
+    }
+  },
+  "_clipscore_vs_vad": {
+    "spearman_rho": 0.082,
+    "p_value": 0.179668
+  },
+  "_n": 270
+}

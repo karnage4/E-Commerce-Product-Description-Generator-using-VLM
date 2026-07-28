@@ -1,0 +1,22 @@
+{
+  "real_image": {
+    "BLEU-1": 0.48,
+    "BLEU-4": 0.03,
+    "ROUGE-L": 9.28,
+    "METEOR": 4.82,
+    "CIDEr": 1.14,
+    "Visual Attribute Density": 7.79,
+    "mean_words": 26.5
+  },
+  "blank_image": {
+    "BLEU-1": 0.65,
+    "BLEU-4": 0.03,
+    "ROUGE-L": 7.65,
+    "METEOR": 4.13,
+    "CIDEr": 0.69,
+    "Visual Attribute Density": 11.38,
+    "mean_words": 30.5
+  },
+  "rougeL_drop_pct": 17.56,
+  "n": 135
+}

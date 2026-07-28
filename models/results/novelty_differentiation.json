@@ -1,0 +1,54 @@
+{
+  "near_dup_threshold": 70,
+  "systems": {
+    "Seller's own listing (incumbent)": {
+      "n": 135,
+      "CompetitorSim": 71.2,
+      "pct_near_duplicate_of_another_listing": 43.7,
+      "SelfSim": 56.3,
+      "VAD": 9.41
+    },
+    "Metadata template": {
+      "n": 135,
+      "CompetitorSim": 46.2,
+      "pct_near_duplicate_of_another_listing": 0.0,
+      "SelfSim": 74.2,
+      "VAD": 4.85
+    },
+    "Blind GPT-2 (no image)": {
+      "n": 135,
+      "CompetitorSim": 45.2,
+      "pct_near_duplicate_of_another_listing": 0.0,
+      "SelfSim": 59.2,
+      "VAD": 4.5
+    },
+    "BLIP (full prompt, prefix stripped)": {
+      "n": 135,
+      "CompetitorSim": 50.2,
+      "pct_near_duplicate_of_another_listing": 0.0,
+      "SelfSim": 71.9,
+      "VAD": 21.04
+    },
+    "BLIP Stage-1 (image-forced)": {
+      "n": 135,
+      "CompetitorSim": 48.8,
+      "pct_near_duplicate_of_another_listing": 0.0,
+      "SelfSim": 71.8,
+      "VAD": 18.14
+    },
+    "Two-Stage (Stage-1 + refiner)": {
+      "n": 135,
+      "CompetitorSim": 52.1,
+      "pct_near_duplicate_of_another_listing": 0.0,
+      "SelfSim": 60.6,
+      "VAD": 9.91
+    },
+    "CLIP-GPT2": {
+      "n": 135,
+      "CompetitorSim": 52.1,
+      "pct_near_duplicate_of_another_listing": 0.0,
+      "SelfSim": 68.7,
+      "VAD": 17.96
+    }
+  }
+}

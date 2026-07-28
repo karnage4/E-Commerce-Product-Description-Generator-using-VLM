@@ -1,0 +1,67 @@
+{
+  "epoch_1": {
+    "BLEU-1": 6.93,
+    "BLEU-4": 0.47,
+    "ROUGE-L": 11.8,
+    "METEOR": 10.91,
+    "CIDEr": 1.2,
+    "Residual ROUGE-L": 7.71,
+    "Visual Residual Recall": 3.74,
+    "Metadata Recall": 100.0,
+    "Echo Rate": 58.8,
+    "VSS": 40.09,
+    "mean_gen_words": 91.5
+  },
+  "epoch_2": {
+    "BLEU-1": 7.34,
+    "BLEU-4": 0.55,
+    "ROUGE-L": 11.64,
+    "METEOR": 11.06,
+    "CIDEr": 0.94,
+    "Residual ROUGE-L": 7.62,
+    "Visual Residual Recall": 3.92,
+    "Metadata Recall": 100.0,
+    "Echo Rate": 56.42,
+    "VSS": 43.88,
+    "mean_gen_words": 95.4
+  },
+  "epoch_3": {
+    "BLEU-1": 7.38,
+    "BLEU-4": 0.53,
+    "ROUGE-L": 11.7,
+    "METEOR": 11.07,
+    "CIDEr": 0.54,
+    "Residual ROUGE-L": 7.79,
+    "Visual Residual Recall": 4.29,
+    "Metadata Recall": 100.0,
+    "Echo Rate": 55.26,
+    "VSS": 43.58,
+    "mean_gen_words": 96.3
+  },
+  "epoch_4": {
+    "BLEU-1": 7.86,
+    "BLEU-4": 0.62,
+    "ROUGE-L": 11.76,
+    "METEOR": 11.13,
+    "CIDEr": 0.34,
+    "Residual ROUGE-L": 8.1,
+    "Visual Residual Recall": 4.66,
+    "Metadata Recall": 100.0,
+    "Echo Rate": 53.21,
+    "VSS": 46.16,
+    "mean_gen_words": 100.5
+  },
+  "epoch_5": {
+    "BLEU-1": 7.76,
+    "BLEU-4": 0.55,
+    "ROUGE-L": 11.79,
+    "METEOR": 11.27,
+    "CIDEr": 0.4,
+    "Residual ROUGE-L": 7.9,
+    "Visual Residual Recall": 4.76,
+    "Metadata Recall": 100.0,
+    "Echo Rate": 54.11,
+    "VSS": 45.52,
+    "mean_gen_words": 99.1
+  }
+}

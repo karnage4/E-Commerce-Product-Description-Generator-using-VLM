@@ -1,0 +1,26 @@
+{
+  "DPD (Daraz) BLIP, prefix-stripped": {
+    "n": 135,
+    "relative_drop_pct": 6.21,
+    "ci95": [
+      -0.62,
+      12.4
+    ]
+  },
+  "ABO 873, prefix-stripped": {
+    "n": 400,
+    "relative_drop_pct": 29.35,
+    "ci95": [
+      26.99,
+      31.79
+    ]
+  },
+  "bootstrap_difference_ABO873_minus_DPD": {
+    "difference_pct_points": 23.14,
+    "ci95": [
+      16.85,
+      29.9
+    ],
+    "p_value": 0.0005
+  }
+}

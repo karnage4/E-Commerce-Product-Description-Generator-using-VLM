@@ -3,6 +3,14 @@ data/raw/
 data/processed/images/
 data/processed/metadata/
 data/processed/splits/
+data/processed/splits_clean/
+
+# ── ABO dataset (downloaded + derived; rebuild with models/novelty/abo_build_subset.py)
+data/abo/
+data/abo_subset/
+
+# ── Stray nested output dir from scripts run with the wrong cwd ───────────────
+data/data/
 
 # ── Model checkpoints (too large, keep locally / on Drive) ────────────────────
 models/checkpoints/

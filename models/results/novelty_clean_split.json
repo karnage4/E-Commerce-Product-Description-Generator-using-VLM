@@ -1,0 +1,23 @@
+{
+  "n_records": 1370,
+  "n_groups": 737,
+  "multi_item_groups": 140,
+  "listings_in_multi_groups": 773,
+  "edges": {
+    "title": 511,
+    "desc": 2220,
+    "image_text": 58
+  },
+  "residual_leaks": 0,
+  "sizes": {
+    "train": 1095,
+    "val": 138,
+    "test": 137
+  },
+  "thresholds": {
+    "title": 82,
+    "desc": 70,
+    "img_hamming": 4,
+    "img_title_min": 60
+  }
+}

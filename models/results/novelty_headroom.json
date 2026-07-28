@@ -1,0 +1,14 @@
+{
+  "daraz": {
+    "incumbent (seller text)": 0.7239,
+    "BLIP (prefix stripped)": 0.7931,
+    "Stage-1 (image-forced)": 0.8037,
+    "two-stage": 0.7542,
+    "_n": 135
+  },
+  "abo": {
+    "incumbent (Amazon bullets)": 0.6659,
+    "ABO-trained BLIP": 0.6378,
+    "_n": 600
+  }
+}

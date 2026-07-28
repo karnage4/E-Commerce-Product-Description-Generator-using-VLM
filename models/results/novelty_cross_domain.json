@@ -1,0 +1,56 @@
+{
+  "Amazon-trained (ABO, 12k)": {
+    "n": 135,
+    "VAD": 7.38,
+    "CompetitorSim": 40.3,
+    "pct_near_duplicate": 0.0,
+    "SelfSim": 68.7,
+    "OOV_vs_daraz_vocab_pct": 6.63,
+    "mean_words": 35.5
+  },
+  "Amazon-trained (ABO, 873)": {
+    "n": 135,
+    "VAD": 5.34,
+    "CompetitorSim": 34.1,
+    "pct_near_duplicate": 0.0,
+    "SelfSim": 65.2,
+    "OOV_vs_daraz_vocab_pct": 7.74,
+    "mean_words": 23.1
+  },
+  "Daraz-trained (yours)": {
+    "n": 135,
+    "VAD": 8.79,
+    "CompetitorSim": 45.7,
+    "pct_near_duplicate": 0.0,
+    "SelfSim": 64.1,
+    "OOV_vs_daraz_vocab_pct": 3.48,
+    "mean_words": 27.6
+  },
+  "YOUR SYSTEM: two-stage (S1+refiner)": {
+    "n": 135,
+    "VAD": 9.91,
+    "CompetitorSim": 52.1,
+    "pct_near_duplicate": 0.0,
+    "SelfSim": 60.6,
+    "OOV_vs_daraz_vocab_pct": 3.87,
+    "mean_words": 67.1
+  },
+  "  its Stage-1 (image-forced)": {
+    "n": 135,
+    "VAD": 18.14,
+    "CompetitorSim": 48.8,
+    "pct_near_duplicate": 0.0,
+    "SelfSim": 71.8,
+    "OOV_vs_daraz_vocab_pct": 7.69,
+    "mean_words": 48.1
+  },
+  "Seller's own listing (incumbent)": {
+    "n": 135,
+    "VAD": 9.41,
+    "CompetitorSim": 71.2,
+    "pct_near_duplicate": 43.7,
+    "SelfSim": 56.3,
+    "OOV_vs_daraz_vocab_pct": 0.0,
+    "mean_words": 54.6
+  }
+}

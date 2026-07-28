@@ -1,0 +1,71 @@
+{
+  "BLIP fine-tuned": {
+    "n": 135,
+    "items_starting_with_prompt_prefix_pct": 100.0,
+    "mean_pct_of_output_that_is_prompt_prefix": 41.9,
+    "mean_words_as_scored": 92.6,
+    "mean_words_after_stripping": 46.8,
+    "as_scored_in_milestone2": {
+      "BLEU-1": 7.94,
+      "BLEU-4": 0.54,
+      "ROUGE-L": 12.7,
+      "METEOR": 12.02,
+      "CIDEr": 1.4
+    },
+    "prompt_prefix_removed": {
+      "BLEU-1": 3.0,
+      "BLEU-4": 0.1,
+      "ROUGE-L": 8.24,
+      "METEOR": 5.99,
+      "CIDEr": 0.7
+    }
+  },
+  "CLIP-GPT2 fine-tuned": {
+    "n": 135,
+    "items_starting_with_prompt_prefix_pct": 0.7,
+    "mean_pct_of_output_that_is_prompt_prefix": 0.0,
+    "mean_words_as_scored": 119.9,
+    "mean_words_after_stripping": 122.7,
+    "as_scored_in_milestone2": {
+      "BLEU-1": 12.09,
+      "BLEU-4": 0.92,
+      "ROUGE-L": 10.28,
+      "METEOR": 10.53,
+      "CIDEr": 0.97
+    },
+    "prompt_prefix_removed": {
+      "BLEU-1": 10.99,
+      "BLEU-4": 0.43,
+      "ROUGE-L": 10.28,
+      "METEOR": 11.45,
+      "CIDEr": 1.14
+    }
+  },
+  "ranking_changes": {
+    "BLEU-1": {
+      "old_winner": "CLIP-GPT2",
+      "new_winner": "CLIP-GPT2",
+      "flipped": false
+    },
+    "BLEU-4": {
+      "old_winner": "CLIP-GPT2",
+      "new_winner": "CLIP-GPT2",
+      "flipped": false
+    },
+    "ROUGE-L": {
+      "old_winner": "BLIP",
+      "new_winner": "CLIP-GPT2",
+      "flipped": true
+    },
+    "METEOR": {
+      "old_winner": "BLIP",
+      "new_winner": "CLIP-GPT2",
+      "flipped": true
+    },
+    "CIDEr": {
+      "old_winner": "BLIP",
+      "new_winner": "CLIP-GPT2",
+      "flipped": true
+    }
+  }
+}

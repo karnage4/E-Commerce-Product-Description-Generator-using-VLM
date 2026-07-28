@@ -1,0 +1,689 @@
+{
+  "hamming_threshold": 8,
+  "n_test": 135,
+  "n_contaminated": 61,
+  "n_clean": 74,
+  "hamming_distribution": {
+    "9-16": 64,
+    "17+": 10,
+    "0 (identical)": 44,
+    "1-4": 10,
+    "5-8": 7
+  },
+  "contaminated_ids": [
+    "122032096",
+    "469323994",
+    "751321687",
+    "924652536",
+    "273874897",
+    "207690005",
+    "935273577",
+    "932538860",
+    "924764315",
+    "631799534",
+    "585315101",
+    "414214979",
+    "459890016",
+    "509099479",
+    "1949114274",
+    "943424816",
+    "677786496",
+    "438009073",
+    "610802362",
+    "459884823",
+    "939336829",
+    "934308104",
+    "527671396",
+    "927391054",
+    "416421451",
+    "780086955",
+    "1948923357",
+    "1947463609",
+    "783005346",
+    "428207560",
+    "1947009614",
+    "947313941",
+    "940806648",
+    "418539561",
+    "368388282",
+    "350628990",
+    "435949909",
+    "1946850341",
+    "472049757",
+    "561239561",
+    "429861803",
+    "351924455",
+    "560075516",
+    "589501425",
+    "467031198",
+    "364037351",
+    "397101094",
+    "627566682",
+    "252197633",
+    "481865405",
+    "225376384",
+    "627543992",
+    "426761884",
+    "375984756",
+    "386147999",
+    "264190305",
+    "435552661",
+    "495415554",
+    "547609340",
+    "461819256",
+    "436386109"
+  ],
+  "neighbours": {
+    "267082988": {
+      "nearest_train_id": "589829671",
+      "hamming": 14
+    },
+    "129093218": {
+      "nearest_train_id": "943061410",
+      "hamming": 10
+    },
+    "438557679": {
+      "nearest_train_id": "351921707",
+      "hamming": 14
+    },
+    "112692496": {
+      "nearest_train_id": "1948786056",
+      "hamming": 12
+    },
+    "509869652": {
+      "nearest_train_id": "576836191",
+      "hamming": 16
+    },
+    "3155603": {
+      "nearest_train_id": "496454203",
+      "hamming": 18
+    },
+    "438722232": {
+      "nearest_train_id": "615543222",
+      "hamming": 18
+    },
+    "930069124": {
+      "nearest_train_id": "515825162",
+      "hamming": 16
+    },
+    "454111481": {
+      "nearest_train_id": "440909965",
+      "hamming": 18
+    },
+    "469947358": {
+      "nearest_train_id": "428905690",
+      "hamming": 12
+    },
+    "267470798": {
+      "nearest_train_id": "464025782",
+      "hamming": 16
+    },
+    "122032096": {
+      "nearest_train_id": "610487893",
+      "hamming": 0
+    },
+    "913618282": {
+      "nearest_train_id": "496454203",
+      "hamming": 18
+    },
+    "488966511": {
+      "nearest_train_id": "943757982",
+      "hamming": 18
+    },
+    "751943951": {
+      "nearest_train_id": "924418773",
+      "hamming": 18
+    },
+    "543289164": {
+      "nearest_train_id": "658741387",
+      "hamming": 18
+    },
+    "208932037": {
+      "nearest_train_id": "452359060",
+      "hamming": 18
+    },
+    "611824795": {
+      "nearest_train_id": "344816836",
+      "hamming": 16
+    },
+    "924755983": {
+      "nearest_train_id": "610487893",
+      "hamming": 20
+    },
+    "275975481": {
+      "nearest_train_id": "943517418",
+      "hamming": 14
+    },
+    "469323994": {
+      "nearest_train_id": "336759952",
+      "hamming": 0
+    },
+    "946013018": {
+      "nearest_train_id": "412047421",
+      "hamming": 16
+    },
+    "646778213": {
+      "nearest_train_id": "610863064",
+      "hamming": 16
+    },
+    "647661233": {
+      "nearest_train_id": "943517418",
+      "hamming": 16
+    },
+    "1949035294": {
+      "nearest_train_id": "564794957",
+      "hamming": 16
+    },
+    "913755834": {
+      "nearest_train_id": "418877934",
+      "hamming": 16
+    },
+    "927615517": {
+      "nearest_train_id": "631847367",
+      "hamming": 14
+    },
+    "470823582": {
+      "nearest_train_id": "501064774",
+      "hamming": 12
+    },
+    "946682182": {
+      "nearest_train_id": "433327714",
+      "hamming": 10
+    },
+    "916102582": {
+      "nearest_train_id": "392366650",
+      "hamming": 14
+    },
+    "916094949": {
+      "nearest_train_id": "946661796",
+      "hamming": 10
+    },
+    "604224782": {
+      "nearest_train_id": "631592222",
+      "hamming": 12
+    },
+    "1949689239": {
+      "nearest_train_id": "1948080692",
+      "hamming": 10
+    },
+    "751321687": {
+      "nearest_train_id": "454366519",
+      "hamming": 4
+    },
+    "777600514": {
+      "nearest_train_id": "392366650",
+      "hamming": 14
+    },
+    "920899768": {
+      "nearest_train_id": "924768099",
+      "hamming": 12
+    },
+    "882156371": {
+      "nearest_train_id": "430103862",
+      "hamming": 14
+    },
+    "756628284": {
+      "nearest_train_id": "496266384",
+      "hamming": 16
+    },
+    "924652536": {
+      "nearest_train_id": "924643822",
+      "hamming": 0
+    },
+    "273874897": {
+      "nearest_train_id": "438053030",
+      "hamming": 2
+    },
+    "634404609": {
+      "nearest_train_id": "829133504",
+      "hamming": 10
+    },
+    "920208155": {
+      "nearest_train_id": "826784459",
+      "hamming": 10
+    },
+    "207690005": {
+      "nearest_train_id": "438053030",
+      "hamming": 0
+    },
+    "935273577": {
+      "nearest_train_id": "948295722",
+      "hamming": 0
+    },
+    "538571318": {
+      "nearest_train_id": "924579597",
+      "hamming": 14
+    },
+    "944319220": {
+      "nearest_train_id": "438426585",
+      "hamming": 10
+    },
+    "932538860": {
+      "nearest_train_id": "826784459",
+      "hamming": 0
+    },
+    "751347263": {
+      "nearest_train_id": "829133504",
+      "hamming": 10
+    },
+    "898635420": {
+      "nearest_train_id": "907247817",
+      "hamming": 14
+    },
+    "659563288": {
+      "nearest_train_id": "369000331",
+      "hamming": 14
+    },
+    "587967588": {
+      "nearest_train_id": "828819230",
+      "hamming": 10
+    },
+    "924764315": {
+      "nearest_train_id": "924768099",
+      "hamming": 0
+    },
+    "657247851": {
+      "nearest_train_id": "794637869",
+      "hamming": 10
+    },
+    "846523421": {
+      "nearest_train_id": "585318938",
+      "hamming": 10
+    },
+    "433242717": {
+      "nearest_train_id": "928949879",
+      "hamming": 16
+    },
+    "631799534": {
+      "nearest_train_id": "824242066",
+      "hamming": 0
+    },
+    "946199129": {
+      "nearest_train_id": "891702028",
+      "hamming": 10
+    },
+    "896987223": {
+      "nearest_train_id": "891702028",
+      "hamming": 10
+    },
+    "585315101": {
+      "nearest_train_id": "924391442",
+      "hamming": 8
+    },
+    "587938971": {
+      "nearest_train_id": "828819230",
+      "hamming": 10
+    },
+    "948261810": {
+      "nearest_train_id": "907225893",
+      "hamming": 12
+    },
+    "414214979": {
+      "nearest_train_id": "941578509",
+      "hamming": 0
+    },
+    "459890016": {
+      "nearest_train_id": "927384195",
+      "hamming": 0
+    },
+    "509099479": {
+      "nearest_train_id": "651684044",
+      "hamming": 8
+    },
+    "1949114274": {
+      "nearest_train_id": "689453870",
+      "hamming": 6
+    },
+    "943424816": {
+      "nearest_train_id": "925275875",
+      "hamming": 0
+    },
+    "677786496": {
+      "nearest_train_id": "689453870",
+      "hamming": 0
+    },
+    "438009073": {
+      "nearest_train_id": "943061410",
+      "hamming": 0
+    },
+    "610802362": {
+      "nearest_train_id": "435957074",
+      "hamming": 8
+    },
+    "881908450": {
+      "nearest_train_id": "933401748",
+      "hamming": 16
+    },
+    "459884823": {
+      "nearest_train_id": "927384195",
+      "hamming": 0
+    },
+    "939336829": {
+      "nearest_train_id": "939363175",
+      "hamming": 0
+    },
+    "934308104": {
+      "nearest_train_id": "495470896",
+      "hamming": 2
+    },
+    "1948988787": {
+      "nearest_train_id": "532264395",
+      "hamming": 10
+    },
+    "527671396": {
+      "nearest_train_id": "924713287",
+      "hamming": 8
+    },
+    "927391054": {
+      "nearest_train_id": "782931981",
+      "hamming": 0
+    },
+    "1948876100": {
+      "nearest_train_id": "438760437",
+      "hamming": 16
+    },
+    "752333874": {
+      "nearest_train_id": "924279526",
+      "hamming": 14
+    },
+    "494730089": {
+      "nearest_train_id": "939354605",
+      "hamming": 14
+    },
+    "416421451": {
+      "nearest_train_id": "383952768",
+      "hamming": 0
+    },
+    "780086955": {
+      "nearest_train_id": "459890133",
+      "hamming": 0
+    },
+    "610876005": {
+      "nearest_train_id": "924279526",
+      "hamming": 14
+    },
+    "1948923357": {
+      "nearest_train_id": "1949112410",
+      "hamming": 2
+    },
+    "1948692443": {
+      "nearest_train_id": "923886945",
+      "hamming": 14
+    },
+    "502562918": {
+      "nearest_train_id": "922447395",
+      "hamming": 14
+    },
+    "565722770": {
+      "nearest_train_id": "392366650",
+      "hamming": 14
+    },
+    "1947463609": {
+      "nearest_train_id": "1947443799",
+      "hamming": 0
+    },
+    "432702596": {
+      "nearest_train_id": "935281606",
+      "hamming": 16
+    },
+    "783005346": {
+      "nearest_train_id": "782931981",
+      "hamming": 0
+    },
+    "428207560": {
+      "nearest_train_id": "924383597",
+      "hamming": 4
+    },
+    "1947009614": {
+      "nearest_train_id": "392424124",
+      "hamming": 4
+    },
+    "947313941": {
+      "nearest_train_id": "1949189544",
+      "hamming": 0
+    },
+    "883754079": {
+      "nearest_train_id": "416406764",
+      "hamming": 16
+    },
+    "940806648": {
+      "nearest_train_id": "938521347",
+      "hamming": 0
+    },
+    "418539561": {
+      "nearest_train_id": "496281911",
+      "hamming": 6
+    },
+    "368388282": {
+      "nearest_train_id": "496281911",
+      "hamming": 6
+    },
+    "350628990": {
+      "nearest_train_id": "433295788",
+      "hamming": 0
+    },
+    "798665149": {
+      "nearest_train_id": "432468811",
+      "hamming": 10
+    },
+    "435949909": {
+      "nearest_train_id": "368384874",
+      "hamming": 0
+    },
+    "1946850341": {
+      "nearest_train_id": "464023911",
+      "hamming": 0
+    },
+    "472049757": {
+      "nearest_train_id": "817461080",
+      "hamming": 2
+    },
+    "561239561": {
+      "nearest_train_id": "567584897",
+      "hamming": 0
+    },
+    "429861803": {
+      "nearest_train_id": "390443619",
+      "hamming": 0
+    },
+    "351924455": {
+      "nearest_train_id": "473213207",
+      "hamming": 0
+    },
+    "601408020": {
+      "nearest_train_id": "173924781",
+      "hamming": 16
+    },
+    "560075516": {
+      "nearest_train_id": "567584897",
+      "hamming": 2
+    },
+    "589501425": {
+      "nearest_train_id": "209962529",
+      "hamming": 0
+    },
+    "467031198": {
+      "nearest_train_id": "422882047",
+      "hamming": 0
+    },
+    "364037351": {
+      "nearest_train_id": "433462858",
+      "hamming": 0
+    },
+    "699005063": {
+      "nearest_train_id": "927388111",
+      "hamming": 14
+    },
+    "397101094": {
+      "nearest_train_id": "397090349",
+      "hamming": 0
+    },
+    "627566682": {
+      "nearest_train_id": "934180119",
+      "hamming": 0
+    },
+    "262881155": {
+      "nearest_train_id": "487825460",
+      "hamming": 18
+    },
+    "252197633": {
+      "nearest_train_id": "240728493",
+      "hamming": 0
+    },
+    "481865405": {
+      "nearest_train_id": "397895709",
+      "hamming": 0
+    },
+    "225376384": {
+      "nearest_train_id": "240728493",
+      "hamming": 0
+    },
+    "627543992": {
+      "nearest_train_id": "934180119",
+      "hamming": 0
+    },
+    "426761884": {
+      "nearest_train_id": "462862353",
+      "hamming": 0
+    },
+    "375984756": {
+      "nearest_train_id": "376003172",
+      "hamming": 0
+    },
+    "897334119": {
+      "nearest_train_id": "208896769",
+      "hamming": 14
+    },
+    "386147999": {
+      "nearest_train_id": "386145671",
+      "hamming": 0
+    },
+    "507187208": {
+      "nearest_train_id": "610854124",
+      "hamming": 14
+    },
+    "264190305": {
+      "nearest_train_id": "240728493",
+      "hamming": 0
+    },
+    "435552661": {
+      "nearest_train_id": "433959588",
+      "hamming": 0
+    },
+    "271799830": {
+      "nearest_train_id": "579589565",
+      "hamming": 14
+    },
+    "509476737": {
+      "nearest_train_id": "392366650",
+      "hamming": 12
+    },
+    "587383757": {
+      "nearest_train_id": "938521347",
+      "hamming": 16
+    },
+    "689626180": {
+      "nearest_train_id": "434352855",
+      "hamming": 10
+    },
+    "574581408": {
+      "nearest_train_id": "433462858",
+      "hamming": 12
+    },
+    "214942485": {
+      "nearest_train_id": "545145900",
+      "hamming": 10
+    },
+    "495415554": {
+      "nearest_train_id": "495415622",
+      "hamming": 0
+    },
+    "547609340": {
+      "nearest_train_id": "604611720",
+      "hamming": 2
+    },
+    "477700272": {
+      "nearest_train_id": "496553576",
+      "hamming": 12
+    },
+    "461819256": {
+      "nearest_train_id": "550936902",
+      "hamming": 2
+    },
+    "436386109": {
+      "nearest_train_id": "433959588",
+      "hamming": 0
+    }
+  },
+  "scores": {
+    "pHash Retrieval (copy nearest train desc)": {
+      "ALL": {
+        "BLEU-1": 30.43,
+        "BLEU-4": 23.76,
+        "ROUGE-L": 26.09,
+        "METEOR": 26.16,
+        "CIDEr": 135.71
+      },
+      "CONTAMINATED": {
+        "BLEU-1": 49.96,
+        "BLEU-4": 43.0,
+        "ROUGE-L": 47.41,
+        "METEOR": 47.39,
+        "CIDEr": 296.16
+      },
+      "CLEAN": {
+        "BLEU-1": 11.0,
+        "BLEU-4": 4.71,
+        "ROUGE-L": 8.51,
+        "METEOR": 8.66,
+        "CIDEr": 3.21
+      }
+    },
+    "BLIP fine-tuned": {
+      "ALL": {
+        "BLEU-1": 7.94,
+        "BLEU-4": 0.54,
+        "ROUGE-L": 12.7,
+        "METEOR": 12.02,
+        "CIDEr": 1.4
+      },
+      "CONTAMINATED": {
+        "BLEU-1": 8.33,
+        "BLEU-4": 0.3,
+        "ROUGE-L": 13.25,
+        "METEOR": 12.52,
+        "CIDEr": 0.72
+      },
+      "CLEAN": {
+        "BLEU-1": 7.51,
+        "BLEU-4": 0.68,
+        "ROUGE-L": 12.26,
+        "METEOR": 11.61,
+        "CIDEr": 1.93
+      }
+    },
+    "CLIP-GPT2 fine-tuned": {
+      "ALL": {
+        "BLEU-1": 12.09,
+        "BLEU-4": 0.92,
+        "ROUGE-L": 10.28,
+        "METEOR": 10.53,
+        "CIDEr": 0.97
+      },
+      "CONTAMINATED": {
+        "BLEU-1": 13.73,
+        "BLEU-4": 0.94,
+        "ROUGE-L": 11.18,
+        "METEOR": 11.35,
+        "CIDEr": 1.1
+      },
+      "CLEAN": {
+        "BLEU-1": 10.18,
+        "BLEU-4": 0.83,
+        "ROUGE-L": 9.54,
+        "METEOR": 9.86,
+        "CIDEr": 0.89
+      }
+    }
+  }
+}

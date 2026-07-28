@@ -1,0 +1,38 @@
+{
+  "Metadata template": {
+    "BLEU-1": 0.0,
+    "BLEU-4": 0.0,
+    "ROUGE-L": 0.0,
+    "METEOR": 0.02,
+    "CIDEr": 0.0,
+    "VAD": 0.0,
+    "n": 74
+  },
+  "BLIP": {
+    "BLEU-1": 2.84,
+    "BLEU-4": 0.12,
+    "ROUGE-L": 7.55,
+    "METEOR": 5.35,
+    "CIDEr": 0.96,
+    "VAD": 21.15,
+    "n": 74
+  },
+  "CLIP-GPT2": {
+    "BLEU-1": 9.37,
+    "BLEU-4": 0.26,
+    "ROUGE-L": 9.54,
+    "METEOR": 10.83,
+    "CIDEr": 1.27,
+    "VAD": 15.93,
+    "n": 74
+  },
+  "BLIP Stage-1": {
+    "BLEU-1": 2.02,
+    "BLEU-4": 0.06,
+    "ROUGE-L": 6.72,
+    "METEOR": 4.37,
+    "CIDEr": 0.59,
+    "VAD": 16.89,
+    "n": 74
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "reference_decomposition": {
+    "n_items": 135,
+    "mean_pct_of_reference_derivable_from_metadata": 20.32,
+    "median_pct": 16.09,
+    "mean_reference_content_tokens": 88.8,
+    "mean_metadata_content_tokens": 24.0
+  },
+  "systems": {
+    "Metadata-Only (template)": {
+      "n": 135,
+      "ROUGE-L": 13.15,
+      "Residual ROUGE-L": 4.81,
+      "Metadata Recall": 100.0,
+      "Visual Residual Recall": 0.0,
+      "Echo Rate": 100.0
+    },
+    "BLIP fine-tuned": {
+      "n": 135,
+      "ROUGE-L": 12.7,
+      "Residual ROUGE-L": 8.52,
+      "Metadata Recall": 100.0,
+      "Visual Residual Recall": 4.37,
+      "Echo Rate": 56.68
+    },
+    "CLIP-GPT2 fine-tuned": {
+      "n": 135,
+      "ROUGE-L": 10.28,
+      "Residual ROUGE-L": 8.75,
+      "Metadata Recall": 54.25,
+      "Visual Residual Recall": 7.79,
+      "Echo Rate": 18.99
+    },
+    "Two-Stage BLIP (stage2)": {
+      "n": 135,
+      "ROUGE-L": 8.87,
+      "Residual ROUGE-L": 7.78,
+      "Metadata Recall": 42.46,
+      "Visual Residual Recall": 7.31,
+      "Echo Rate": 20.59
+    },
+    "Two-Stage BLIP (stage1)": {
+      "n": 135,
+      "ROUGE-L": 7.44,
+      "Residual ROUGE-L": 6.42,
+      "Metadata Recall": 21.75,
+      "Visual Residual Recall": 3.51,
+      "Echo Rate": 28.35
+    },
+    "Two-Stage CLIP-GPT2 (stage2)": {
+      "n": 135,
+      "ROUGE-L": 7.15,
+      "Residual ROUGE-L": 7.2,
+      "Metadata Recall": 14.04,
+      "Visual Residual Recall": 6.24,
+      "Echo Rate": 8.56
+    }
+  }
+}

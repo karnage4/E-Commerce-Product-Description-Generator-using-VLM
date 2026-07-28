@@ -1,0 +1,49 @@
+{
+  "config": {
+    "n_items": 12,
+    "max_new_tokens": 120,
+    "gpu": "NVIDIA GeForce RTX 5060 Ti",
+    "gpu_tdp_watts": 180,
+    "electricity_usd_per_kwh": 0.15
+  },
+  "BLIP [cuda]": {
+    "params_total_M": 224.0,
+    "checkpoint_MB": 896.7,
+    "sec_per_description": 1.352,
+    "peak_vram_GB": 0.6,
+    "descriptions_per_hour": 2662,
+    "gpu_hours_per_1k": 0.376,
+    "kWh_per_1k": 0.068,
+    "electricity_USD_per_1k": 0.0101
+  },
+  "CLIP-GPT2 [cuda]": {
+    "params_total_M": 217.8,
+    "checkpoint_MB": 874.9,
+    "sec_per_description": 1.201,
+    "peak_vram_GB": 0.94,
+    "descriptions_per_hour": 2997,
+    "gpu_hours_per_1k": 0.334,
+    "kWh_per_1k": 0.06,
+    "electricity_USD_per_1k": 0.009
+  },
+  "BLIP [cpu]": {
+    "params_total_M": 224.0,
+    "checkpoint_MB": 896.7,
+    "sec_per_description": 4.166,
+    "peak_vram_GB": null,
+    "descriptions_per_hour": 864,
+    "gpu_hours_per_1k": 1.157,
+    "kWh_per_1k": 0.208,
+    "electricity_USD_per_1k": 0.0312
+  },
+  "CLIP-GPT2 [cpu]": {
+    "params_total_M": 217.8,
+    "checkpoint_MB": 874.9,
+    "sec_per_description": 3.694,
+    "peak_vram_GB": null,
+    "descriptions_per_hour": 974,
+    "gpu_hours_per_1k": 1.026,
+    "kWh_per_1k": 0.185,
+    "electricity_USD_per_1k": 0.0277
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "CLIP-GPT2|full": {
+    "seconds": 423.4,
+    "sec_per_item_3conds": 3.14,
+    "ROUGE-L_real": 10.44,
+    "ROUGE-L_blank": 10.39,
+    "ROUGE-L_mismatch": 10.4,
+    "SelfSim_real_vs_blank": 47.08,
+    "IdenticalRate_blank": 0.0,
+    "SelfSim_real_vs_mismatch": 48.02,
+    "IdenticalRate_mismatch": 0.0,
+    "VSS_blank": 52.92,
+    "VSS_mismatch": 51.98,
+    "DeltaROUGE_real_minus_blank": 0.05
+  },
+  "CLIP-GPT2|stage1": {
+    "seconds": 415.7,
+    "sec_per_item_3conds": 3.08,
+    "ROUGE-L_real": 7.94,
+    "ROUGE-L_blank": 8.11,
+    "ROUGE-L_mismatch": 7.77,
+    "SelfSim_real_vs_blank": 44.67,
+    "IdenticalRate_blank": 0.0,
+    "SelfSim_real_vs_mismatch": 42.16,
+    "IdenticalRate_mismatch": 0.0,
+    "VSS_blank": 55.33,
+    "VSS_mismatch": 57.84,
+    "DeltaROUGE_real_minus_blank": -0.17
+  }
+}

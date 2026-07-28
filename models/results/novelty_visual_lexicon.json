@@ -1,0 +1,65 @@
+{
+  "corpus": {
+    "reference_visual_density": 8.75,
+    "reference_commercial_density": 3.79,
+    "reference_residual_visual_density": 7.01,
+    "reference_residual_commercial_density": 3.6,
+    "metadata_prompt_visual_density": 4.85
+  },
+  "systems": {
+    "Reference (seller-written)": {
+      "VAD": 8.75,
+      "CommercialDensity": 3.79,
+      "n": 135
+    },
+    "Metadata-Only (template)": {
+      "VAD": 4.85,
+      "CommercialDensity": 13.75,
+      "n": 135
+    },
+    "BLIP fine-tuned": {
+      "VAD": 12.63,
+      "CommercialDensity": 8.12,
+      "n": 135
+    },
+    "CLIP-GPT2 fine-tuned": {
+      "VAD": 15.54,
+      "CommercialDensity": 2.76,
+      "n": 135
+    },
+    "BLIP Stage-1 (category-only prompt)": {
+      "VAD": 18.17,
+      "CommercialDensity": 2.41,
+      "n": 135
+    },
+    "CLIP-GPT2 Stage-1 (category-only)": {
+      "VAD": 18.72,
+      "CommercialDensity": 2.76,
+      "n": 135
+    },
+    "Two-Stage BLIP (stage2)": {
+      "VAD": 8.16,
+      "CommercialDensity": 3.62,
+      "n": 135
+    }
+  },
+  "vad_vs_judge": {
+    "visual_grounding": {
+      "spearman_rho": 0.417,
+      "p_value": 0.0
+    },
+    "fluency": {
+      "spearman_rho": 0.159,
+      "p_value": 0.00877
+    },
+    "relevance": {
+      "spearman_rho": -0.076,
+      "p_value": 0.21531
+    },
+    "overall": {
+      "spearman_rho": 0.19,
+      "p_value": 0.00176
+    }
+  },
+  "n": 270
+}

@@ -1,0 +1,621 @@
+{
+  "n_pairs": 61,
+  "same_item": 31,
+  "shared_photo": 30,
+  "hamming0_pairs": 44,
+  "hamming0_same_item": 27,
+  "title_threshold": 75,
+  "desc_threshold": 70,
+  "pairs": [
+    {
+      "test_id": "122032096",
+      "train_id": "610487893",
+      "hamming": 0,
+      "title_sim": 70.1,
+      "desc_sim": 24.9,
+      "verdict": "SHARED PHOTO",
+      "test_title": "2pcs Car Door Logo Projection Light Honda",
+      "train_title": "2pcs Car Door Logo Projection Light Honda | Car Logo  Luxury Glow Door Lights"
+    },
+    {
+      "test_id": "469323994",
+      "train_id": "336759952",
+      "hamming": 0,
+      "title_sim": 57.8,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "180kgs Household Precision Electronic Weighing Scale Adult Healthy Body Digital weight mac",
+      "train_title": "Human Body digital weight machines Weighing Accurate Health Scale Portable Home Intelligen"
+    },
+    {
+      "test_id": "751321687",
+      "train_id": "454366519",
+      "hamming": 4,
+      "title_sim": 67.4,
+      "desc_sim": 75.7,
+      "verdict": "SAME ITEM",
+      "test_title": "realme C75x | 8GB RAM + 128GB ROM (Get Free Gift Mobile Holder)",
+      "train_title": "realme C75 | 8GB RAM + 128GB ROM"
+    },
+    {
+      "test_id": "924652536",
+      "train_id": "924643822",
+      "hamming": 0,
+      "title_sim": 94.1,
+      "desc_sim": 85.3,
+      "verdict": "SAME ITEM",
+      "test_title": "Samsung Galaxy A07 4GB RAM 64GB/4GB RAM128GB ROM 5000 mAh Battery 50 MP + 2 MP Back Camera",
+      "train_title": "Samsung Galaxy A07 4GB RAM 64GB/128GB ROM 5000 mAh Battery 50 MP + 2 MP Back Camera ONE YE"
+    },
+    {
+      "test_id": "273874897",
+      "train_id": "438053030",
+      "hamming": 2,
+      "title_sim": 84.9,
+      "desc_sim": 38.3,
+      "verdict": "SAME ITEM",
+      "test_title": "[Official Approved] Oppo A57 - 5.2\" HD Display - 3GB RAM - 32GB ROM - Dual Sim - PTA Appro",
+      "train_title": "[Official Approved] A57 - 5.2\" HD Display - 3GB RAM - 32GB ROM - Dual Sim - PTA Approved ("
+    },
+    {
+      "test_id": "207690005",
+      "train_id": "438053030",
+      "hamming": 0,
+      "title_sim": 82.5,
+      "desc_sim": 27.3,
+      "verdict": "SAME ITEM",
+      "test_title": "[Official Approved] Oppo A57 - 5.2\" HD Display - 3GB RAM - 32GB ROM - Dual Sim - PTA Appro",
+      "train_title": "[Official Approved] A57 - 5.2\" HD Display - 3GB RAM - 32GB ROM - Dual Sim - PTA Approved ("
+    },
+    {
+      "test_id": "935273577",
+      "train_id": "948295722",
+      "hamming": 0,
+      "title_sim": 62.6,
+      "desc_sim": 90.2,
+      "verdict": "SAME ITEM",
+      "test_title": "Apple iPhone 17 Pro Max _ 6.9\" Inch Display _ 1 Year Official Warranty Mercantile _ ESim _",
+      "train_title": "Apple iPhone 17 Pro Max _ 6.9\" Inch Display _ 256GB _ Factory Unlock"
+    },
+    {
+      "test_id": "932538860",
+      "train_id": "826784459",
+      "hamming": 0,
+      "title_sim": 57.5,
+      "desc_sim": 86.2,
+      "verdict": "SAME ITEM",
+      "test_title": "Tecno Spark 40 - 6GB RAM 128GB ROM 6.67'' Hole Display 5200mAh Battery PTA Approved 1 Year",
+      "train_title": "Tecno Spark 40 || 128GB Built-in, 6GB RAM (+6GB Extended RAM) || 6.67\" IPS Display 120Hz, "
+    },
+    {
+      "test_id": "924764315",
+      "train_id": "924768099",
+      "hamming": 0,
+      "title_sim": 89.8,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Samsung Galaxy A07 - 6.7'' Display 4GB RAM 128GB ROM 50MP Rear Camera 25w FastCharge 5000m",
+      "train_title": "Samsung Galaxy A07 - 6.7'' Display 4GB RAM 64GB/128GB ROM 50MP Rear Camera 25w Fast Charge"
+    },
+    {
+      "test_id": "631799534",
+      "train_id": "824242066",
+      "hamming": 0,
+      "title_sim": 93.1,
+      "desc_sim": 72.9,
+      "verdict": "SAME ITEM",
+      "test_title": "Itel S25 6+6 GB Extended RAM 128GB Rom 6.78\u201d Super Bright AMOLED Display 120Hz 5000 mAh -1",
+      "train_title": "Itel S25 6GB + 6GB Extended RAM 128GB Rom 6.78\u201d Super Bright AMOLED Display 120Hz 5000 mAh"
+    },
+    {
+      "test_id": "585315101",
+      "train_id": "924391442",
+      "hamming": 8,
+      "title_sim": 32.7,
+      "desc_sim": 36.5,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Oppo A5i 4GB Ram 64GB Rom || 6.67 Inches Display 90Hz, || Qualcomm Snapdragon 6s 4G Gen 1|",
+      "train_title": "Itel Super 26 Ultra 256GB ROM 8GB RAM 50MP Ultra Clear Rear Camera 32MP AI Selfie Camera 6"
+    },
+    {
+      "test_id": "414214979",
+      "train_id": "941578509",
+      "hamming": 0,
+      "title_sim": 95.2,
+      "desc_sim": 48.9,
+      "verdict": "SAME ITEM",
+      "test_title": "Redmi 15 || 8GB + 8GB Extended Ram 128GB Rom || 6.9\" FHD+ Dot Display || Li-ion Si-Ca 7000",
+      "train_title": "Redmi 15 || 8GB + 8GB Extended Ram 128GB Rom || 6.9\" FHD+ Dot Display 144Hz. IP64 || Li-io"
+    },
+    {
+      "test_id": "459890016",
+      "train_id": "927384195",
+      "hamming": 0,
+      "title_sim": 95.4,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Amazon Fire HD 10' Inch Tablet | 100% INSPECTED | 11th Generation | 3GB RAM | 32GB ROM(STO",
+      "train_title": "Tab - Amazon Fire HD 10' Inch Tablet | 100% INSPECTED | 11th Generation | 3GB RAM | 32GB R"
+    },
+    {
+      "test_id": "509099479",
+      "train_id": "651684044",
+      "hamming": 8,
+      "title_sim": 45.1,
+      "desc_sim": 51.7,
+      "verdict": "SHARED PHOTO",
+      "test_title": "vivo Y66 dual sim ,64gb rom , loud speaker, mobile phone , vivo, 4gb ram phone",
+      "train_title": "vivo Y66 - dual Sim - PTA Approve - 4GB Ram - 64GB Rom - Budget Phone - Dual Sim - loud Sp"
+    },
+    {
+      "test_id": "1949114274",
+      "train_id": "689453870",
+      "hamming": 6,
+      "title_sim": 54.2,
+      "desc_sim": 47.4,
+      "verdict": "SHARED PHOTO",
+      "test_title": "LCD Writing Tablet Pad For Kids | Electric Drawing Board | Digital Graphic Drawing Pad Wit",
+      "train_title": "6.5 to 12-Inch LCD Writing Tablet for Kids | Erasable Digital Drawing Pad | Single & Multi"
+    },
+    {
+      "test_id": "943424816",
+      "train_id": "925275875",
+      "hamming": 0,
+      "title_sim": 57.0,
+      "desc_sim": 38.0,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Daraz Like New Tablets \u2013 Amazon Fire HD 7 | 5th Generation | 8 GB Storage | 1 GB RAM | Qua",
+      "train_title": "Daraz Like New Tablet - Amazon Fire HD 7 | 9th Generation 2019 | 1GB 16GB | Android 9.0 | "
+    },
+    {
+      "test_id": "677786496",
+      "train_id": "689453870",
+      "hamming": 0,
+      "title_sim": 39.5,
+      "desc_sim": 53.1,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Multicolor LCD Writing Tablet upto 12 Inch Size for kids learning",
+      "train_title": "6.5 to 12-Inch LCD Writing Tablet for Kids | Erasable Digital Drawing Pad | Single & Multi"
+    },
+    {
+      "test_id": "438009073",
+      "train_id": "943061410",
+      "hamming": 0,
+      "title_sim": 88.8,
+      "desc_sim": 46.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Samsung Galaxy Tab A 2019 (T290) 8' Inch Tablet | 100% INSPECTED | 2GB RAM | 32GB ROM(STOR",
+      "train_title": "Samsung Galaxy Tab A 2019 (T290) 8' Inch Tablet | 100% INSPECTED | 2GB RAM | 32GB ROM(STOR"
+    },
+    {
+      "test_id": "610802362",
+      "train_id": "435957074",
+      "hamming": 8,
+      "title_sim": 47.8,
+      "desc_sim": 40.2,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Huawei MediaPad M1 - 8.0\" Display, 1GB RAM, 8GB Storage, Sleek White Design, WiFi Connecti",
+      "train_title": "Realme Pad X - 11.0\" Screen - 6gb Ram - 128GB Storage - Andriod 12 - 8340mAh Battery - (Or"
+    },
+    {
+      "test_id": "459884823",
+      "train_id": "927384195",
+      "hamming": 0,
+      "title_sim": 68.5,
+      "desc_sim": 99.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Amazon Fire HD 10 | 10\u2019 Inch Tablet | 3GB RAM | 32GB ROM | With PlayStore | 11th Generatio",
+      "train_title": "Tab - Amazon Fire HD 10' Inch Tablet | 100% INSPECTED | 11th Generation | 3GB RAM | 32GB R"
+    },
+    {
+      "test_id": "939336829",
+      "train_id": "939363175",
+      "hamming": 0,
+      "title_sim": 83.2,
+      "desc_sim": 66.3,
+      "verdict": "SAME ITEM",
+      "test_title": "Apple iPhone 6 \u2013 16GB / 32GB / 64GB / 128GB \u2013 4.7\" Big Screen \u2013 Non PTA (Wi-Fi) \u2013 Gold, Si",
+      "train_title": "Apple iPhone 5s \u2013 16GB / 32GB / 64GB \u2013 Non PTA (Wi-Fi) \u2013 Gold, Silver, Space Gray \u2013 Finger"
+    },
+    {
+      "test_id": "934308104",
+      "train_id": "495470896",
+      "hamming": 2,
+      "title_sim": 35.1,
+      "desc_sim": 42.8,
+      "verdict": "SHARED PHOTO",
+      "test_title": "New Multi Color Kids Paperless Electric Cell Operate Writing Tablet with Box Multi color 8",
+      "train_title": "6.5\" |8.5\" | 10\" | 12\" |LCD Drawing Writing Tablet Educational Tablet For Kids Educational"
+    },
+    {
+      "test_id": "527671396",
+      "train_id": "924713287",
+      "hamming": 8,
+      "title_sim": 27.6,
+      "desc_sim": 30.1,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Fujitsu Q555 Windows Tablet | Display 10inch Ram 4gb Storage 64gb 128gb | Only Tablet | wi",
+      "train_title": "Infinix Hot 60 Pro Plus - 6.78'' 3D-Curved AMOLED Display 8GB RAM 256GB ROM 5160mAh Batter"
+    },
+    {
+      "test_id": "927391054",
+      "train_id": "782931981",
+      "hamming": 0,
+      "title_sim": 98.7,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Tab -  Amazon Fire 7' Inch Tablet | 100% INSPECTED | 1GB RAM | 7th Generation | 2980mAh Ba",
+      "train_title": "Amazon Fire 7' Inch Tablet | 100% INSPECTED | 1GB RAM | 7th Generation | 2980mAh Battery |"
+    },
+    {
+      "test_id": "416421451",
+      "train_id": "383952768",
+      "hamming": 0,
+      "title_sim": 75.0,
+      "desc_sim": 97.3,
+      "verdict": "SAME ITEM",
+      "test_title": "Lenovo Tab E10 2GB Ram - 16GB Rom Android 8 - 10inches Screen",
+      "train_title": "Lenovo Tab M10 2GB Ram - 16GB Rom Android 8"
+    },
+    {
+      "test_id": "780086955",
+      "train_id": "459890133",
+      "hamming": 0,
+      "title_sim": 99.6,
+      "desc_sim": 85.7,
+      "verdict": "SAME ITEM",
+      "test_title": "Amazon Fire HD 8' Inch Tablet | 100% INSPECTED | 12th Generation | 2GB RAM | 32GB ROM(STOR",
+      "train_title": "Amazon Fire HD 8' Inch Tablet | 100% INSPECTED | 10th Generation | 2GB RAM | 32GB ROM(STOR"
+    },
+    {
+      "test_id": "1948923357",
+      "train_id": "1949112410",
+      "hamming": 2,
+      "title_sim": 76.2,
+      "desc_sim": 33.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Apple iPhone (6) (Non PTA used)",
+      "train_title": "Apple Iphone (6s)\n(Non PTA Used)"
+    },
+    {
+      "test_id": "1947463609",
+      "train_id": "1947443799",
+      "hamming": 0,
+      "title_sim": 68.4,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Magic LCD Writing Tablet with Calculator \u2013 Colorful Digital Drawing Board | Kids Education",
+      "train_title": "2-in-1 LCD Writing Tablet with Calculator & Colorful Stylus | USB Rechargeable Magic Writi"
+    },
+    {
+      "test_id": "783005346",
+      "train_id": "782931981",
+      "hamming": 0,
+      "title_sim": 97.1,
+      "desc_sim": 97.7,
+      "verdict": "SAME ITEM",
+      "test_title": "Amazon Fire 7' Inch Tablet | 100% INSPECTED | 1GB RAM | 16GB ROM | 9th Generation | 2980mA",
+      "train_title": "Amazon Fire 7' Inch Tablet | 100% INSPECTED | 1GB RAM | 7th Generation | 2980mAh Battery |"
+    },
+    {
+      "test_id": "428207560",
+      "train_id": "924383597",
+      "hamming": 4,
+      "title_sim": 37.2,
+      "desc_sim": 64.5,
+      "verdict": "SHARED PHOTO",
+      "test_title": "TCL Tab 8\" Inch - 3GB RAM - 32GB STORAGE - Android 12 - 2022 Model (Pubg Supported) - Dara",
+      "train_title": "TCL 9137W/9049L 8' Inch Tablet | 100% INSPECTED | 3GB RAM | 32GB ROM(STORAGE) | 4080mAh Ba"
+    },
+    {
+      "test_id": "1947009614",
+      "train_id": "392424124",
+      "hamming": 4,
+      "title_sim": 32.4,
+      "desc_sim": 33.1,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Amazon 9th Generation 7 inch IPS display Tablet 2 GB and 16 GB with charger cable and PLAY",
+      "train_title": "Amazon 7 HD WIFI TAB PLAY STORE SUPPORTED"
+    },
+    {
+      "test_id": "947313941",
+      "train_id": "1949189544",
+      "hamming": 0,
+      "title_sim": 53.3,
+      "desc_sim": 41.5,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Apple iPhone 13 128GB Non-PTA / Non-Approved | Like New Condition | Free Charger & Cover |",
+      "train_title": "Apple iPhone 13 - 128GB - Non Approved - Charger and Cover -  Like New Phones (Mobile Phon"
+    },
+    {
+      "test_id": "940806648",
+      "train_id": "938521347",
+      "hamming": 0,
+      "title_sim": 50.7,
+      "desc_sim": 48.5,
+      "verdict": "SHARED PHOTO",
+      "test_title": "moto G5G 2024 - NON PTA - 4GB RAM - 128GB ROM - SIM NOT WORKING - 10/10 condition - 100 pe",
+      "train_title": "MOTO G5G 2024 - 6.6inch display pubg phone non pta (sim locked) - snapdragon 4 gen 1 - typ"
+    },
+    {
+      "test_id": "418539561",
+      "train_id": "496281911",
+      "hamming": 6,
+      "title_sim": 45.0,
+      "desc_sim": 39.0,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Samsung Galaxy Tab A7 Lite 8 inches - 3GB Ram - 32GB Rom - WIFI Tablet - (Free Original Gl",
+      "train_title": "Samsung Galaxy Tab A7 Lite 8.7\u2019 Inch Tablet | Top Rated | 3GB RAM | 32GB ROM | 5100mAh Bat"
+    },
+    {
+      "test_id": "368388282",
+      "train_id": "496281911",
+      "hamming": 6,
+      "title_sim": 40.6,
+      "desc_sim": 38.6,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Samsung Galaxy Tab A7 Lite - 8\" Screen - 3gb Ram - 32GB Storage - Andriod 14 (Original Gla",
+      "train_title": "Samsung Galaxy Tab A7 Lite 8.7\u2019 Inch Tablet | Top Rated | 3GB RAM | 32GB ROM | 5100mAh Bat"
+    },
+    {
+      "test_id": "350628990",
+      "train_id": "433295788",
+      "hamming": 0,
+      "title_sim": 68.4,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Samsung Galaxy Tab A 8.0\" - 2GB Ram - 32GB Storage - Wi-Fi Supported - Pubg Supported (Gla",
+      "train_title": "Samsung Galaxy Tab A - T387 - 8.0 inch Display - 2GB RAM - 32GB Memory - Free Original Pro"
+    },
+    {
+      "test_id": "435949909",
+      "train_id": "368384874",
+      "hamming": 0,
+      "title_sim": 97.8,
+      "desc_sim": 99.8,
+      "verdict": "SAME ITEM",
+      "test_title": "Samsung Tab Note  - 10.1 Inch - 2GB RAM - 16GB ROM - Original Spen Included - Android 9.0 ",
+      "train_title": "Samsung Tab Note  - 10.1 Inch - 2GB RAM - 16GB ROM - Original Spen Included - Android 9.0 "
+    },
+    {
+      "test_id": "1946850341",
+      "train_id": "464023911",
+      "hamming": 0,
+      "title_sim": 50.4,
+      "desc_sim": 45.2,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Huawei dtab Compact D-02K 8\u2033 Tablet | 3GB RAM 32GB Storage | Android 9.0 | IPS LCD 1920\u00d712",
+      "train_title": "HUAWEI DTAB COMPACT D-02K TABLET | 3GB | 32GB | ANDROID 9.0 | Display Type IPS LCD Size 8\u2019"
+    },
+    {
+      "test_id": "472049757",
+      "train_id": "817461080",
+      "hamming": 2,
+      "title_sim": 50.8,
+      "desc_sim": 45.1,
+      "verdict": "SHARED PHOTO",
+      "test_title": "New Summer girls and Women  Plain  T- shirt  Pack Of 3  Random Color ( Premium Quality  Ma",
+      "train_title": "Pack of 3 Girls & Women Summer Basic T-shirts Soft Comfortable Cotton Jersey Fabric Random"
+    },
+    {
+      "test_id": "561239561",
+      "train_id": "567584897",
+      "hamming": 0,
+      "title_sim": 44.1,
+      "desc_sim": 53.4,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Dudu Bubu Crop Top Suits For Women And Girls Short Sleeve Tee and Black Flapper",
+      "train_title": "High-Quality Printed Crop T-Shirt and Plazo Set for Women"
+    },
+    {
+      "test_id": "429861803",
+      "train_id": "390443619",
+      "hamming": 0,
+      "title_sim": 56.4,
+      "desc_sim": 45.9,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Stylish Summer Cotton T-Shirt, Round Neck, Printed, Comfortable Combed Fabric",
+      "train_title": "Pack of 3 Stylish Printed Cotton Jersey Round Neck T-Shirts for Women and Girls"
+    },
+    {
+      "test_id": "351924455",
+      "train_id": "473213207",
+      "hamming": 0,
+      "title_sim": 32.1,
+      "desc_sim": 29.7,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Aneesa Collections Women\u2019s Flat Sandals - Stylish, Comfortable, Party & Casual Wear",
+      "train_title": "#FootForward Flat Sandals 114"
+    },
+    {
+      "test_id": "560075516",
+      "train_id": "567584897",
+      "hamming": 2,
+      "title_sim": 51.6,
+      "desc_sim": 53.3,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Trendy Crop Top Suit with Black Flapper Perfect for Women and Girls",
+      "train_title": "High-Quality Printed Crop T-Shirt and Plazo Set for Women"
+    },
+    {
+      "test_id": "589501425",
+      "train_id": "209962529",
+      "hamming": 0,
+      "title_sim": 57.8,
+      "desc_sim": 26.9,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Mayar Outfits Winters Collection Printed Crew Neck Sweatshirts For Girls Women's & Ladies ",
+      "train_title": "Pack Of 5 Summer Round Neck Half Sleeves Casual Cotton Printed T Shirts Tops For Girls Wom"
+    },
+    {
+      "test_id": "467031198",
+      "train_id": "422882047",
+      "hamming": 0,
+      "title_sim": 49.8,
+      "desc_sim": 45.3,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Long Printed T-Shirts Round neck Half Sleeves  For Girls & Women's Fabric Cotton  Jersey F",
+      "train_title": "Long T-Shirts for Girls And Women's Loose Fit Crew Neck Short Sleeve Casual Top Shirt"
+    },
+    {
+      "test_id": "364037351",
+      "train_id": "433462858",
+      "hamming": 0,
+      "title_sim": 53.5,
+      "desc_sim": 98.2,
+      "verdict": "SAME ITEM",
+      "test_title": "New Butterflies printed Hoodie For Women n Girl in stylish Printed Winter Collection",
+      "train_title": "Butterflies Printed Zipper Hoodie for Girls & Women - Kangaroo Pocket, Drawstring Pullover"
+    },
+    {
+      "test_id": "397101094",
+      "train_id": "397090349",
+      "hamming": 0,
+      "title_sim": 96.4,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Party Wear/Wedding Collection For Women Embroidered Koti and Frock",
+      "train_title": "Party Wear/Wedding Collection 2023 For Women Embroidered Koti and Frock"
+    },
+    {
+      "test_id": "627566682",
+      "train_id": "934180119",
+      "hamming": 0,
+      "title_sim": 44.3,
+      "desc_sim": 38.1,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Oversized Printed T-Shirt for Women & Girls \u2013 Relax Fit Graphic Tee with Matching Trouser ",
+      "train_title": "Women oversized Relax In Comfortable Printed T-Shirts and trouser for Girls"
+    },
+    {
+      "test_id": "252197633",
+      "train_id": "240728493",
+      "hamming": 0,
+      "title_sim": 54.7,
+      "desc_sim": 59.9,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Black Always Forever Fleece Full Sleeves Zipper Hoodie For Women - Premium Quality and Sty",
+      "train_title": "Light Purple Bts Printed Fleece Full Sleeves Pull Over Hoodie For Women"
+    },
+    {
+      "test_id": "481865405",
+      "train_id": "397895709",
+      "hamming": 0,
+      "title_sim": 57.1,
+      "desc_sim": 54.5,
+      "verdict": "SHARED PHOTO",
+      "test_title": "T Shirt for Girl & Women Bnnny Printed Cotton Round Neck Half sleeve",
+      "train_title": "Rose Flower Print Round Neck Half Sleeves Casual Printed Crop Top T Shirt For Girls Women "
+    },
+    {
+      "test_id": "225376384",
+      "train_id": "240728493",
+      "hamming": 0,
+      "title_sim": 59.8,
+      "desc_sim": 71.3,
+      "verdict": "SAME ITEM",
+      "test_title": "Bts Printed Cotton Half Sleeves O Neck T Shirt For Women",
+      "train_title": "Light Purple Bts Printed Fleece Full Sleeves Pull Over Hoodie For Women"
+    },
+    {
+      "test_id": "627543992",
+      "train_id": "934180119",
+      "hamming": 0,
+      "title_sim": 43.8,
+      "desc_sim": 38.7,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Oversized Night Suit for Women & Girls \u2013 Relax Fit Printed Cotton Jersey T-Shirt & Trouser",
+      "train_title": "Women oversized Relax In Comfortable Printed T-Shirts and trouser for Girls"
+    },
+    {
+      "test_id": "426761884",
+      "train_id": "462862353",
+      "hamming": 0,
+      "title_sim": 41.0,
+      "desc_sim": 47.7,
+      "verdict": "SHARED PHOTO",
+      "test_title": "Premium Printed T-Shirts for Women and Girls - Versatile, Comfortable Style",
+      "train_title": "T Pink Plain Basic Round Neck Half Sleeves T Shirts For Girls & Women's Cotton Jersey Fabr"
+    },
+    {
+      "test_id": "375984756",
+      "train_id": "376003172",
+      "hamming": 0,
+      "title_sim": 76.9,
+      "desc_sim": 96.2,
+      "verdict": "SAME ITEM",
+      "test_title": "Floral Printed Full Sleeve Sweatshirt for Girls & Women, Round Neck, Winter Wear",
+      "train_title": "Full Sleeves Rose Printed Sweatshirt for Girls and Women, Black, Round Neck, Winter Wear, "
+    },
+    {
+      "test_id": "386147999",
+      "train_id": "386145671",
+      "hamming": 0,
+      "title_sim": 99.5,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Stylish Flower Embroidered Chiffon Maxi Full Flair (Only Maxi) Party Wear Maxi Dresses For",
+      "train_title": "Stylish Flower Embroidered Chiffon Maxi Full Flair (Only Maxi) Paty Wear Maxi Dresses For "
+    },
+    {
+      "test_id": "264190305",
+      "train_id": "240728493",
+      "hamming": 0,
+      "title_sim": 64.0,
+      "desc_sim": 88.8,
+      "verdict": "SAME ITEM",
+      "test_title": "Grey Plain Fleece Full Sleeves Zipper Hoodie For Women",
+      "train_title": "Light Purple Bts Printed Fleece Full Sleeves Pull Over Hoodie For Women"
+    },
+    {
+      "test_id": "435552661",
+      "train_id": "433959588",
+      "hamming": 0,
+      "title_sim": 77.0,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "New Black Butterfly and Stars Printed Hoodie Zipper For Girls and Women",
+      "train_title": "New Black Winter Fleece Fabric Hoodie Zipper For Girls and Women"
+    },
+    {
+      "test_id": "495415554",
+      "train_id": "495415622",
+      "hamming": 0,
+      "title_sim": 45.5,
+      "desc_sim": 55.6,
+      "verdict": "SHARED PHOTO",
+      "test_title": "High-Waisted Wide-Leg Denim Jeans for Women - Classic and Versatile",
+      "train_title": "Wide Leg Ice Blue Denim Jeans For Women/Girls/Female Export Quality Fashion Baggy Jeans"
+    },
+    {
+      "test_id": "547609340",
+      "train_id": "604611720",
+      "hamming": 2,
+      "title_sim": 85.5,
+      "desc_sim": 99.3,
+      "verdict": "SAME ITEM",
+      "test_title": "Stylish Collection Stitched 3pc kataan Maxi Dress for women",
+      "train_title": "New Stylish Collection Stitched 3pc kataan Maxi Dress for women and Young Girls"
+    },
+    {
+      "test_id": "461819256",
+      "train_id": "550936902",
+      "hamming": 2,
+      "title_sim": 38.9,
+      "desc_sim": 33.3,
+      "verdict": "SHARED PHOTO",
+      "test_title": "BTS Print Crop Top \u2013 Soft Fabric, Short Sleeve, Casual T-Shirt",
+      "train_title": "New Black Heart Logo Crop T shirt for Women Fashion Clothing Gym wear Round Neck Half Slee"
+    },
+    {
+      "test_id": "436386109",
+      "train_id": "433959588",
+      "hamming": 0,
+      "title_sim": 66.1,
+      "desc_sim": 100.0,
+      "verdict": "SAME ITEM",
+      "test_title": "Pink Butterfly Printed Winter Zipper Hoodie for Girls and Women",
+      "train_title": "New Black Winter Fleece Fabric Hoodie Zipper For Girls and Women"
+    }
+  ]
+}
